@@ -93,7 +93,7 @@ $(function () {
 
 
                         return '' +
-                        '<b>' + this.point.config.tooltip + '</b><br><br>' +
+                        '<b>' + this.point.config + '</b><br><br>' +
                         Highcharts.dateFormat('%d %b %Y', this.x) +': '+ '<b>' + this.y + ' уд/м </b>';
                 }
             },
@@ -136,14 +136,11 @@ $(function () {
 
         $.getJSON('loadData.php', function(data) {
             yData = options.series[0].data;
-            xData = options.xAxis.categories;
+
+            tooltip = options.tooltip.config;
 
             for (i = 0; i < data.length; i++) {
                 yData.push(parseFloat(data[i]['data']));
-            }
-
-            for (i = 0; i < data.length; i++) {
-                xData.push(data[i]['tooltip']);
             }
 
             chart = new Highcharts.Chart(options);
