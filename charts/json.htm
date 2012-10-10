@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>Highcharts Example</title>
+
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+		<script type="text/javascript">
+$(function () {
+    $(document).ready(function() {
+
+        var chart;
+
+        var options = {
+            chart: {
+                renderTo: 'container',
+                defaultSeriesType: 'bar'
+            },
+            title:{
+                text: 'No. Schools for different levels'
+            },
+            xAxis:{
+                title:'Education Level',
+                categories:[]
+            },
+            yAxis:{
+                title:{
+                    text:'No. Of Schools'
+                }
+            },
+            series:[{
+                name: "No. Schools",
+                data: []
+            }]
+        };
+
+        $.getJSON('loadData.php', function(data) {
+            yData = options.series[0].data;
+            xData = options.xAxis.categories;
+
+            for (i = 0; i < data.length; i++) {
+                yData.push(parseFloat(data[i]['data']));
+            }
+
+            for (i = 0; i < data.length; i++) {
+                xData.push(data[i]['tooltip']);
+            }
+
+            chart = new Highcharts.Chart(options);
+        });
+
+    });
+    
+});
+		</script>
+	</head>
+	<body>
+<script src="js/highcharts.js"></script>
+<script src="js/exporting.js"></script>
+
+<div id="container" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
+
+	</body>
+</html>

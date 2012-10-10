@@ -7,8 +7,9 @@
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 		<script type="text/javascript">
 $(function () {
-    var chart;
     $(document).ready(function() {
+
+        var chart;
 
         var array = [
             {y: 70, tooltip: 'Фарингосепт'},
@@ -37,7 +38,7 @@ $(function () {
             {y: 110, tooltip: 'Анальгин'}
         ];
 
-        chart = new Highcharts.Chart({
+        var options = {
             chart: {
                 renderTo: 'container',
                 type: 'spline'
@@ -58,8 +59,13 @@ $(function () {
                 min: 0,
                 max: 160,
                 minorGridLineWidth: 0,
-                gridLineWidth: 0,
+                gridLineWidth: 1,
                 alternateGridColor: null,
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                }],
                 plotBands: [{ // Light air
                     from: 50,
                     to: 80,
@@ -117,7 +123,7 @@ $(function () {
             },
             series: [{
                 name: 'Пульс',
-                data: array,
+                data: [],
                 cursor: 'pointer'
             }]
             ,
@@ -126,6 +132,21 @@ $(function () {
                     fontSize: '10px'
                 }
             }
+        };
+
+        $.getJSON('loadData.php', function(data) {
+            yData = options.series[0].data;
+            xData = options.xAxis.categories;
+
+            for (i = 0; i < data.length; i++) {
+                yData.push(parseFloat(data[i]['data']));
+            }
+
+            for (i = 0; i < data.length; i++) {
+                xData.push(data[i]['tooltip']);
+            }
+
+            chart = new Highcharts.Chart(options);
         });
     });
     
