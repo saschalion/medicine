@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9b08ff6f-0f6d-4ad4-8168-fcf00851700f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/charts/chart.php" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/charts/pulse.htm" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/charts/stock.htm" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/charts/js/reports.js" afterPath="$PROJECT_DIR$/charts/js/reports.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/charts/js/stock.js" afterPath="$PROJECT_DIR$/charts/js/stock.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/charts/loadData.php" afterPath="$PROJECT_DIR$/charts/loadData.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/charts/chart.php" afterPath="$PROJECT_DIR$/charts/chart.php" />
     </list>
     <ignored path="medicine.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -40,7 +34,7 @@
       <file leaf-file-name="stock.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/charts/js/stock.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="132" column="27" selection-start="3963" selection-end="3963" vertical-scroll-proportion="0.0">
+            <state line="43" column="28" selection-start="1173" selection-end="1173" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -49,11 +43,11 @@
       <file leaf-file-name="chart.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/charts/chart.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="33" selection-start="287" selection-end="287" vertical-scroll-proportion="0.1268116">
+            <state line="19" column="14" selection-start="780" selection-end="780" vertical-scroll-proportion="0.3442029">
               <folding>
-                <marker date="1349952337674" expanded="true" signature="859:906" placeholder="..." />
-                <marker date="1349952337674" expanded="true" signature="952:999" placeholder="..." />
-                <marker date="1349952337674" expanded="true" signature="1086:1133" placeholder="..." />
+                <marker date="1349952789953" expanded="true" signature="868:915" placeholder="..." />
+                <marker date="1349952789953" expanded="true" signature="961:1008" placeholder="..." />
+                <marker date="1349952789953" expanded="true" signature="1104:1151" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -137,8 +131,8 @@
         <option value="$PROJECT_DIR$/charts/stock.htm" />
         <option value="$PROJECT_DIR$/charts/js/highstock.js" />
         <option value="$PROJECT_DIR$/charts/js/reports.js" />
-        <option value="$PROJECT_DIR$/charts/js/stock.js" />
         <option value="$PROJECT_DIR$/charts/loadData.php" />
+        <option value="$PROJECT_DIR$/charts/js/stock.js" />
         <option value="$PROJECT_DIR$/charts/chart.php" />
       </list>
     </option>
@@ -421,13 +415,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/charts/js/stock.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="132" column="27" selection-start="3963" selection-end="3963" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/charts/loadData.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="49" column="25" selection-start="2572" selection-end="2578" vertical-scroll-proportion="-30.625">
@@ -435,13 +422,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/charts/js/stock.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="28" selection-start="1173" selection-end="1173" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/charts/chart.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="33" selection-start="287" selection-end="287" vertical-scroll-proportion="0.1268116">
+        <state line="19" column="14" selection-start="780" selection-end="780" vertical-scroll-proportion="0.3442029">
           <folding>
-            <marker date="1349952337674" expanded="true" signature="859:906" placeholder="..." />
-            <marker date="1349952337674" expanded="true" signature="952:999" placeholder="..." />
-            <marker date="1349952337674" expanded="true" signature="1086:1133" placeholder="..." />
+            <marker date="1349952789953" expanded="true" signature="868:915" placeholder="..." />
+            <marker date="1349952789953" expanded="true" signature="961:1008" placeholder="..." />
+            <marker date="1349952789953" expanded="true" signature="1104:1151" placeholder="..." />
           </folding>
         </state>
       </provider>
