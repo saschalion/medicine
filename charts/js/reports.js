@@ -127,7 +127,7 @@ $(function () {
             }
         };
 
-        $.getJSON('loadData.php?chart-pulse=true', function(data) {
+        $.getJSON('/charts/loadData.php?chart-pulse=true', function(data) {
             yData = options.series[0].data;
             tooltip = options.series[0].tooltip;
 

@@ -58,4 +58,6 @@ function set_chart() {
     return $data;
 }
 
-set_chart();
+if(isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'] == "XMLHttpRequest") {
+    set_chart();
+}

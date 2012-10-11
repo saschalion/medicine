@@ -130,7 +130,7 @@ $(function () {
             }
         };
 
-        $.getJSON('loadData.php?stock=true', function(data) {
+        $.getJSON('/charts/loadData.php?stock=true', function(data) {
             yData = options.series[0].data;
 
             subtitle = options.subtitle.text;
