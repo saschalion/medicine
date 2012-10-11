@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9b08ff6f-0f6d-4ad4-8168-fcf00851700f" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/charts/js/highcharts-more.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/charts/js/speed.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/charts/js/reports.js" afterPath="$PROJECT_DIR$/charts/js/reports.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/charts/pulse.htm" afterPath="$PROJECT_DIR$/charts/pulse.htm" />
     </list>
     <ignored path="medicine.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -22,11 +26,40 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="reports.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="reports.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/charts/js/reports.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="81" column="41" selection-start="2485" selection-end="2485" vertical-scroll-proportion="0.52816904">
+            <state line="139" column="3" selection-start="4314" selection-end="4314" vertical-scroll-proportion="0.0">
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="speed.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/charts/js/speed.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="71" column="33" selection-start="2155" selection-end="2155" vertical-scroll-proportion="0.61619717">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="highcharts-more.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/charts/js/highcharts-more.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pulse.htm" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/charts/pulse.htm">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="15" column="11" selection-start="698" selection-end="698" vertical-scroll-proportion="-9.375">
+              <folding>
+                <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -47,8 +80,9 @@
         <option value="$USER_HOME$/Загрузки/Highcharts-2.3.3/examples/spline-plot-bands/index.htm" />
         <option value="$PROJECT_DIR$/charts/loadData.php" />
         <option value="$PROJECT_DIR$/charts/json.htm" />
-        <option value="$PROJECT_DIR$/charts/pulse.htm" />
         <option value="$PROJECT_DIR$/charts/js/reports.js" />
+        <option value="$PROJECT_DIR$/charts/pulse.htm" />
+        <option value="$PROJECT_DIR$/charts/js/speed.js" />
       </list>
     </option>
   </component>
@@ -144,9 +178,9 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/charts/js" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/charts" />
-      <recent name="$PROJECT_DIR$/charts/js" />
     </key>
   </component>
   <component name="RunManager">
@@ -275,16 +309,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/charts/pulse.htm">
+    <entry file="file://$PROJECT_DIR$/charts/js/reports.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="139" column="3" selection-start="4314" selection-end="4314" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/charts/js/highcharts-more.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/charts/js/reports.js">
+    <entry file="file://$PROJECT_DIR$/charts/pulse.htm">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="81" column="41" selection-start="2485" selection-end="2485" vertical-scroll-proportion="0.52816904">
+        <state line="15" column="11" selection-start="698" selection-end="698" vertical-scroll-proportion="-9.375">
+          <folding>
+            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/charts/js/speed.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="71" column="33" selection-start="2155" selection-end="2155" vertical-scroll-proportion="0.61619717">
           <folding />
         </state>
       </provider>

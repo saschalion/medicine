@@ -1,8 +1,7 @@
 $(function () {
-
-    var chart;
-
     $(document).ready(function() {
+
+        var chart;
 
         var options = {
             chart: {
@@ -135,8 +134,7 @@ $(function () {
                 yData.push(data[i]);
             }
 
-            chart = new Highcharts.Chart(options);
+            var chart = new Highcharts.Chart(options);
         });
     });
-
 });
