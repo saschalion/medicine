@@ -38,8 +38,8 @@ $(function () {
                     }
                 },
                 plotBands: [{
-                    from: 56,
-                    to: 66,
+                    from: [],
+                    to: [],
                     color: 'rgba(0, 255, 0, 0.1)',
                     label: {
                         text: 'Норма',
@@ -48,8 +48,8 @@ $(function () {
                         }
                     }
                 }, {
-                    from: 30,
-                    to: 56,
+                    from: [],
+                    to: [],
                     color: 'rgba(255, 0, 0, 0.1)',
                     label: {
                         text: 'Ниже нормы',
@@ -58,8 +58,8 @@ $(function () {
                         }
                     }
                 }, {
-                    from: 66,
-                    to: 120,
+                    from: [],
+                    to: [],
                     dashStyle : 'shortdash',
                     color: 'rgba(255, 0, 0, 0.1)',
                     label: {
@@ -130,6 +130,34 @@ $(function () {
             }
         };
 
+        $.getJSON('/charts/loadNorms.php?stock=true', function(response) {
+
+            //  Норма
+
+            var startNorm = options.yAxis.plotBands[0].from;
+            var endNorm = options.yAxis.plotBands[0].to;
+
+            //  Ниже нормы
+
+            var belowStartNorm = options.yAxis.plotBands[1].from;
+            var belowEndNorm = options.yAxis.plotBands[1].to;
+
+            //  Выше нормы
+
+            var aboveStartNorm = options.yAxis.plotBands[2].from;
+            var aboveEndNorm = options.yAxis.plotBands[2].to;
+
+            startNorm.push(response[0]['start_norm']);
+            endNorm.push(response[0]['end_norm']);
+
+            belowStartNorm.push(response[0]['below_start_norm']);
+            belowEndNorm.push(response[0]['below_end_norm']);
+
+            aboveStartNorm.push(response[0]['above_start_norm']);
+            aboveEndNorm.push(response[0]['above_end_norm']);
+
+        });
+
         $.getJSON('/charts/loadData.php?stock=true', function(data) {
             yData = options.series[0].data;
 
@@ -141,7 +169,7 @@ $(function () {
 
             var dataLength = parseFloat(data.length - 1);
 
-            subtitle.push('c ' + Highcharts.dateFormat('%d %b %Y', data[0]['x']) + ' по ' + Highcharts.dateFormat('%d %b %Y', data[dataLength]['x']));
+            subtitle.push('c ' + '<b>' + Highcharts.dateFormat('%d.%m.%Y', data[0]['x']) + '</b>' + ' по ' + '<b>' + Highcharts.dateFormat('%d.%m.%Y', data[dataLength]['x']) + '</b>');
 
             var chart = new Highcharts.StockChart(options);
         });
