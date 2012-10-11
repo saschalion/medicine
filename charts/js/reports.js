@@ -1,7 +1,8 @@
 $(function () {
-    $(document).ready(function() {
 
-        var chart;
+    var chart;
+
+    $(document).ready(function() {
 
         var options = {
             chart: {
@@ -29,6 +30,11 @@ $(function () {
                     width: 1,
                     color: '#808080'
                 }],
+                labels: {
+                    formatter: function() {
+                        return this.value +' уд/мин';
+                    }
+                },
                 plotBands: [{
                     from: 56,
                     to: 66,
@@ -49,18 +55,17 @@ $(function () {
                             color: '#606060'
                         }
                     }
-                },
-                    {
-                        from: 66,
-                        to: 120,
-                        color: 'rgba(255, 0, 0, 0.1)',
-                        label: {
-                            text: 'Выше нормы',
-                            style: {
-                                color: '#606060'
-                            }
+                }, {
+                    from: 66,
+                    to: 120,
+                    color: 'rgba(255, 0, 0, 0.1)',
+                    label: {
+                        text: 'Выше нормы',
+                        style: {
+                            color: '#606060'
                         }
-                    }]
+                    }
+                }]
             },
             tooltip: {
                 useHTML: true,
@@ -71,6 +76,18 @@ $(function () {
                 }
             },
             plotOptions: {
+                series: {
+                    dataLabels: {
+                        style: {
+                            font: 'bold 9px Arial',
+                            verticalAlign: 'top'
+                        },
+                        enabled: true,
+                        formatter: function() {
+                            return + this.y + ' (' + this.point.config.tooltip + ')';
+                        }
+                    }
+                },
                 spline: {
                     lineWidth: 4,
                     states: {
@@ -85,14 +102,17 @@ $(function () {
                             hover: {
                                 enabled: true,
                                 symbol: 'circle',
-                                radius: 5,
+                                radius: 7,
                                 lineWidth: 1
                             }
                         }
                     },
-                    pointInterval: 7 * 24 * 3600 * 1000 * 4, // one hour
+                    pointInterval: 7 * 24 * 3600 * 1000 * 4,
                     pointStart: Date.UTC(2009, 9, 6, 0, 0, 0)
                 }
+            },
+            legend: {
+                enabled: false
             },
             series: [{
                 name: 'Пульс',
