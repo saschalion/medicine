@@ -11,7 +11,7 @@ $(function () {
                 text: 'Параметры пульса'
             },
             subtitle: {
-                text: 'с октября 1999 до ноября 2012'
+                text: []
             },
             rangeSelector : {
                 selected : 1
@@ -133,9 +133,15 @@ $(function () {
         $.getJSON('loadData.php?stock=true', function(data) {
             yData = options.series[0].data;
 
+            subtitle = options.subtitle.text;
+
             for (i = 0; i < data.length; i++) {
                 yData.push(data[i]);
             }
+
+            var dataLength = parseFloat(data.length - 1);
+
+            subtitle.push('c ' + Highcharts.dateFormat('%d %b %Y', data[0]['x']) + ' по ' + Highcharts.dateFormat('%d %b %Y', data[dataLength]['x']));
 
             var chart = new Highcharts.StockChart(options);
         });
