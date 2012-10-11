@@ -67,6 +67,7 @@ $(function () {
                 }]
             },
             tooltip: {
+                crosshairs: true,
                 useHTML: true,
                 formatter: function() {
                     return '' +
