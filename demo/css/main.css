@@ -5,5 +5,10 @@
 }
 
 .well {
+    padding: 15px 0;
     margin: 40px 0 0;
+}
+
+.accordion-group.active .accordion-toggle {
+    font-weight: bold;
 }
