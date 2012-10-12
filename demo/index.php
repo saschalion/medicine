@@ -52,22 +52,38 @@
 </div>
 <div role="main">
     <div class="span12">
-        <h2>Пациенты</h2>
 
-        <?php foreach ($_COOKIE as $cookie_name => $cookie_value) {
-            print "$cookie_name = $cookie_value<br>";
-        } ?>
+        <div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 id="myModalLabel">Вызвать пациента</h3>
+            </div>
+            <div class="modal-body">
+                <p>Здесь можно вызвать пациента на приём.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" data-dismiss="modal" aria-hidden="true">Закрыть</button>
+                <button class="btn btn-primary">Записать</button>
+            </div>
+        </div>
+
+        <h2>Пациенты</h2>
+<!--        --><?php //foreach ($_COOKIE as $cookie_name => $cookie_value) {
+//            print "$cookie_name = $cookie_value<br>";
+//        } ?>
 
         <?php if (!isset($_COOKIE['messages'])) { ?>
             <div class="alert alert-info">
                 <strong>Иванов Иван Алексеевич</strong> имеет холестерин: <b>50</b> за <b>18/10/2012</b>.
-                <button type="button" class="btn btn-success">Вызвать пациента</button>
-                <button type="button" class="close" id="close-1" data-dismiss="alert">×</button>
+                <button type="button" class="btn btn-success" data-toggle="modal" href="#myModal">Вызвать пациента</button><br>
+                <button type="button" class="btn" data-dismiss="alert">Ок</button>
+                <button type="button" class="close" title="Не показывать" id="close-1" data-dismiss="alert">×</button>
             </div>
             <div class="alert alert-info">
                 <strong>Берсеньев Аркадий Иванович</strong> имеет пульс: <b>120</b> за <b>20/06/2012</b>.
-                <button type="button" class="btn btn-success">Вызвать пациента</button>
-                <button type="button" class="close" id="close-2" data-dismiss="alert">×</button>
+                <button type="button" class="btn btn-success">Вызвать пациента</button><br>
+                <button type="button" class="btn" data-dismiss="alert">Ок</button>
+                <button type="button" class="close" title="Не показывать" id="close-2" data-dismiss="alert">×</button>
             </div>
         <?php } ?>
 
