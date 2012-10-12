@@ -30,7 +30,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </a>
-            <a class="brand" href="index.htm">МедОКБ</a>
+            <a class="brand" href="index.php">МедОКБ</a>
             <div class="nav-collapse collapse" style="height: 0px; ">
                 <p class="navbar-text pull-right">
                     Вы зашли как <a href="#" class="navbar-link">Светлана Сергеевна</a>
@@ -41,7 +41,7 @@
                     </li>
                     <li><a href="#">Документы</a></li>
                     <li><a href="#">Услуги</a></li>
-                    <li><a href="#">Выход</a></li>
+                    <li><a href="?logout=true">Выход</a></li>
                 </ul>
             </div><!--/.nav-collapse -->
         </div>

@@ -1,3 +1,7 @@
+<?php if($_GET['logout']) {
+    setcookie('messages', '', 0, "/");
+    header('Location: index.php');
+}?>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -40,7 +44,7 @@
                     </li>
                     <li><a href="#">Документы</a></li>
                     <li><a href="#">Услуги</a></li>
-                    <li><a href="#">Выход</a></li>
+                    <li><a href="?logout=true">Выход</a></li>
                 </ul>
             </div><!--/.nav-collapse -->
         </div>
@@ -49,18 +53,26 @@
 <div role="main">
     <div class="span12">
         <h2>Пациенты</h2>
-        <div class="alert alert-info">
-            <strong>Иванов Иван Алексеевич</strong> имеет холестерин: <b>50</b> за <b>18/10/2012</b>.
-            <button type="button" class="btn btn-success">Вызвать пациента</button>
-            <button type="button" class="close" data-dismiss="alert">×</button>
-        </div>
-        <div class="alert alert-info">
-            <strong>Берсеньев Аркадий Иванович</strong> имеет пульс: <b>120</b> за <b>20/06/2012</b>.
-            <button type="button" class="btn btn-success">Вызвать пациента</button>
-            <button type="button" class="close" data-dismiss="alert">×</button>
-        </div>
+
+        <?php foreach ($_COOKIE as $cookie_name => $cookie_value) {
+            print "$cookie_name = $cookie_value<br>";
+        } ?>
+
+        <?php if (!isset($_COOKIE['messages'])) { ?>
+            <div class="alert alert-info">
+                <strong>Иванов Иван Алексеевич</strong> имеет холестерин: <b>50</b> за <b>18/10/2012</b>.
+                <button type="button" class="btn btn-success">Вызвать пациента</button>
+                <button type="button" class="close" id="close-1" data-dismiss="alert">×</button>
+            </div>
+            <div class="alert alert-info">
+                <strong>Берсеньев Аркадий Иванович</strong> имеет пульс: <b>120</b> за <b>20/06/2012</b>.
+                <button type="button" class="btn btn-success">Вызвать пациента</button>
+                <button type="button" class="close" id="close-2" data-dismiss="alert">×</button>
+            </div>
+        <?php } ?>
+
         <form class="form-search">
-            <input type="text" class="input-medium search-query" id="tags" placeholder="Введите имя">
+            <input type="text" class="input-medium search-query span3" id="tags" placeholder="Введите имя">
             <span class="help-inline">Возраст</span>
             <select class="span1">
                 <option value="0">от</option>
@@ -144,7 +156,7 @@
                         Грипп
                     </td>
                     <td>
-                        <a href="show.htm" class="btn btn-info">
+                        <a href="show.php" class="btn btn-info">
                             <i class="icon-eye-open"></i>
                             Просмотр
                         </a>
@@ -170,7 +182,7 @@
                         Грипп
                     </td>
                     <td>
-                        <a href="show.htm" class="btn btn-info">
+                        <a href="show.php" class="btn btn-info">
                             <i class="icon-eye-open"></i>
                             Просмотр
                         </a>
@@ -196,7 +208,7 @@
                         Грипп
                     </td>
                     <td>
-                        <a href="show.htm" class="btn btn-info">
+                        <a href="show.php" class="btn btn-info">
                             <i class="icon-eye-open"></i>
                             Просмотр
                         </a>
@@ -222,7 +234,7 @@
                         Грипп
                     </td>
                     <td>
-                        <a href="show.htm" class="btn btn-info">
+                        <a href="show.php" class="btn btn-info">
                             <i class="icon-eye-open"></i>
                             Просмотр
                         </a>
@@ -248,7 +260,7 @@
                         Грипп
                     </td>
                     <td>
-                        <a href="show.htm" class="btn btn-info">
+                        <a href="show.php" class="btn btn-info">
                             <i class="icon-eye-open"></i>
                             Просмотр
                         </a>
@@ -274,7 +286,7 @@
                         Грипп
                     </td>
                     <td>
-                        <a href="show.htm" class="btn btn-info">
+                        <a href="show.php" class="btn btn-info">
                             <i class="icon-eye-open"></i>
                             Просмотр
                         </a>
@@ -300,7 +312,7 @@
                         Грипп
                     </td>
                     <td>
-                        <a href="show.htm" class="btn btn-info">
+                        <a href="show.php" class="btn btn-info">
                             <i class="icon-eye-open"></i>
                             Просмотр
                         </a>
@@ -326,7 +338,7 @@
                         Грипп
                     </td>
                     <td>
-                        <a href="show.htm" class="btn btn-info">
+                        <a href="show.php" class="btn btn-info">
                             <i class="icon-eye-open"></i>
                             Просмотр
                         </a>
@@ -352,7 +364,7 @@
                         Грипп
                     </td>
                     <td>
-                        <a href="show.htm" class="btn btn-info">
+                        <a href="show.php" class="btn btn-info">
                             <i class="icon-eye-open"></i>
                             Просмотр
                         </a>
@@ -378,7 +390,7 @@
                         Грипп
                     </td>
                     <td>
-                        <a href="show.htm" class="btn btn-info">
+                        <a href="show.php" class="btn btn-info">
                             <i class="icon-eye-open"></i>
                             Просмотр
                         </a>
@@ -407,10 +419,12 @@
 <script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
 
 <script src="js/plugins.js"></script>
-<script src="js/main.js"></script>
+
 
 <script src="js/vendor/bootstrap.min.js"></script>
 <script src="js/vendor/modernizr-2.6.1.min.js"></script>
+
+<script src="js/main.js"></script>
 
 </body>
 </html>
