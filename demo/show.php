@@ -1,3 +1,4 @@
+<?php require_once('functions.php'); ?>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -75,7 +76,10 @@
         </div>
         <div class="span9">
             <section id="overview">
-                <h2>Личная карточка - Иванов Иван Алексеевич (03.05.1987 - 25 лет)</h2>
+                <?php for($i = 0; $i <= 1; $i++) {
+                    if($patients[$i]['uid'] == $patient_id) { ?>
+                    <h2>Личная карточка - <?=$patients[$i]['last_name']?> Иван Алексеевич (03.05.1987 - 25 лет)</h2>
+                <? }} ?>
                 <p>
                     <strong>Фамилия, имя, отчество:</strong> Иванов Иван Алексеевич.
                 </p>

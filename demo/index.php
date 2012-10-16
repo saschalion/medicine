@@ -1,7 +1,4 @@
-<?php if($_GET['logout']) {
-    setcookie('messages', '', 0, "/");
-    header('Location: index.php');
-}?>
+<?php require_once('functions.php'); ?>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -19,6 +16,12 @@
     <link rel="stylesheet" href="css/main.css">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <script src="js/vendor/modernizr-2.6.1.min.js"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.8.0.min.js"><\/script>')</script>
+
+    <script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
 </head>
 <body>
 <!--[if lt IE 7]>
@@ -52,14 +55,40 @@
 </div>
 <div role="main">
     <div class="span12">
-
         <div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 <h3 id="myModalLabel">Вызвать пациента</h3>
             </div>
             <div class="modal-body">
-                <p>Здесь можно вызвать пациента на приём.</p>
+                <p>Здесь можно вызвать пациента <span class="js-set-name"></span> на приём.</p>
+                <p class="fio"></p>
+                <form>
+                    <input type="text" class="input-medium span2" id="datepicker" placeholder="Выбрать дату">
+                    <?php
+
+                    $times = create_time_range('08:00', '18:00', '30 mins');
+
+                    echo "<select class='input-small times'><option value='0'>время</option>";
+
+                    for($i=0;$i<count($times); $i++) {
+
+                        $times[$i] = date('H:i', $times[$i]);
+
+                        $disabled_time = $disabled[$i]['time'];
+
+                        if($disabled_time == $times[$i]) {
+                            echo '<option style="color: #ccc;" value="'.array_search ($times[$i], $times).'" disabled>' . $times[$i] . '</option>';
+                        }
+                        else {
+                            echo '<option value="'.array_search ($times[$i], $times).'">' . $times[$i] . '</option>';
+                        }
+                    }
+
+                    echo "</select>";
+
+                    ?>
+                </form>
             </div>
             <div class="modal-footer">
                 <button class="btn" data-dismiss="modal" aria-hidden="true">Закрыть</button>
@@ -68,24 +97,23 @@
         </div>
 
         <h2>Пациенты</h2>
-<!--        --><?php //foreach ($_COOKIE as $cookie_name => $cookie_value) {
-//            print "$cookie_name = $cookie_value<br>";
-//        } ?>
 
-        <?php if (!isset($_COOKIE['messages'])) { ?>
+        <?php $str = explode(';', $_COOKIE['messages']);
+
+        for($i=0;$i<count($patients); $i++) { if(!in_array($patients[$i]['uid'], $str)) {
+
+            if($patients[$i]['value'] > $patients[$i]['normal']) { ?>
             <div class="alert alert-info">
-                <strong>Иванов Иван Алексеевич</strong> имеет холестерин: <b>50</b> за <b>18/10/2012</b>.
-                <button type="button" class="btn btn-success" data-toggle="modal" href="#myModal">Вызвать пациента</button><br>
-                <button type="button" class="btn" data-dismiss="alert">Ок</button>
-                <button type="button" class="close" title="Не показывать" id="close-1" data-dismiss="alert">×</button>
+                <strong class="js-name"><?=$patients[$i]['last_name'] .' '. $patients[$i]['first_name'] .' '. $patients[$i]['patronymic']?></strong> имеет <span class="label label-important"><?=$patients[$i]['parameter']?>: <?=$patients[$i]['value']?></span> за <b><?=$patients[$i]['date_param']?></b>.
+                <button type="button" class="close" title="Не показывать" id="close-<?=$patients[$i]['uid']?>" data-dismiss="alert">×</button>
+                <br><br>
+                <button type="button" class="btn btn-success submit" data-toggle="modal" href="#myModal" id="submit-1">Вызвать пациента</button>
             </div>
-            <div class="alert alert-info">
-                <strong>Берсеньев Аркадий Иванович</strong> имеет пульс: <b>120</b> за <b>20/06/2012</b>.
-                <button type="button" class="btn btn-success">Вызвать пациента</button><br>
-                <button type="button" class="btn" data-dismiss="alert">Ок</button>
-                <button type="button" class="close" title="Не показывать" id="close-2" data-dismiss="alert">×</button>
-            </div>
-        <?php } ?>
+        <?php } } } ?>
+
+        <div class="js-message"></div>
+
+        <div class=" " style="display: none;"></div>
 
         <form class="form-search">
             <input type="text" class="input-medium search-query span3" id="tags" placeholder="Введите имя">
@@ -128,6 +156,7 @@
         <table class="table table-striped">
             <thead>
                 <tr>
+                    <th>#</th>
                     <th>
                         Фамилия
                     </th>
@@ -152,266 +181,37 @@
                 </tr>
             </thead>
             <tbody>
+                <?php foreach($patients as $patient) { ?>
                 <tr>
                     <td>
-                        Иванов
+                        <?=$patient['uid']?>
                     </td>
                     <td>
-                        Иван
+                        <?=$patient['last_name']?>
                     </td>
                     <td>
-                        Алексеевич
+                        <?=$patient['first_name']?>
                     </td>
                     <td>
-                        М
+                        <?=$patient['patronymic']?>
                     </td>
                     <td>
-                        29.06.1987
+                        <?=$patient['sex']?>
                     </td>
                     <td>
-                        Грипп
+                        <?=$patient['date_birthday']?>
                     </td>
                     <td>
-                        <a href="show.php" class="btn btn-info">
+                        <?=$patient['disease']?>
+                    </td>
+                    <td>
+                        <a href="show.php?patient_id=<?=$patient['uid']?>" class="btn btn-info">
                             <i class="icon-eye-open"></i>
                             Просмотр
                         </a>
                     </td>
                 </tr>
-                <tr>
-                    <td>
-                        Иванов
-                    </td>
-                    <td>
-                        Иван
-                    </td>
-                    <td>
-                        Алексеевич
-                    </td>
-                    <td>
-                        М
-                    </td>
-                    <td>
-                        29.06.1987
-                    </td>
-                    <td>
-                        Грипп
-                    </td>
-                    <td>
-                        <a href="show.php" class="btn btn-info">
-                            <i class="icon-eye-open"></i>
-                            Просмотр
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Иванов
-                    </td>
-                    <td>
-                        Иван
-                    </td>
-                    <td>
-                        Алексеевич
-                    </td>
-                    <td>
-                        М
-                    </td>
-                    <td>
-                        29.06.1987
-                    </td>
-                    <td>
-                        Грипп
-                    </td>
-                    <td>
-                        <a href="show.php" class="btn btn-info">
-                            <i class="icon-eye-open"></i>
-                            Просмотр
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Иванов
-                    </td>
-                    <td>
-                        Иван
-                    </td>
-                    <td>
-                        Алексеевич
-                    </td>
-                    <td>
-                        М
-                    </td>
-                    <td>
-                        29.06.1987
-                    </td>
-                    <td>
-                        Грипп
-                    </td>
-                    <td>
-                        <a href="show.php" class="btn btn-info">
-                            <i class="icon-eye-open"></i>
-                            Просмотр
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Иванов
-                    </td>
-                    <td>
-                        Иван
-                    </td>
-                    <td>
-                        Алексеевич
-                    </td>
-                    <td>
-                        М
-                    </td>
-                    <td>
-                        29.06.1987
-                    </td>
-                    <td>
-                        Грипп
-                    </td>
-                    <td>
-                        <a href="show.php" class="btn btn-info">
-                            <i class="icon-eye-open"></i>
-                            Просмотр
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Иванов
-                    </td>
-                    <td>
-                        Иван
-                    </td>
-                    <td>
-                        Алексеевич
-                    </td>
-                    <td>
-                        М
-                    </td>
-                    <td>
-                        29.06.1987
-                    </td>
-                    <td>
-                        Грипп
-                    </td>
-                    <td>
-                        <a href="show.php" class="btn btn-info">
-                            <i class="icon-eye-open"></i>
-                            Просмотр
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Иванов
-                    </td>
-                    <td>
-                        Иван
-                    </td>
-                    <td>
-                        Алексеевич
-                    </td>
-                    <td>
-                        М
-                    </td>
-                    <td>
-                        29.06.1987
-                    </td>
-                    <td>
-                        Грипп
-                    </td>
-                    <td>
-                        <a href="show.php" class="btn btn-info">
-                            <i class="icon-eye-open"></i>
-                            Просмотр
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Иванов
-                    </td>
-                    <td>
-                        Иван
-                    </td>
-                    <td>
-                        Алексеевич
-                    </td>
-                    <td>
-                        М
-                    </td>
-                    <td>
-                        29.06.1987
-                    </td>
-                    <td>
-                        Грипп
-                    </td>
-                    <td>
-                        <a href="show.php" class="btn btn-info">
-                            <i class="icon-eye-open"></i>
-                            Просмотр
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Иванов
-                    </td>
-                    <td>
-                        Иван
-                    </td>
-                    <td>
-                        Алексеевич
-                    </td>
-                    <td>
-                        М
-                    </td>
-                    <td>
-                        29.06.1987
-                    </td>
-                    <td>
-                        Грипп
-                    </td>
-                    <td>
-                        <a href="show.php" class="btn btn-info">
-                            <i class="icon-eye-open"></i>
-                            Просмотр
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Иванов
-                    </td>
-                    <td>
-                        Иван
-                    </td>
-                    <td>
-                        Алексеевич
-                    </td>
-                    <td>
-                        М
-                    </td>
-                    <td>
-                        29.06.1987
-                    </td>
-                    <td>
-                        Грипп
-                    </td>
-                    <td>
-                        <a href="show.php" class="btn btn-info">
-                            <i class="icon-eye-open"></i>
-                            Просмотр
-                        </a>
-                    </td>
-                </tr>
+                <?php } ?>
             </tbody>
         </table>
         <div class="pagination pagination-centered">
@@ -428,19 +228,11 @@
     </div>
 </div>
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.8.0.min.js"><\/script>')</script>
-
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
-<script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
-
 <script src="js/plugins.js"></script>
-
-
 <script src="js/vendor/bootstrap.min.js"></script>
 <script src="js/vendor/modernizr-2.6.1.min.js"></script>
-
+<script src="js/vendor/bootstrap-alert.js"></script>
+<script src="js/vendor/bootstrap-typehead.js"></script>
 <script src="js/main.js"></script>
-
 </body>
 </html>

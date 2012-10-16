@@ -24,7 +24,7 @@ $(function() {
         }
     });
 
-    $( "#tags" ).autocomplete({
+    $( "#tags" ).typeahead({
         source: availableTags
     });
 });
@@ -57,9 +57,63 @@ function getCookie(name) {
     return(setStr);
 }
 
+flashMsg = function() {
+    $(".js-message p").delay(5000).slideUp(300);
+};
+
+setcookies = function() {
+    if(!getCookie('messages')) {
+        setCookie('messages', id + ';', "Mon, 01-Dec-2012 00:00:00 GMT", "/");
+    }
+    else {
+        setCookie('messages', getCookie('messages') + id + ';', "Mon, 01-Dec-2012 00:00:00 GMT", "/");
+    }
+};
+
 $('.close').click(function() {
+    id = $(this).attr('id').replace('close-', '');
+    var name = $(this).parents('.alert').find('.js-name').text();
 
-    var id = $(this).attr('id').replace('close-', '');
+    setcookies();
+    setCookie('fio', name, "Mon, 01-Dec-2012 00:00:00 GMT", "/");
+    $('.js-message').empty();
+    $('.js-message').append("<p class='alert alert-success'>" + getCookie('fio') + " отменен</p>");
+    flashMsg();
+});
 
-    setCookie('messages', 'message-' + id, "Mon, 01-Dec-2012 00:00:00 GMT", "/");
-})
+
+
+$('.submit').click(function() {
+    var name = $(this).parents('.alert').find('.js-name').text();
+
+    setCookie('fio', name, "Mon, 01-Dec-2012 00:00:00 GMT", "/");
+    $('.js-set-name').text(getCookie('fio'));
+});
+
+$(function() {
+    $( "#datepicker" ).datepicker({
+        showWeek: true,
+        firstDay: 1
+    });
+});
+
+$(function() {
+
+    var arr = new Array(
+        '08:00', 'disabled'
+    )
+
+    var value = $('.times option');
+
+    if(arr[0] == value.text()) {
+        $(value).attr('disabled');
+    }
+});
+
+//$('.submit').click(function() {
+//    var id = $(this).attr('id').replace('submit-', '');
+//    setCookie('submit', 'submit-' + id, "Mon, 01-Dec-2012 00:00:00 GMT", "/");
+//});
+//
+//$('.fio').append(getCookie('submit'));
+
