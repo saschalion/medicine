@@ -23,12 +23,13 @@
 
     <script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
 </head>
+<?php include('../sms/smsc_api.php');?>
 <body>
 <!--[if lt IE 7]>
 <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
 <![endif]-->
 
-<?php include('includes/header.php')?>
+<?php include('includes/header.php'); ?>
 <div role="main">
     <div class="span12">
         <div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
@@ -39,13 +40,14 @@
             <div class="modal-body">
                 <p>Здесь можно вызвать пациента <span class="js-set-name"></span> на приём.</p>
                 <p class="fio"></p>
-                <form>
-                    <input type="text" class="input-medium span2" id="datepicker" placeholder="Выбрать дату">
+                <form method="post" class="send-form">
+                    <input type="text" name="date" class="input-medium span2" id="datepicker" placeholder="Выбрать дату">
+                    <input type="hidden" value="" class="js-set-name-post" name='fio'/>
                     <?php
 
                     $times = create_time_range('08:00', '18:00', '30 mins');
 
-                    echo "<select class='input-small times'><option value='0'>время</option>";
+                    echo "<select name='time' class='input-small times'><option value='0'>время</option>";
 
                     for($i=0;$i<count($times); $i++) {
 
@@ -57,18 +59,27 @@
                             echo '<option style="color: #ccc;" value="'.array_search ($times[$i], $times).'" disabled>' . $times[$i] . '</option>';
                         }
                         else {
-                            echo '<option value="'.array_search ($times[$i], $times).'">' . $times[$i] . '</option>';
+                            echo '<option value="'.array_search($times[$i], $times).'">' . $times[$i] . '</option>';
                         }
                     }
 
                     echo "</select>";
 
                     ?>
+                    <input type="submit" value="Отправить" class="send" name='submit'/>
                 </form>
             </div>
             <div class="modal-footer">
                 <button class="btn" data-dismiss="modal" aria-hidden="true">Закрыть</button>
-                <button class="btn btn-primary">Записать</button>
+                <button class="btn btn-primary" name="submit">Записать</button>
+                <?php if($_POST['submit']) {
+
+                $time = $times[$_POST['time']];
+
+                list($sms_id, $sms_cnt, $cost, $balance) = send_sms("79032674730", 'Уважаемый ' . $_POST['fio'] . '! Ждем Вас на прием ' . $_POST['date'] . ' в '. $time . ' к эндокринологу (25 каб.)');
+
+                    echo "<META HTTP-EQUIV=Refresh content=0;URL=/demo/index.php >";
+                } ?>
             </div>
         </div>
         <?php if(!isset($_COOKIE['auth'])) { ?>
@@ -94,7 +105,7 @@
         for($i=0;$i<count($patients); $i++) { if(!in_array($patients[$i]['uid'], $str)) {
 
             if($patients[$i]['value'] > $patients[$i]['normal']) { ?>
-            <div class="alert alert-info">
+            <div class="alert alert-info" id="<?=$patients[$i]['uid']?>">
                 <strong class="js-name"><?=$patients[$i]['last_name'] .' '. $patients[$i]['first_name'] .' '. $patients[$i]['patronymic']?></strong> имеет <span class="label label-important"><?=$patients[$i]['parameter']?>: <?=$patients[$i]['value']?></span> за <b><?=$patients[$i]['date_param']?></b>.
                 <button type="button" class="close" title="Не показывать" id="close-<?=$patients[$i]['uid']?>" data-dismiss="alert">×</button>
                 <br><br>

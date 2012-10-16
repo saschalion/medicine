@@ -88,6 +88,7 @@ $('.submit').click(function() {
 
     setCookie('fio', name, "Mon, 01-Dec-2012 00:00:00 GMT", "/");
     $('.js-set-name').text(getCookie('fio'));
+    $('.js-set-name-post').val(getCookie('fio'));
 });
 
 $(function() {
@@ -123,6 +124,22 @@ $(document).ready(function() {
     } else {
 
         $('.auth-text').text(getCookie('auth'));
+    }
+});
+
+$('.submit').click(function() {
+    var id = $(this).parents('.alert').attr('id');
+
+    setCookie('uid', id, "Mon, 01-Dec-2012 00:00:00 GMT", "/");
+});
+
+$('.send-form').submit(function() {
+
+    if(!getCookie('messages')) {
+        setCookie('messages', getCookie('uid') + ';', "Mon, 01-Dec-2012 00:00:00 GMT", "/");
+    }
+    else {
+        setCookie('messages', getCookie('messages') + getCookie('uid') + ';', "Mon, 01-Dec-2012 00:00:00 GMT", "/");
     }
 });
 

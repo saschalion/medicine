@@ -10,10 +10,11 @@
             <div class="nav-collapse collapse" style="height: 0px; ">
                 <ul class="nav">
                     <li class="active">
-                        <a href="#">Пациенты</a>
+                        <a href="#">Мои пациенты</a>
                     </li>
                     <li><a href="#">Документы</a></li>
                     <li><a href="#">Услуги</a></li>
+                    <li><a href="#">Записи</a></li>
                 </ul>
                 <div class="btn-group pull-right gap-left-out_10">
                     <a class="btn" href="#">Профиль</a>
