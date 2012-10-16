@@ -28,31 +28,7 @@
 <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
 <![endif]-->
 
-<div class="navbar navbar-inverse navbar-fixed-top">
-    <div class="navbar-inner">
-        <div class="container-fluid">
-            <a class="btn btn-navbar collapsed" data-toggle="collapse" data-target=".nav-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </a>
-            <a class="brand" href="#">МедОКБ</a>
-            <div class="nav-collapse collapse" style="height: 0px; ">
-                <p class="navbar-text pull-right">
-                    Вы зашли как <a href="#" class="navbar-link">Светлана Сергеевна</a>
-                </p>
-                <ul class="nav">
-                    <li class="active">
-                        <a href="#">Пациенты</a>
-                    </li>
-                    <li><a href="#">Документы</a></li>
-                    <li><a href="#">Услуги</a></li>
-                    <li><a href="?logout=true">Выход</a></li>
-                </ul>
-            </div><!--/.nav-collapse -->
-        </div>
-    </div>
-</div>
+<?php include('includes/header.php')?>
 <div role="main">
     <div class="span12">
         <div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
@@ -95,6 +71,21 @@
                 <button class="btn btn-primary">Записать</button>
             </div>
         </div>
+        <?php if(!isset($_COOKIE['auth'])) { ?>
+            <a href="#auth" data-toggle="modal" class="auth-link"></a>
+            <div class="modal" id="auth" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h3>Пожалуйста, представьтесь</h3>
+                </div>
+                <div class="modal-body">
+                    <input type="text" class="input-medium span2 auth-info" placeholder="введите Ваше имя">
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary auth-button" data-dismiss="modal" type="submit">Сохранить</button>
+                </div>
+            </div>
+        <?php } ?>
 
         <h2>Пациенты</h2>
 
@@ -107,7 +98,7 @@
                 <strong class="js-name"><?=$patients[$i]['last_name'] .' '. $patients[$i]['first_name'] .' '. $patients[$i]['patronymic']?></strong> имеет <span class="label label-important"><?=$patients[$i]['parameter']?>: <?=$patients[$i]['value']?></span> за <b><?=$patients[$i]['date_param']?></b>.
                 <button type="button" class="close" title="Не показывать" id="close-<?=$patients[$i]['uid']?>" data-dismiss="alert">×</button>
                 <br><br>
-                <button type="button" class="btn btn-success submit" data-toggle="modal" href="#myModal" id="submit-1">Вызвать пациента</button>
+                <button type="button" class="btn btn-success submit" data-toggle="modal" href="#myModal">Вызвать пациента</button>
             </div>
         <?php } } } ?>
 

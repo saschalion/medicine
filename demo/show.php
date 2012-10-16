@@ -23,31 +23,7 @@
 <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
 <![endif]-->
 
-<div class="navbar navbar-inverse navbar-fixed-top">
-    <div class="navbar-inner">
-        <div class="container-fluid">
-            <a class="btn btn-navbar collapsed" data-toggle="collapse" data-target=".nav-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </a>
-            <a class="brand" href="index.php">МедОКБ</a>
-            <div class="nav-collapse collapse" style="height: 0px; ">
-                <p class="navbar-text pull-right">
-                    Вы зашли как <a href="#" class="navbar-link">Светлана Сергеевна</a>
-                </p>
-                <ul class="nav">
-                    <li class="active">
-                        <a href="#">Пациенты</a>
-                    </li>
-                    <li><a href="#">Документы</a></li>
-                    <li><a href="#">Услуги</a></li>
-                    <li><a href="?logout=true">Выход</a></li>
-                </ul>
-            </div><!--/.nav-collapse -->
-        </div>
-    </div>
-</div>
+<?php include('includes/header.php')?>
 <div role="main">
         <div class="span3 bs-docs-sidebar">
             <div class="affix">

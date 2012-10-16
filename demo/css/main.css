@@ -12,3 +12,7 @@
 .accordion-group.active .accordion-toggle {
     font-weight: bold;
 }
+
+.gap-left-out_10 {
+    margin-left: 10px;
+}

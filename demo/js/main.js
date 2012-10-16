@@ -110,6 +110,24 @@ $(function() {
     }
 });
 
+$(document).ready(function() {
+    if(!getCookie('auth')) {
+        $('.auth-link').trigger('click');
+        $('.auth-button').click(function() {
+
+            var authInfo = $('.auth-info').val();
+
+            setCookie('auth', authInfo, "Mon, 01-Dec-2012 00:00:00 GMT", "/");
+            window.location.href = 'index.php';
+        });
+    } else {
+
+        $('.auth-text').text(getCookie('auth'));
+    }
+});
+
+
+
 //$('.submit').click(function() {
 //    var id = $(this).attr('id').replace('submit-', '');
 //    setCookie('submit', 'submit-' + id, "Mon, 01-Dec-2012 00:00:00 GMT", "/");

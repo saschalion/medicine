@@ -2,10 +2,11 @@
 
 function logout() {
     if($_GET['logout']) {
-        $set_cookies = setcookie('messages', '', 0, "/");
+        setcookie('messages', '', 0, "/");
+        setcookie('auth', '', 0, "/");
         $redirect = print header('Location: index.php');
     }
-    return array($set_cookies, $redirect);
+    return $redirect;
 }
 
 logout();
