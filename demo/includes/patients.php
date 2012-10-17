@@ -26,7 +26,7 @@
     </tr>
     </thead>
     <tbody>
-    <?php var_dump($record); foreach($record as $patient) { ?>
+    <?php $record = get_patients(); var_dump(json_encode($record)); foreach($record as $patient) { ?>
     <tr>
         <td>
 

@@ -17,7 +17,7 @@
             if(empty($last_name) || empty($first_name) || empty($patronymic)) {
                 $message = '<span style="color: #ff0000">Поля не должны быть пустыми!</span>';
 
-                $fields = array($last_name, $first_name, $patronymic, $sex, $document, $address, $phone, $mobile_phone, $mobile_phone_second, $decision);
+                $fields = array($last_name, $first_name, $patronymic, $sex, $document, $address, $phone, $mobile_phone, $mobile_phone_second, $desease);
             }
             else {
                 send_sql();
@@ -105,11 +105,11 @@
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="decision">
+                <label class="control-label" for="desease">
                     Болезнь
                 </label>
                 <div class="controls">
-                    <input type="text" id="decision" name="decision">
+                    <input type="text" id="desease" name="desease">
                 </div>
             </div>
             <input type="submit" name="submit" class="btn" value="Сохранить">

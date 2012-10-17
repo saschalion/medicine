@@ -120,16 +120,6 @@ function patients() {
     return $patients;
 }
 
-function get_patients() {
-    $sql = query("select * from patients");
-
-    while($record = mysql_fetch_array($sql))
-
-    return $record;
-}
-
-$record = get_patients();
-
 $patients = patients();
 
 function create_time_range($start, $end, $by='30 mins') {
@@ -210,14 +200,14 @@ function send_sql() {
     $array = array(
         'first_name'    => $_POST['first_name'],
         'last_name'     => $_POST['last_name'],
-        'patronymic'    => $_SESSION['patronymic'],
+        'patronymic'    => $_POST['patronymic'],
         'sex'    => $_POST['sex'],
         'document' => $_POST['document'],
         'address'     => $_POST['address'],
         'phone'   => $_POST['phone'],
         'mobile_phone'     => $_POST['mobile_phone'],
         'mobile_phone_second'     => $_POST['mobile_phone_second'],
-        'decision'     => $_POST['decision'],
+        'desease'     => $_POST['desease'],
     );
 
     if(count($array) > 0) {
@@ -236,4 +226,12 @@ function send_sql() {
     $sql = query("INSERT INTO patients($implode_key) values($implode_value)");
 
     return $sql;
+}
+
+function get_patients() {
+    $sql = query("select * from patients");
+
+    while($record = mysql_fetch_assoc($sql))
+
+    return $record;
 }
