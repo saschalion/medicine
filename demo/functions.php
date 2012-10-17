@@ -2,8 +2,9 @@
 
 function logout() {
     if($_GET['logout']) {
-        setcookie('messages', '', 0, "/");
         setcookie('auth', '', 0, "/");
+        setcookie('sent', '', 0, "/");
+        setcookie('messages', '', 0, "/");
         $redirect = print header('Location: index.php');
     }
     return $redirect;
@@ -119,6 +120,16 @@ function patients() {
     return $patients;
 }
 
+function get_patients() {
+    $sql = query("select * from patients");
+
+    while($record = mysql_fetch_array($sql))
+
+    return $record;
+}
+
+$record = get_patients();
+
 $patients = patients();
 
 function create_time_range($start, $end, $by='30 mins') {
@@ -150,9 +161,79 @@ function disabled_time() {
         ),
         array(
             'time' => '15:30'
+        ),
+        array(
+            'time' => '09:30'
+        ),
+        array(
+            'time' => '14:00'
         )
     );
     return $disabled;
 }
 
 $disabled = disabled_time();
+
+function send_notification($times) {
+    $time = $times[$_POST['time']];
+
+    $to = $_POST['email'];
+
+    $subject = 'Вас пригласили на прием';
+
+    $message = 'Уважаемый ' . $_POST['fio'] . '! Ждем Вас на прием ' . $_POST['date'] . ' в '. $time . ' к эндокринологу (25 каб.)<br><br>С уважением, администрация ОКБ №1';
+
+    $headers  = "Content-type: text/html; charset=utf-8 \r\n";
+    $headers .= "From: ОКБ № 1 saschalion@list.ru";
+
+    mail($to, $subject, $message, $headers);
+
+    list($sms_id, $sms_cnt, $cost, $balance) = send_sms($_POST['phone_number'], 'Уважаемый ' . $_POST['fio'] . '! Ждем Вас на прием ' . $_POST['date'] . ' в '. $time . ' к эндокринологу (25 каб.)');
+
+    print "<META HTTP-EQUIV=Refresh content=0;URL=/demo/index.php >";
+}
+
+function escape($value) {
+    $record = mysql_real_escape_string($value);
+
+    return $record;
+}
+
+function query($value) {
+    $sql = mysql_query($value);
+
+    return $sql;
+}
+
+function send_sql() {
+
+    $array = array(
+        'first_name'    => $_POST['first_name'],
+        'last_name'     => $_POST['last_name'],
+        'patronymic'    => $_SESSION['patronymic'],
+        'sex'    => $_POST['sex'],
+        'document' => $_POST['document'],
+        'address'     => $_POST['address'],
+        'phone'   => $_POST['phone'],
+        'mobile_phone'     => $_POST['mobile_phone'],
+        'mobile_phone_second'     => $_POST['mobile_phone_second'],
+        'decision'     => $_POST['decision'],
+    );
+
+    if(count($array) > 0) {
+        foreach($array as $key => $value) {
+            $value = escape(trim($value));
+            $value =  "'$value'";
+            $array_keys[] = $key;
+            $array_values[] = $value;
+        }
+    }
+
+    $implode_key = implode(', ', $array_keys);
+
+    $implode_value = implode(', ', $array_values);
+
+    $sql = query("INSERT INTO patients($implode_key) values($implode_value)");
+
+    return $sql;
+}

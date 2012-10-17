@@ -23,11 +23,6 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="#">
-                                Мой график
-                            </a>
-                        </li>
-                        <li>
                             <a href="?logout=true">
                                 Выход
                             </a>

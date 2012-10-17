@@ -16,3 +16,35 @@
 .gap-left-out_10 {
     margin-left: 10px;
 }
+
+.sidebar {
+    position: relative;
+    float: left;
+    width: 270px;
+}
+
+.sidebar__inner {
+    padding: 0 5px;
+    overflow: auto;
+}
+
+.sidebar_type_left {
+    padding: 0 0 0 10px;
+    margin-right: -300px;
+    left: 0;
+}
+
+.sidebar_type_right {
+    padding: 0 10px 0 0;
+    margin-left: -300px;
+    right: 0;
+}
+
+.main {
+    width: 100%;
+    float: left;
+}
+
+.main__inner {
+    padding: 0 300px;
+}
