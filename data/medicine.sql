@@ -81,6 +81,30 @@ CREATE TABLE IF NOT EXISTS `parameter_types` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
+CREATE TABLE IF NOT EXISTS `parameter_norms` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `code` varchar(120) DEFAULT NULL,
+  `start_norm` int(11) NOT NULL,
+  `end_norm` int(11) NOT NULL,
+  `below_start_norm` int(11) NOT NULL,
+  `below_end_norm` int(11) NOT NULL,
+  `above_start_norm` int(11) NOT NULL,
+  `above_end_norm` int(11) NOT NULL,
+  `patient_id` int(11) NOT NULL,
+  `parameter_types_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `patient_id_FK_4`
+    FOREIGN KEY (`patient_id`)
+    REFERENCES `patients` (`id`)
+    ON UPDATE CASCADE
+    ON DELETE CASCADE
+  CONSTRAINT `parameter_types_id_FK_5`
+    FOREIGN KEY (`parameter_types_id`)
+    REFERENCES `parameter_types` (`id`)
+    ON UPDATE CASCADE
+    ON DELETE CASCADE
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
+
 CREATE TABLE IF NOT EXISTS `preparations` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(200) NOT NULL,

@@ -133,9 +133,7 @@ $(function () {
             }
         };
 
-        $.getJSON('/charts/loadNorms.php?stock=true', function(response) {
-
-            //  Норма
+        $.getJSON('/charts/loadData.php?stock=true', function(data) {
 
             var startNorm = options.yAxis.plotBands[0].from;
             var endNorm = options.yAxis.plotBands[0].to;
@@ -150,18 +148,9 @@ $(function () {
             var aboveStartNorm = options.yAxis.plotBands[2].from;
             var aboveEndNorm = options.yAxis.plotBands[2].to;
 
-            startNorm.push(response[0]['start_norm']);
-            endNorm.push(response[0]['end_norm']);
+            startNorm.push(data[0]['startNorm']);
+            endNorm.push(data[0]['endNorm']);
 
-            belowStartNorm.push(response[0]['below_start_norm']);
-            belowEndNorm.push(response[0]['below_end_norm']);
-
-            aboveStartNorm.push(response[0]['above_start_norm']);
-            aboveEndNorm.push(response[0]['above_end_norm']);
-
-        });
-
-        $.getJSON('/charts/loadData.php?stock=true', function(data) {
             yData = options.series[0].data;
 
             title = options.title.text;

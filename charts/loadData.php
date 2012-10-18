@@ -18,9 +18,11 @@ function set_chart() {
 
     function get() {
         $sql = query("select value as y, UNIX_TIMESTAMP(date) as x, parameter_types.name as title,
-        preparations.name as tooltip
-        from parameters, parameter_types, preparations
-        where parameter_types.code in('sugar') and parameters.parameter_type_id=parameter_types.id
+        preparations.name as tooltip,
+        parameter_norms.start_norm as startNorm,
+        parameter_norms.end_norm as endNorm
+        from parameters, parameter_types, preparations, parameter_norms
+        where parameter_types.code in('pulse') and parameters.parameter_type_id=parameter_types.id
         and parameters.preparation_id = preparations.id
         order by x asc");
 
