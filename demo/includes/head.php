@@ -1,5 +1,5 @@
-<?php require_once('functions.php');?>
-<?php include('../config.php');?>
+<?php require_once($_SERVER['DOCUMENT_ROOT'] . '/demo/functions.php');?>
+<?php include($_SERVER['DOCUMENT_ROOT'] . '/config.php');?>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -24,3 +24,8 @@
 
     <script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
 </head>
+
+<body>
+<!--[if lt IE 7]>
+<p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+<![endif]-->

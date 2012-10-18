@@ -1,5 +1,7 @@
 <?php
 
+include($_SERVER['DOCUMENT_ROOT'] . '/config.php');
+
 function set_chart() {
     $arr = array(
         array('y' => 57, 'tooltip' => 'Анальгин'),
@@ -44,8 +46,33 @@ function set_chart() {
         array('y' => 54, 'x' => 1280707200000, 'tooltip' => 'Анальгин'),
         array('y' => 25, 'x' => 1283299200000, 'tooltip' => 'Анальгин'),
         array('y' => 45, 'x' => 1349049600000, 'tooltip' => 'Анальгин')
-
     );
+
+    function escape($value) {
+        $record = mysql_real_escape_string($value);
+
+        return $record;
+    }
+
+    function query($value) {
+        $sql = mysql_query($value);
+
+        return $sql;
+    }
+
+    function get() {
+        $sql = query("select value as y, UNIX_TIMESTAMP(date) as x, parameter_types.name as tooltip from
+        parameters, parameter_types where
+        parameter_types.code in('sugar') and parameters.parameter_type_id = parameter_types.id order by x asc");
+
+        while($patients = mysql_fetch_assoc($sql))
+
+        $records[] = $patients;
+
+        return $records;
+    }
+
+    $stock = get();
 
     if($_GET['chart-pulse']) {
         $data = print json_encode($arr);

@@ -164,12 +164,12 @@ $(function () {
             subtitle = options.subtitle.text;
 
             for (i = 0; i < data.length; i++) {
-                yData.push(data[i]);
+                yData.push({'x': parseInt(data[i]['x']) * 1000, 'y': parseInt(data[i]['y']), 'tooltip': data[i]['tooltip']});
             }
 
-            var dataLength = parseFloat(data.length - 1);
+            var dataLength = parseInt(yData.length - 1);
 
-            subtitle.push('c ' + '<b>' + Highcharts.dateFormat('%d.%m.%Y', data[0]['x']) + '</b>' + ' по ' + '<b>' + Highcharts.dateFormat('%d.%m.%Y', data[dataLength]['x']) + '</b>');
+            subtitle.push('c ' + '<b>' + Highcharts.dateFormat('%d.%m.%Y', yData[0]['x']) + '</b>' + ' по ' + '<b>' + Highcharts.dateFormat('%d.%m.%Y', yData[dataLength]['x']) + '</b>');
 
             var chart = new Highcharts.StockChart(options);
         });

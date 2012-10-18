@@ -26,10 +26,10 @@
     </tr>
     </thead>
     <tbody>
-    <?php $record = get_patients(); var_dump(json_encode($record)); foreach($record as $patient) { ?>
+    <?php $patient = get_patients(); foreach($patient as $patient) { ?>
     <tr>
         <td>
-
+            <?=$patient['id']?>
         </td>
         <td>
             <?=$patient['last_name']?>
@@ -47,7 +47,7 @@
 
         </td>
         <td>
-            <?=$patient['dicease']?>
+            <?=$patient['desease']?>
         </td>
         <td>
             <a href="show.php?patient_id=<?=$patient['id']?>" class="btn btn-info">

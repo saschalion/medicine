@@ -198,16 +198,16 @@ function query($value) {
 function send_sql() {
 
     $array = array(
-        'first_name'    => $_POST['first_name'],
-        'last_name'     => $_POST['last_name'],
-        'patronymic'    => $_POST['patronymic'],
-        'sex'    => $_POST['sex'],
+        'first_name' => $_POST['first_name'],
+        'last_name' => $_POST['last_name'],
+        'patronymic' => $_POST['patronymic'],
+        'sex' => $_POST['sex'],
         'document' => $_POST['document'],
-        'address'     => $_POST['address'],
-        'phone'   => $_POST['phone'],
-        'mobile_phone'     => $_POST['mobile_phone'],
-        'mobile_phone_second'     => $_POST['mobile_phone_second'],
-        'desease'     => $_POST['desease'],
+        'address' => $_POST['address'],
+        'phone' => $_POST['phone'],
+        'mobile_phone' => $_POST['mobile_phone'],
+        'mobile_phone_second' => $_POST['mobile_phone_second'],
+        'desease' => $_POST['desease'],
     );
 
     if(count($array) > 0) {
@@ -228,10 +228,13 @@ function send_sql() {
     return $sql;
 }
 
-function get_patients() {
+function get_patients()
+{
     $sql = query("select * from patients");
 
-    while($record = mysql_fetch_assoc($sql))
+    while($records = mysql_fetch_assoc($sql))
 
-    return $record;
+        $new_records[] = $records;
+
+    return $new_records;
 }
