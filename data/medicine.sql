@@ -55,6 +55,7 @@ CREATE TABLE IF NOT EXISTS `parameters` (
   `date` TIMESTAMP(14),
   `parameter_type_id` int(11) NOT NULL,
   `patient_id` int(11) NOT NULL,
+  `preparation_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `parameter_types_id_FK_1`
     FOREIGN KEY (`parameter_type_id`)
@@ -66,6 +67,11 @@ CREATE TABLE IF NOT EXISTS `parameters` (
     REFERENCES `patients` (`id`)
     ON UPDATE CASCADE
     ON DELETE CASCADE
+  CONSTRAINT `preparation_id_FK_3`
+    FOREIGN KEY (`preparation_id`)
+    REFERENCES `preparations` (`id`)
+    ON UPDATE CASCADE
+    ON DELETE CASCADE
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
 CREATE TABLE IF NOT EXISTS `parameter_types` (
@@ -75,9 +81,9 @@ CREATE TABLE IF NOT EXISTS `parameter_types` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
-CREATE TABLE IF NOT EXISTS `preparation` (
+CREATE TABLE IF NOT EXISTS `preparations` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(120) NOT NULL,
-  `code` varchar(120) DEFAULT NULL,
+  `name` varchar(200) NOT NULL,
+  `code` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;

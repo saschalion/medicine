@@ -17,6 +17,12 @@
         <script src="js/highstock.js"></script>
         <script src="http://code.highcharts.com/stock/modules/exporting.js"></script>
         <script src="js/stock.js"></script>
+        <style>
+            .highcharts-range-selector:last-child {
+                margin-right: 150px !important;
+            }
+        </style>
+
     <?php } ?>
 </head>
 <body>

@@ -1,5 +1,8 @@
 $(function () {
+
     $(document).ready(function() {
+
+        $('.highcharts-range-selector').parent().css('margin-right', '50px');
 
         var chart;
 
@@ -8,7 +11,7 @@ $(function () {
                 renderTo: 'container'
             },
             title: {
-                text: 'Параметры пульса'
+                text: []
             },
             subtitle: {
                 text: []
@@ -21,7 +24,7 @@ $(function () {
             },
             yAxis: {
                 title: {
-                    text: 'Пульс'
+                    text: []
                 },
                 minorGridLineWidth: 0,
                 gridLineWidth: 1,
@@ -34,7 +37,7 @@ $(function () {
                 }],
                 labels: {
                     formatter: function() {
-                        return this.value +' уд/мин';
+                        return this.value;
                     }
                 },
                 plotBands: [{
@@ -112,7 +115,7 @@ $(function () {
                     enabled : true,
                     radius : 3
                 },
-                name: 'Пульс',
+                name: [],
                 data: [],
                 cursor: 'pointer',
                 tooltip: {
@@ -161,6 +164,12 @@ $(function () {
         $.getJSON('/charts/loadData.php?stock=true', function(data) {
             yData = options.series[0].data;
 
+            title = options.title.text;
+
+            axisTitle = options.yAxis.title.text;
+
+            tooltipTitle = options.series[0].name;
+
             subtitle = options.subtitle.text;
 
             for (i = 0; i < data.length; i++) {
@@ -170,6 +179,12 @@ $(function () {
             var dataLength = parseInt(yData.length - 1);
 
             subtitle.push('c ' + '<b>' + Highcharts.dateFormat('%d.%m.%Y', yData[0]['x']) + '</b>' + ' по ' + '<b>' + Highcharts.dateFormat('%d.%m.%Y', yData[dataLength]['x']) + '</b>');
+
+            title.push('Параметры по показателю ' + data[0]['title']);
+
+            axisTitle.push('Уровень ' + data[0]['title'] + 'a');
+
+            tooltipTitle.push(data[0]['title']);
 
             var chart = new Highcharts.StockChart(options);
         });
