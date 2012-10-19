@@ -91,6 +91,14 @@ $(function() {
         showWeek: true,
         firstDay: 1
     });
+
+    $( "#date_birth" ).datepicker({
+        changeYear: true,
+        changeMonth: true,
+        yearRange: ("c-100:c+0"),
+        showWeek: true,
+        firstDay: 1
+    });
 });
 
 // Некая авторизация

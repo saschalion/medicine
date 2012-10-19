@@ -178,7 +178,7 @@
                                 </h4>
                                 <h5>Измерение пульса</h5>
                                 <p>
-                                    <a href="/charts/chart.php?pulse-advanced=true" class="btn btn-success">
+                                    <a href="/charts/chart.php?pulse=true" class="btn btn-success">
                                         Просмотр графика
                                     </a>
                                 </p>
@@ -229,8 +229,9 @@
                                     Анализы
                                 </h4>
                                 <h5>Измерение пульса</h5>
+
                                 <p>
-                                    <a href="/charts/chart.php?pulse-advanced=true" class="btn btn-success">
+                                    <a href="/charts/chart.php?pulse=true" class="btn btn-success">
                                         Просмотр графика
                                     </a>
                                 </p>
@@ -282,7 +283,7 @@
                                 </h4>
                                 <h5>Измерение пульса</h5>
                                 <p>
-                                    <a href="/charts/chart.php?pulse-advanced=true" class="btn btn-success">
+                                    <a href="/charts/chart.php?pulse=true" class="btn btn-success">
                                         Просмотр графика
                                     </a>
                                 </p>

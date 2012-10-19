@@ -151,6 +151,12 @@ $(function () {
             startNorm.push(data[0]['startNorm']);
             endNorm.push(data[0]['endNorm']);
 
+            belowStartNorm.push(data[0]['belowStartNorm']);
+            belowEndNorm.push(data[0]['belowEndNorm']);
+
+            aboveStartNorm.push(data[0]['aboveStartNorm']);
+            aboveEndNorm.push(data[0]['aboveEndNorm']);
+
             yData = options.series[0].data;
 
             title = options.title.text;

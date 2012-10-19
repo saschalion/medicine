@@ -1,18 +1,21 @@
-<?php $str = explode(';', $_COOKIE['messages']); $sent = explode(';', $_COOKIE['sent']);
+<?php
+
+$patients = notifs();
+
+$str = explode(';', $_COOKIE['messages']); $sent = explode(';', $_COOKIE['sent']);
 
 for($i=0;$i<count($patients); $i++) {
 
-    $uid = $patients[$i]['uid'];
+        $uid = $patients[$i]['id'];
 
-    if($patients[$i]['value'] > $patients[$i]['normal']) {
         if(!in_array($uid, $sent)) { ?>
 
         <div class="alert
-        <?php if(in_array($uid, $str)) { echo 'alert-success'; } else { echo 'alert-info'; } ?>" id="<?=$patients[$i]['uid']?>">
+        <?php if(in_array($uid, $str)) { echo 'alert-success'; } else { echo 'alert-info'; } ?>" id="<?=$uid?>">
             <strong class="js-name">
-                <a href="show.php?<?=$uid?>" rel="tooltip" data-original-title="Просмотреть график по <?=$patients[$i]['parameter']?>у">
+                <a href="show.php?<?=$uid?>" rel="tooltip" data-original-title="Просмотреть график по <?=$patients[$i]['value']?>у">
                     <?=$patients[$i]['last_name'] .' '. $patients[$i]['first_name'] .' '. $patients[$i]['patronymic']?></a>
-            </strong> имеет <span class="label label-important"><?=$patients[$i]['parameter']?>: <?=$patients[$i]['value']?></span> за <b><?=$patients[$i]['date_param']?></b>.
+            </strong> имеет <span class="label label-important"><?=$patients[$i]['value']?>: <?=$patients[$i]['value']?></span> за <b><?=$patients[$i]['date']?></b>.
             <br><br>
             <?php if(!in_array($uid, $str)) { ?>
                 <button type="button" class="btn btn-success submit" data-toggle="modal" href="#myModal">Вызвать</button>
@@ -22,6 +25,6 @@ for($i=0;$i<count($patients); $i++) {
             <?php } ?>
         </div>
 
-    <?php } } } ?>
+    <?php }  } ?>
 
 <div class="js-message"></div>

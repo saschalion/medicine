@@ -44,7 +44,11 @@
             <?=$patient['sex']?>
         </td>
         <td>
-
+            <?php
+                if($patient['date_birth'] != 0) {
+                    echo date("d M Y",strtotime($patient['date_birth']));
+                }
+            ?>
         </td>
         <td>
             <?=$patient['desease']?>

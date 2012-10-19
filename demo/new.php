@@ -1,4 +1,21 @@
 ﻿<?php include('includes/head.php'); ?>
+<?php
+
+if($submit) {
+    if(empty($last_name) || empty($first_name) || empty($patronymic)) {
+        $message = '<span style="color: #ff0000">Поля не должны быть пустыми!</span>';
+
+        $fields = array($last_name, $first_name, $patronymic, $sex, $document, $address, $phone, $mobile_phone, $mobile_phone_second, $desease);
+    }
+    else {
+        send_sql();
+
+        $result = mysql_insert_id();
+
+        echo "<META HTTP-EQUIV=Refresh content=0;URL=/demo/show.php?patient_id=$result>";
+    }
+}
+?>
 <body>
 <!--[if lt IE 7]>
 <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
@@ -11,23 +28,6 @@
 
     <div class="span12">
         <h2>Добавить пациента</h2>
-        <?php
-
-        if($submit) {
-            if(empty($last_name) || empty($first_name) || empty($patronymic)) {
-                $message = '<span style="color: #ff0000">Поля не должны быть пустыми!</span>';
-
-                $fields = array($last_name, $first_name, $patronymic, $sex, $document, $address, $phone, $mobile_phone, $mobile_phone_second, $desease);
-            }
-            else {
-                send_sql();
-
-                $result = mysql_insert_id();
-;
-                echo "<META HTTP-EQUIV=Refresh content=0;URL=/demo/show.php?patient_id=$result>";
-            }
-        }
-        ?>
         <form action="new.php" method="post">
             <p>
                 <?=$message?>
@@ -45,7 +45,7 @@
                     Имя
                 </label>
                 <div class="controls">
-                    <input type="text" id="first_name" name="first_name">
+                    <input type="text" id="first_name" name="first_name" value="<?=$fields[1]?>">
                 </div>
             </div>
             <div class="control-group">
@@ -53,7 +53,7 @@
                     Отчество
                 </label>
                 <div class="controls">
-                    <input type="text" id="patronymic" name="patronymic">
+                    <input type="text" id="patronymic" name="patronymic" value="<?=$fields[2]?>">
                 </div>
             </div>
             <div class="control-group">
@@ -62,6 +62,14 @@
                 </label>
                 <div class="controls">
                     <input type="text" id="sex" name="sex">
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="date_birth">
+                    Дата рождения
+                </label>
+                <div class="controls">
+                    <input type="text" id="date_birth" name="date_birth">
                 </div>
             </div>
             <div class="control-group">

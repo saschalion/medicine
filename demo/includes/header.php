@@ -6,7 +6,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </a>
-            <a class="brand" href="#">МедОКБ</a>
+            <a class="brand" href="/demo/">ИАМ ПИКС</a>
             <div class="nav-collapse collapse" style="height: 0px; ">
                 <ul class="nav">
                     <li class="active">

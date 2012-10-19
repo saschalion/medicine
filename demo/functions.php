@@ -5,7 +5,7 @@ function logout() {
         setcookie('auth', '', 0, "/");
         setcookie('sent', '', 0, "/");
         setcookie('messages', '', 0, "/");
-        $redirect = print header('Location: index.php');
+        $redirect = print header('Location: /demo/index.php');
     }
     return $redirect;
 }
@@ -164,23 +164,23 @@ function disabled_time() {
 
 $disabled = disabled_time();
 
-function send_notification($times) {
-    $time = $times[$_POST['time']];
+function send_notification() {
+//    $time = $times[$_POST['time']];
+//
+//    $to = $_POST['email'];
+//
+//    $subject = 'Вас пригласили на прием';
+//
+//    $message = 'Уважаемый ' . $_POST['fio'] . '! Ждем Вас на прием ' . $_POST['date'] . ' в '. $time . ' к эндокринологу (25 каб.)<br><br>С уважением, администрация ОКБ №1';
+//
+//    $headers  = "Content-type: text/html; charset=utf-8 \r\n";
+//    $headers .= "From: ОКБ № 1 saschalion@list.ru";
+//
+//    mail($to, $subject, $message, $headers);
+//
+//    list($sms_id, $sms_cnt, $cost, $balance) = send_sms($_POST['phone_number'], 'Уважаемый ' . $_POST['fio'] . '! Ждем Вас на прием ' . $_POST['date'] . ' в '. $time . ' к эндокринологу (25 каб.)');
 
-    $to = $_POST['email'];
-
-    $subject = 'Вас пригласили на прием';
-
-    $message = 'Уважаемый ' . $_POST['fio'] . '! Ждем Вас на прием ' . $_POST['date'] . ' в '. $time . ' к эндокринологу (25 каб.)<br><br>С уважением, администрация ОКБ №1';
-
-    $headers  = "Content-type: text/html; charset=utf-8 \r\n";
-    $headers .= "From: ОКБ № 1 saschalion@list.ru";
-
-    mail($to, $subject, $message, $headers);
-
-    list($sms_id, $sms_cnt, $cost, $balance) = send_sms($_POST['phone_number'], 'Уважаемый ' . $_POST['fio'] . '! Ждем Вас на прием ' . $_POST['date'] . ' в '. $time . ' к эндокринологу (25 каб.)');
-
-    print "<META HTTP-EQUIV=Refresh content=0;URL=/demo/index.php >";
+    print "<META HTTP-EQUIV=Refresh content=0;URL=/demo/index.php>";
 }
 
 function escape($value) {
@@ -208,6 +208,7 @@ function send_sql() {
         'mobile_phone' => $_POST['mobile_phone'],
         'mobile_phone_second' => $_POST['mobile_phone_second'],
         'desease' => $_POST['desease'],
+        'date_birth' => date("Y-m-d H:m:s",strtotime($_POST['date_birth'])),
     );
 
     if(count($array) > 0) {
@@ -237,4 +238,64 @@ function get_patients()
         $new_records[] = $records;
 
     return $new_records;
+}
+
+function set_chart() {
+
+    function get() {
+
+        $type = escape('pulse');
+
+        $sql = query("select value as y, UNIX_TIMESTAMP(date) as x, parameter_types.name as title,
+        preparations.name as tooltip,
+        parameter_norms.start_norm as startNorm,
+        parameter_norms.end_norm as endNorm,
+        parameter_norms.below_start_norm as belowStartNorm,
+        parameter_norms.below_end_norm as belowEndNorm,
+        parameter_norms.above_start_norm as aboveStartNorm,
+        parameter_norms.above_end_norm as aboveEndNorm
+        from parameters, parameter_types, preparations, parameter_norms
+        where parameter_types.code in('$type') and parameters.parameter_type_id=parameter_types.id
+        and parameters.preparation_id = preparations.id
+        order by x asc");
+
+        while($patients = mysql_fetch_assoc($sql))
+
+            $records[] = $patients;
+
+        return $records;
+    }
+
+    $stock = get();
+
+    if($_GET['chart-pulse']) {
+        $data = print json_encode($stock);
+    }
+
+    if($_GET['stock']) {
+        if(isset($stock)) {
+            $data = print json_encode($stock);
+        }
+    }
+
+    return $data;
+}
+
+function post($field)
+{
+    $fields = $_POST[$field];
+
+    return $fields;
+}
+
+function notifs()
+{
+    $sql = query("SELECT distinct(parameters.id), patients.last_name, patients.first_name, patients.patronymic, parameters.date, parameters.value FROM parameters, parameter_norms, parameter_types, patients
+WHERE (value < start_norm OR value > end_norm) AND parameter_norm_id = parameter_norms.id AND patients.id = parameters.patient_id");
+
+    while($record = mysql_fetch_assoc($sql))
+
+    $records[] = $record;
+
+    return $records;
 }
