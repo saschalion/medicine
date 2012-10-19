@@ -15,7 +15,10 @@ for($i=0;$i<count($patients); $i++) {
             <strong class="js-name">
                 <a href="show.php?<?=$uid?>" rel="tooltip" data-original-title="Просмотреть график по <?=$patients[$i]['value']?>у">
                     <?=$patients[$i]['last_name'] .' '. $patients[$i]['first_name'] .' '. $patients[$i]['patronymic']?></a>
-            </strong> имеет <span class="label label-important"><?=$patients[$i]['value']?>: <?=$patients[$i]['value']?></span> за <b><?=$patients[$i]['date']?></b>.
+            </strong> имеет <span class="label label-important"><?=$patients[$i]['name']?>: <?=$patients[$i]['value']?></span> за
+
+            <b><?=date("d.m.Y",strtotime($patients[$i]['date']))?></b>.
+
             <br><br>
             <?php if(!in_array($uid, $str)) { ?>
                 <button type="button" class="btn btn-success submit" data-toggle="modal" href="#myModal">Вызвать</button>

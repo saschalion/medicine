@@ -3,19 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="9b08ff6f-0f6d-4ad4-8168-fcf00851700f" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/charts/chart.php" afterPath="$PROJECT_DIR$/charts/chart.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/charts/js/stock.js" afterPath="$PROJECT_DIR$/charts/js/stock.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/charts/loadData.php" afterPath="$PROJECT_DIR$/charts/loadData.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config.php" afterPath="$PROJECT_DIR$/config.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo/css/main.css" afterPath="$PROJECT_DIR$/demo/css/main.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo/functions.php" afterPath="$PROJECT_DIR$/demo/functions.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo/includes/header.php" afterPath="$PROJECT_DIR$/demo/includes/header.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo/includes/notifications.php" afterPath="$PROJECT_DIR$/demo/includes/notifications.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo/includes/patients.php" afterPath="$PROJECT_DIR$/demo/includes/patients.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo/index.php" afterPath="$PROJECT_DIR$/demo/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo/js/main.js" afterPath="$PROJECT_DIR$/demo/js/main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo/new.php" afterPath="$PROJECT_DIR$/demo/new.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo/show.php" afterPath="$PROJECT_DIR$/demo/show.php" />
     </list>
     <ignored path="medicine.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -38,16 +27,16 @@
       <file leaf-file-name="patients.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/demo/includes/patients.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="12" selection-start="431" selection-end="431" vertical-scroll-proportion="-16.25">
+            <state line="48" column="71" selection-start="950" selection-end="996" vertical-scroll-proportion="-13.875">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="loadData.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="loadData.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/charts/loadData.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="10" selection-start="235" selection-end="235" vertical-scroll-proportion="-4.375">
+            <state line="7" column="10" selection-start="235" selection-end="235" vertical-scroll-proportion="0.1268116">
               <folding />
             </state>
           </provider>
@@ -56,7 +45,7 @@
       <file leaf-file-name="chart.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/charts/chart.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="25" selection-start="623" selection-end="623" vertical-scroll-proportion="-9.375">
+            <state line="15" column="25" selection-start="623" selection-end="623" vertical-scroll-proportion="0.0">
               <folding>
                 <marker date="1350627293404" expanded="false" signature="1060:1107" placeholder="..." />
               </folding>
@@ -67,7 +56,7 @@
       <file leaf-file-name="show.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/demo/show.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="180" column="68" selection-start="9760" selection-end="9760" vertical-scroll-proportion="-19.375">
+            <state line="180" column="68" selection-start="9760" selection-end="9760" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -76,7 +65,7 @@
       <file leaf-file-name="new.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/demo/new.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="0" selection-start="440" selection-end="440" vertical-scroll-proportion="-0.625">
+            <state line="13" column="0" selection-start="440" selection-end="440" vertical-scroll-proportion="0.0">
               <folding>
                 <marker date="1350630789292" expanded="false" signature="165:179" placeholder="..." />
               </folding>
@@ -105,7 +94,7 @@
       <file leaf-file-name="functions.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/demo/functions.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="290" column="17" selection-start="7730" selection-end="7738" vertical-scroll-proportion="-23.958334">
+            <state line="293" column="70" selection-start="7923" selection-end="7923" vertical-scroll-proportion="-23.958334">
               <folding />
             </state>
           </provider>
@@ -114,16 +103,16 @@
       <file leaf-file-name="index.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/demo/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="39" selection-start="338" selection-end="338" vertical-scroll-proportion="-6.875">
+            <state line="11" column="39" selection-start="338" selection-end="338" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="notifications.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="notifications.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/demo/includes/notifications.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="87" selection-start="751" selection-end="751" vertical-scroll-proportion="0.31288344">
+            <state line="20" column="0" selection-start="867" selection-end="867" vertical-scroll-proportion="-12.5">
               <folding />
             </state>
           </provider>
@@ -193,7 +182,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -260,6 +248,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -305,13 +294,13 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="24" width="1920" height="1032" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34989315" sideWeight="0.6708428" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.35416666" sideWeight="0.6708428" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -406,9 +395,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/config.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/charts/js/stock.js">
@@ -427,21 +414,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/demo/show.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="180" column="68" selection-start="9760" selection-end="9760" vertical-scroll-proportion="-19.375">
+        <state line="180" column="68" selection-start="9760" selection-end="9760" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/demo/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="39" selection-start="338" selection-end="338" vertical-scroll-proportion="-6.875">
+        <state line="11" column="39" selection-start="338" selection-end="338" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/charts/chart.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="25" selection-start="623" selection-end="623" vertical-scroll-proportion="-9.375">
+        <state line="15" column="25" selection-start="623" selection-end="623" vertical-scroll-proportion="0.0">
           <folding>
             <marker date="1350627293404" expanded="false" signature="1060:1107" placeholder="..." />
           </folding>
@@ -450,37 +437,37 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/demo/new.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="0" selection-start="440" selection-end="440" vertical-scroll-proportion="-0.625">
+        <state line="13" column="0" selection-start="440" selection-end="440" vertical-scroll-proportion="0.0">
           <folding>
             <marker date="1350630789292" expanded="false" signature="165:179" placeholder="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/charts/loadData.php">
+    <entry file="file://$PROJECT_DIR$/demo/functions.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="10" selection-start="235" selection-end="235" vertical-scroll-proportion="-4.375">
+        <state line="293" column="70" selection-start="7923" selection-end="7923" vertical-scroll-proportion="-23.958334">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/demo/includes/patients.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="12" selection-start="431" selection-end="431" vertical-scroll-proportion="-16.25">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/demo/functions.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="290" column="17" selection-start="7730" selection-end="7738" vertical-scroll-proportion="-23.958334">
+        <state line="48" column="71" selection-start="950" selection-end="996" vertical-scroll-proportion="-13.875">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/demo/includes/notifications.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="87" selection-start="751" selection-end="751" vertical-scroll-proportion="0.31288344">
+        <state line="20" column="0" selection-start="867" selection-end="867" vertical-scroll-proportion="-12.5">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/charts/loadData.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="10" selection-start="235" selection-end="235" vertical-scroll-proportion="0.1268116">
           <folding />
         </state>
       </provider>
