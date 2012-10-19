@@ -13,7 +13,7 @@ for($i=0;$i<count($patients); $i++) {
         <div class="alert
         <?php if(in_array($uid, $str)) { echo 'alert-success'; } else { echo 'alert-info'; } ?>" id="<?=$uid?>">
             <strong class="js-name">
-                <a href="show.php?<?=$uid?>" rel="tooltip" data-original-title="Просмотреть график по <?=$patients[$i]['value']?>у">
+                <a href="/charts/chart.php?<?=$patients[$i]['code']?>=true" rel="tooltip" data-original-title="Просмотреть график по <?=$patients[$i]['name']?>у">
                     <?=$patients[$i]['last_name'] .' '. $patients[$i]['first_name'] .' '. $patients[$i]['patronymic']?></a>
             </strong> имеет <span class="label label-important"><?=$patients[$i]['name']?>: <?=$patients[$i]['value']?></span> за
 

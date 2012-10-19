@@ -20,7 +20,6 @@ $(function () {
                 selected : 1
             },
             xAxis: {
-                type: 'datetime'
             },
             yAxis: {
                 title: {

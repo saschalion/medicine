@@ -240,13 +240,11 @@ function get_patients()
     return $new_records;
 }
 
-function set_chart() {
+function get() {
 
-    function get() {
+    $type = 'pulse';
 
-        $type = escape('pulse');
-
-        $sql = query("select value as y, UNIX_TIMESTAMP(date) as x, parameter_types.name as title,
+    $sql = query("select value as y, UNIX_TIMESTAMP(date) as x, parameter_types.name as title,
         preparations.name as tooltip,
         parameter_norms.start_norm as startNorm,
         parameter_norms.end_norm as endNorm,
@@ -259,14 +257,16 @@ function set_chart() {
         and parameters.preparation_id = preparations.id
         order by x asc");
 
-        while($patients = mysql_fetch_assoc($sql))
+    while($patients = mysql_fetch_assoc($sql))
 
-            $records[] = $patients;
+        $records[] = $patients;
 
-        return $records;
-    }
+    return $records;
+}
 
-    $stock = get();
+function set_chart() {
+
+    $stock = get();  
 
     if($_GET['chart-pulse']) {
         $data = print json_encode($stock);
@@ -291,10 +291,12 @@ function post($field)
 function notifs()
 {
     $sql = query("SELECT distinct(parameters.id), patients.last_name, patients.first_name, patients.patronymic,
-parameters.date as date, parameters.value, LOWER(parameter_types.name) as name
-FROM parameters, parameter_norms, parameter_types, patients
-WHERE (value < start_norm OR value > end_norm) AND year(now()) AND parameter_norm_id = parameter_norms.id
-AND patients.id = parameters.patient_id ORDER BY date DESC");
+parameters.date as date, parameters.value,
+(select LOWER(parameter_types.name) from parameter_types limit 1) as name,
+(select parameter_types.code from parameter_types limit 1) as code
+FROM parameters, parameter_norms, patients
+WHERE (value < start_norm OR value > end_norm) AND YEAR(date) = '2012' AND (parameter_norm_id = parameter_norms.id
+AND patients.id = parameters.patient_id) ORDER BY date DESC");
 
     while($record = mysql_fetch_assoc($sql))
 
