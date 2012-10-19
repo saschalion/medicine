@@ -167,7 +167,7 @@ $(function () {
             subtitle = options.subtitle.text;
 
             for (i = 0; i < data.length; i++) {
-                yData.push({'x': parseInt(data[i]['x']) * 1000, 'y': parseInt(data[i]['y']), 'tooltip': data[i]['tooltip']});
+                yData.push({'x': parseInt(data[i]['x'] * 1000) , 'y': parseInt(data[i]['y']), 'tooltip': data[i]['tooltip']});
             }
 
             var dataLength = parseInt(yData.length - 1);

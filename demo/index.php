@@ -5,7 +5,6 @@
 <div role="main">
     <?php include('includes/call.php'); ?>
     <?php include('includes/login.php'); ?>
-
     <aside class="sidebar sidebar_type_left affix">
         <h2>Явки</h2>
         <div class="sidebar__inner">

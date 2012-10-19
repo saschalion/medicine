@@ -266,7 +266,7 @@ function get() {
 
 function set_chart() {
 
-    $stock = get();  
+    $stock = get();
 
     if($_GET['chart-pulse']) {
         $data = print json_encode($stock);
