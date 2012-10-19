@@ -291,10 +291,10 @@ function post($field)
 function notifs()
 {
     $sql = query("SELECT distinct(parameters.id), patients.last_name, patients.first_name, patients.patronymic,
-parameters.date, parameters.value, LOWER(parameter_types.name) as name
+parameters.date as date, parameters.value, LOWER(parameter_types.name) as name
 FROM parameters, parameter_norms, parameter_types, patients
-WHERE (value < start_norm OR value > end_norm) AND parameter_norm_id = parameter_norms.id
-AND patients.id = parameters.patient_id");
+WHERE (value < start_norm OR value > end_norm) AND year(now()) AND parameter_norm_id = parameter_norms.id
+AND patients.id = parameters.patient_id ORDER BY date DESC");
 
     while($record = mysql_fetch_assoc($sql))
 
