@@ -1,69 +1,37 @@
-<?php require_once('functions.php'); ?>
-<!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Личная карточка - Иванов Иван Алексеевич (03.05.1987 - 25 лет)</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
-
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-
-    <link rel="stylesheet" href="css/main.css">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <script src="js/vendor/modernizr-2.6.1.min.js"></script>
-    <link href="css/main.css" rel="stylesheet">
-</head>
-<body data-spy="scroll" data-target=".bs-docs-sidebar" data-twttr-rendered="true">
-<!--[if lt IE 7]>
-<p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
-<![endif]-->
-
+<?php include('includes/head.php'); ?>
+<?php $patient = get_patient($patient_id); ?>
 <?php include('includes/header.php')?>
+<?php include('includes/call.php'); ?>
 <div role="main">
-        <div class="span3 bs-docs-sidebar">
-            <div class="affix">
-                <ul class="nav nav-list bs-docs-sidenav">
-                    <li class="active"><a href="#overview"><i class="icon-chevron-right"></i> Общая информация</a></li>
-                    <li><a href="#transitions"><i class="icon-chevron-right"></i> Общий анамнез</a></li>
-                    <li><a href="#dropdowns"><i class="icon-chevron-right"></i> Наблюдения и анализы</a></li>
-                    <li><a href="#systems"><i class="icon-chevron-right"></i> Системы</a></li>
-                    <li><a href="#modals"><i class="icon-chevron-right"></i> Запись</a></li>
-                </ul>
-                <div class="well sidebar-nav">
-                    <ul class="nav nav-list">
-                        <li class="nav-header">Жалобы</li>
-                        <li><a href="#">болевые ощущения</a></li>
-                        <li><a href="#">гнойное отделяемое</a></li>
-                        <li><a href="#">для контрольного осмотра</a></li>
-                        <li><a href="#">для осмотра глазного дна</a></li>
-                        <li><a href="#">светобоязнь</a></li>
-                        <li><a href="#">светотечение</a></li>
-                        <li><a href="#">жжение</a></li>
-                        <li><a href="#">для подбора очков</a></li>
-                        <li><a href="#">жалобы на усталость зрения</a></li>
-                    </ul>
-                </div>
-            </div>
+    <aside class="sidebar sidebar_type_left affix">
+        <h2>Явки</h2>
+        <div class="sidebar__inner">
+            <?php include('includes/notifications.php'); ?>
         </div>
-        <div class="span9">
+    </aside>
+    <div class="main">
+        <div class="main__inner">
+            <?php foreach($patient as $info) { ?>
             <section id="overview">
-                <?php for($i = 0; $i <= 1; $i++) {
-                    if($patients[$i]['uid'] == $patient_id) { ?>
-                    <h2>Личная карточка - <?=$patients[$i]['last_name']?> Иван Алексеевич (03.05.1987 - 25 лет)</h2>
-                <? }} ?>
+                <h2>Личная карточка &mdash;
+                    <?=$info['last_name'] .' '. $info['first_name'] .' '. $info['patronymic'] .
+                        ' (' . get_date_birth($info['date_birth']) . ' - ' .  get_age($info['date_birth']) . ')'?>
+                </h2>
+                <div id="container" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
+                <div class="clearfix">
+                    <a style="float: right;" title="Редактировать" href="edit.php?patient_id=<?=$info['id']?>" class="btn btn-info">
+                        <i class="icon-pencil"></i> Редактировать
+                    </a>
+                </div>
                 <p>
-                    <strong>Фамилия, имя, отчество:</strong> Иванов Иван Алексеевич.
+                    <strong>Фамилия, имя, отчество:</strong>
+                    <?=$info['last_name'] .' '. $info['first_name'] .' '. $info['patronymic']?>.
                 </p>
                 <p>
-                    <strong>Дата рождения:</strong> 03.05.1987.
+                    <strong>Дата рождения:</strong> <?=get_date_birth($info['date_birth'])?>.
                 </p>
                 <p>
-                    <strong>Возраст:</strong> 25.
+                    <strong>Возраст:</strong> <?=get_age($info['date_birth'])?>.
                 </p>
                 <p>
                     <strong>Домашний адрес:</strong> 115407, г. Москва, Нагатинская наб., д. 44 к. 3 кв. 108.
@@ -99,6 +67,7 @@
                     Maecenas sed diam eget risus varius blandit sit amet non magna. Donec id elit non mi porta gravida at eget metus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.
                 </p>
             </section>
+            <?php } ?>
             <section id="transitions">
                 <h2>Общий анамнез</h2>
                 <h4>
@@ -385,8 +354,14 @@
                 </p>
             </section>
         </div>
+    </div>
+    <aside class="sidebar sidebar_type_right affix">
+        <h2>Диспансер</h2>
+        <div class="sidebar__inner">
+            <?php include('includes/notifications.php'); ?>
+        </div>
+    </aside>
 </div>
-
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.8.0.min.js"><\/script>')</script>
 <script src="js/plugins.js"></script>
