@@ -12,116 +12,6 @@ function logout() {
 
 logout();
 
-function patients() {
-
-    $patients = array(
-        array(
-            'uid' => 1,
-            'sex' => 'М',
-            'first_name' => 'Аркадий',
-            'last_name' => 'Берсеньев',
-            'patronymic' => 'Иванович',
-            'parameter' => 'холестерин',
-            'date_birthday' => '29.06.1987',
-            'disease' => 'Грипп',
-            'value' => '110',
-            'normal' => '100',
-            'date_param' => '20/06/2012'
-        ),
-        array(
-            'uid' => 2,
-            'sex' => 'М',
-            'first_name' => 'Александр',
-            'last_name' => 'Дружинин',
-            'patronymic' => 'Георгиевич',
-            'parameter' => 'пульс',
-            'date_birthday' => '29.06.1987',
-            'disease' => ''
-        ),
-        array(
-            'uid' => 3,
-            'sex' => 'М',
-            'first_name' => 'Алексей',
-            'last_name' => 'Вдовиченков',
-            'patronymic' => 'Андреевич',
-            'parameter' => 'сахар',
-            'date_birthday' => '29.06.1987',
-            'disease' => 'Грипп',
-            'value' => '120',
-            'normal' => '100',
-            'date_param' => '20/06/2012'
-        ),
-        array(
-            'uid' => 13,
-            'sex' => 'М',
-            'first_name' => 'Аркадий',
-            'last_name' => 'Берсеньев',
-            'patronymic' => 'Игоревич',
-            'parameter' => 'холестерин',
-            'date_birthday' => '29.06.1987',
-            'disease' => 'Грипп',
-            'disease' => 'Грипп',
-            'value' => '120',
-            'normal' => '100',
-            'date_param' => '20/06/2012'
-        ),
-        array(
-            'uid' => 5,
-            'sex' => 'М',
-            'first_name' => 'Олег',
-            'last_name' => 'Ватутин',
-            'patronymic' => 'Олегович',
-            'parameter' => 'холестерин',
-            'date_birthday' => '29.06.1987',
-            'disease' => 'Грипп'
-        ),
-        array(
-            'uid' => 6,
-            'sex' => 'М',
-            'first_name' => 'Игорь',
-            'last_name' => 'Иванов',
-            'patronymic' => 'Степанович',
-            'parameter' => 'холестерин',
-            'date_birthday' => '29.06.1987',
-            'disease' => 'Грипп'
-        ),
-        array(
-            'uid' => 7,
-            'sex' => 'М',
-            'first_name' => 'Глеб',
-            'last_name' => 'Патрошин',
-            'patronymic' => 'Алексеевич',
-            'parameter' => 'холестерин',
-            'date_birthday' => '29.06.1987',
-            'disease' => 'Грипп'
-        ),
-        array(
-            'uid' => 8,
-            'sex' => 'М',
-            'first_name' => 'Андрей',
-            'last_name' => 'Глухарев',
-            'patronymic' => 'Сергеевич',
-            'parameter' => 'холестерин',
-            'date_birthday' => '29.06.1987',
-            'disease' => 'Грипп'
-        ),
-        array(
-            'uid' => 9,
-            'sex' => 'М',
-            'first_name' => 'Виталий',
-            'last_name' => 'Степанов',
-            'patronymic' => 'Иванович',
-            'parameter' => 'холестерин',
-            'date_birthday' => '29.06.1987',
-            'disease' => 'Грипп'
-        )
-    );
-
-    return $patients;
-}
-
-$patients = patients();
-
 function create_time_range($start, $end, $by='30 mins') {
 
     $start_time = strtotime($start);
@@ -180,7 +70,7 @@ function send_notification() {
 //
 //    list($sms_id, $sms_cnt, $cost, $balance) = send_sms($_POST['phone_number'], 'Уважаемый ' . $_POST['fio'] . '! Ждем Вас на прием ' . $_POST['date'] . ' в '. $time . ' к эндокринологу (25 каб.)');
 
-    print "<META HTTP-EQUIV=Refresh content=0;URL=/demo/index.php>";
+    print "<META HTTP-EQUIV=Refresh content=0;URL='".$_SERVER['REQUEST_URI']."'>";
 }
 
 function escape($value) {
@@ -195,7 +85,7 @@ function query($value) {
     return $sql;
 }
 
-function send_sql() {
+function create_patient() {
 
     $array = array(
         'first_name' => $_POST['first_name'],
@@ -229,22 +119,100 @@ function send_sql() {
     return $sql;
 }
 
+function edit_patient()
+{
+    if($_REQUEST['save']) {
+        $array = array(
+            'first_name' => post('first_name'),
+            'last_name' => post('last_name'),
+            'patronymic' => post('patronymic'),
+            'sex' => post('sex'),
+            'document' => post('document'),
+            'address' => post('address'),
+            'phone' => post('phone'),
+            'mobile_phone' => post('mobile_phone'),
+            'mobile_phone_second' => post('mobile_phone_second'),
+            'desease' => post('desease'),
+            'date_birth' => date("Y-m-d H:m:s",strtotime(post('date_birth'))
+        ));
+
+        if (count($array) > 0) {
+            foreach ($array as $key => $value) {
+                $value = trim($value);
+                $value = "'$value'";
+                $updates[] = "$key = $value";
+            }
+        }
+
+        $implode_array = implode(', ', $updates);
+
+        $sql = query("UPDATE patients SET $implode_array where id='".escape($_SESSION['id'])."'");
+
+        $redirect =  print "<META HTTP-EQUIV=Refresh content=0;URL=/demo/edit.php?patient_id=".$_SESSION['id'].">";
+
+        return array($sql, $redirect);
+    }
+}
+
 function get_patients()
 {
     $sql = query("select * from patients");
 
     while($records = mysql_fetch_assoc($sql))
 
-        $new_records[] = $records;
+    $new_records[] = $records;
 
     return $new_records;
 }
 
-function get() {
+function get_patient($patient_id)
+{
+    $sql = query("select * from patients where id = $patient_id limit 1");
+
+    while($records = mysql_fetch_assoc($sql))
+
+    $new_records[] = $records;
+
+    return $new_records;
+}
+
+function get_date_birth($date)
+{
+    return date("d.m.Y",strtotime($date));
+}
+
+function get_age($date)
+{
+    $age = floor((time() - strtotime($date)) / (60 * 60 * 24 * 365.25));
+
+    $str = array(2,3,4);
+    $str_two = array(11,12,13);
+
+    if(in_array($age % 10, $str) && !in_array($age, $str_two)) {
+        $val = 'года';
+    }
+    else {
+        $val = 'лет';
+    }
+
+    $str = array(0,5,6,7,8,9);
+    if(in_array($age % 10, $str)) {
+        $val =  'лет';
+    }
+
+    $str = array(1);
+    if(in_array($age % 10, $str)) {
+        $val = 'год';
+    }
+
+    return $age . ' ' . $val;
+}
+
+function set_chart($patient_id) {
 
     $type = 'pulse';
 
-    $sql = query("select value as y, UNIX_TIMESTAMP(date) as x, parameter_types.name as title,
+    $sql = query("select value as y, unix_timestamp(date) as x, parameter_types.name as title,
         preparations.name as tooltip,
         parameter_norms.start_norm as startNorm,
         parameter_norms.end_norm as endNorm,
@@ -252,31 +220,23 @@ function get() {
         parameter_norms.below_end_norm as belowEndNorm,
         parameter_norms.above_start_norm as aboveStartNorm,
         parameter_norms.above_end_norm as aboveEndNorm
-        from parameters, parameter_types, preparations, parameter_norms
+        from parameters, parameter_types, preparations, parameter_norms, patients
         where parameter_types.code in('$type') and parameters.parameter_type_id=parameter_types.id
-        and parameters.preparation_id = preparations.id
+        and parameters.preparation_id = preparations.id and patients.id = '".$patient_id."'
         order by x asc");
 
     while($patients = mysql_fetch_assoc($sql))
 
-        $records[] = $patients;
+    $records[] = $patients;
 
     return $records;
 }
 
-function set_chart() {
+function get_chart() {
 
-    $stock = get();
+    $stock = set_chart(escape($_GET['patient_id']));
 
-    if($_GET['chart-pulse']) {
-        $data = print json_encode($stock);
-    }
-
-    if($_GET['stock']) {
-        if(isset($stock)) {
-            $data = print json_encode($stock);
-        }
-    }
+    $data = print json_encode($stock);
 
     return $data;
 }
@@ -291,12 +251,12 @@ function post($field)
 function notifs()
 {
     $sql = query("SELECT distinct(parameters.id), patients.last_name, patients.first_name, patients.patronymic,
-parameters.date as date, parameters.value,
-(select LOWER(parameter_types.name) from parameter_types limit 1) as name,
-(select parameter_types.code from parameter_types limit 1) as code
-FROM parameters, parameter_norms, patients
-WHERE (value < start_norm OR value > end_norm) AND YEAR(date) = '2012' AND (parameter_norm_id = parameter_norms.id
-AND patients.id = parameters.patient_id) ORDER BY date DESC");
+    parameters.date as date, parameters.value,
+    (select LOWER(parameter_types.name) from parameter_types limit 1) as name,
+    (select parameter_types.code from parameter_types limit 1) as code
+    FROM parameters, parameter_norms, patients
+    WHERE (value < start_norm OR value > end_norm) AND YEAR(date) >= '2010' AND YEAR(date) <= '2012' AND (parameter_norm_id = parameter_norms.id
+    AND patients.id = parameters.patient_id) ORDER BY date DESC");
 
     while($record = mysql_fetch_assoc($sql))
 
