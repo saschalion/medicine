@@ -6,7 +6,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </a>
-            <a class="brand" href="#">МедОКБ</a>
+            <a class="brand" href="/demo/">ИАМ ПИКС</a>
             <div class="nav-collapse collapse" style="height: 0px; ">
                 <ul class="nav">
                     <li class="active">
@@ -15,6 +15,7 @@
                     <li><a href="#">Документы</a></li>
                     <li><a href="#">Услуги</a></li>
                     <li><a href="#">Записи</a></li>
+                    <li><a href="#">План лечения</a></li>
                 </ul>
                 <div class="btn-group pull-right gap-left-out_10">
                     <a class="btn" href="#">Профиль</a>
@@ -22,11 +23,6 @@
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li>
-                            <a href="#">
-                                Мой график
-                            </a>
-                        </li>
                         <li>
                             <a href="?logout=true">
                                 Выход

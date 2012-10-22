@@ -1,5 +1,8 @@
 $(function () {
+
     $(document).ready(function() {
+
+        $('.highcharts-range-selector').parent().css('margin-right', '50px');
 
         var chart;
 
@@ -8,20 +11,34 @@ $(function () {
                 renderTo: 'container'
             },
             title: {
-                text: 'Параметры пульса'
+                text: []
             },
             subtitle: {
                 text: []
             },
             rangeSelector : {
-                selected : 1
+                buttons : [{
+                    type : 'year',
+                    count : 1,
+                    text : 'Год'
+                }, {
+                    type : 'month',
+                    count : 3,
+                    text : '3м'
+                }, {
+                    type : 'all',
+                    count : 1,
+                    text : 'Всё'
+                }],
+                selected : 3,
+                inputEnabled : false
             },
             xAxis: {
                 type: 'datetime'
             },
             yAxis: {
                 title: {
-                    text: 'Пульс'
+                    text: []
                 },
                 minorGridLineWidth: 0,
                 gridLineWidth: 1,
@@ -34,7 +51,7 @@ $(function () {
                 }],
                 labels: {
                     formatter: function() {
-                        return this.value +' уд/мин';
+                        return this.value;
                     }
                 },
                 plotBands: [{
@@ -70,16 +87,22 @@ $(function () {
                     }
                 }]
             },
+            tooltip: {
+                shared: true,
+                formatter: function() {
+                    return tooltipTitle + '<b>' + this.y + '</b><br>' + 'за ' + Highcharts.dateFormat('%d.%m.%Y', this.x)
+                }
+            },
             plotOptions: {
                 series: {
                     dataLabels: {
                         style: {
-                            font: 'bold 9px Arial',
+                            font: '9px Arial',
                             verticalAlign: 'top'
                         },
                         enabled: true,
                         formatter: function() {
-                            return + this.y + ' (' + this.point.config.tooltip + ')';
+                            return + this.y + '(' + this.point.config.tooltip + ')';
                         }
                     }
                 },
@@ -112,15 +135,9 @@ $(function () {
                     enabled : true,
                     radius : 3
                 },
-                name: 'Пульс',
+                name: [],
                 data: [],
-                cursor: 'pointer',
-                tooltip: {
-                    formatter: function() {
-                        return + this.y + ' (' + this.point.config.tooltip + ')';
-                    },
-                    valueDecimals: 0
-                }
+                cursor: 'pointer'
             }]
             ,
             navigation: {
@@ -130,9 +147,7 @@ $(function () {
             }
         };
 
-        $.getJSON('/charts/loadNorms.php?stock=true', function(response) {
-
-            //  Норма
+        $.getJSON('/charts/loadData.php', function(data) {
 
             var startNorm = options.yAxis.plotBands[0].from;
             var endNorm = options.yAxis.plotBands[0].to;
@@ -147,29 +162,38 @@ $(function () {
             var aboveStartNorm = options.yAxis.plotBands[2].from;
             var aboveEndNorm = options.yAxis.plotBands[2].to;
 
-            startNorm.push(response[0]['start_norm']);
-            endNorm.push(response[0]['end_norm']);
+            startNorm.push(data[0]['startNorm']);
+            endNorm.push(data[0]['endNorm']);
 
-            belowStartNorm.push(response[0]['below_start_norm']);
-            belowEndNorm.push(response[0]['below_end_norm']);
+            belowStartNorm.push(data[0]['belowStartNorm']);
+            belowEndNorm.push(data[0]['belowEndNorm']);
 
-            aboveStartNorm.push(response[0]['above_start_norm']);
-            aboveEndNorm.push(response[0]['above_end_norm']);
+            aboveStartNorm.push(data[0]['aboveStartNorm']);
+            aboveEndNorm.push(data[0]['aboveEndNorm']);
 
-        });
-
-        $.getJSON('/charts/loadData.php?stock=true', function(data) {
             yData = options.series[0].data;
+
+            title = options.title.text;
+
+            axisTitle = options.yAxis.title.text;
+
+            tooltipTitle = options.series[0].name;
 
             subtitle = options.subtitle.text;
 
             for (i = 0; i < data.length; i++) {
-                yData.push(data[i]);
+                yData.push({'x': parseInt(data[i]['x'] * 1000), 'y': parseInt(data[i]['y']), 'tooltip': data[i]['tooltip']});
             }
 
-            var dataLength = parseFloat(data.length - 1);
+            var dataLength = parseInt(yData.length - 1);
 
-            subtitle.push('c ' + '<b>' + Highcharts.dateFormat('%d.%m.%Y', data[0]['x']) + '</b>' + ' по ' + '<b>' + Highcharts.dateFormat('%d.%m.%Y', data[dataLength]['x']) + '</b>');
+            subtitle.push('c ' + '<b>' + Highcharts.dateFormat('%d.%m.%Y', yData[0]['x']) + '</b>' + ' по ' + '<b>' + Highcharts.dateFormat('%d.%m.%Y', yData[dataLength]['x']) + '</b>');
+
+            title.push('Параметры по показателю ' + data[0]['title']);
+
+            axisTitle.push('Уровень ' + data[0]['title'] + 'a');
+
+            tooltipTitle.push(data[0]['title']);
 
             var chart = new Highcharts.StockChart(options);
         });

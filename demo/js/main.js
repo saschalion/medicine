@@ -14,6 +14,8 @@ $('.accordion-toggle').live('click', function() {
     }
 })
 
+$('[rel="tooltip"]').tooltip();
+
 $(function() {
     var availableTags = [];
 
@@ -61,27 +63,15 @@ flashMsg = function() {
     $(".js-message p").delay(5000).slideUp(300);
 };
 
-setcookies = function() {
-    if(!getCookie('messages')) {
-        setCookie('messages', id + ';', "Mon, 01-Dec-2012 00:00:00 GMT", "/");
+setcookies = function(name) {
+
+    if(!getCookie(name)) {
+        setCookie(name, id + ';', "Mon, 01-Dec-2012 00:00:00 GMT", "/");
     }
     else {
-        setCookie('messages', getCookie('messages') + id + ';', "Mon, 01-Dec-2012 00:00:00 GMT", "/");
+        setCookie(name, getCookie(name) + id + ';', "Mon, 01-Dec-2012 00:00:00 GMT", "/");
     }
 };
-
-$('.close').click(function() {
-    id = $(this).attr('id').replace('close-', '');
-    var name = $(this).parents('.alert').find('.js-name').text();
-
-    setcookies();
-    setCookie('fio', name, "Mon, 01-Dec-2012 00:00:00 GMT", "/");
-    $('.js-message').empty();
-    $('.js-message').append("<p class='alert alert-success'>" + getCookie('fio') + " отменен</p>");
-    flashMsg();
-});
-
-
 
 $('.submit').click(function() {
     var name = $(this).parents('.alert').find('.js-name').text();
@@ -91,25 +81,13 @@ $('.submit').click(function() {
     $('.js-set-name-post').val(getCookie('fio'));
 });
 
-$(function() {
-    $( "#datepicker" ).datepicker({
-        showWeek: true,
-        firstDay: 1
-    });
-});
+$('.js-chart-link').click(function(){
+    var id = this.id;
 
-$(function() {
+    setCookie('chart', id, "Mon, 01-Dec-2012 00:00:00 GMT", "/");
+})
 
-    var arr = new Array(
-        '08:00', 'disabled'
-    )
-
-    var value = $('.times option');
-
-    if(arr[0] == value.text()) {
-        $(value).attr('disabled');
-    }
-});
+// Некая авторизация
 
 $(document).ready(function() {
     if(!getCookie('auth')) {
@@ -133,6 +111,10 @@ $('.submit').click(function() {
     setCookie('uid', id, "Mon, 01-Dec-2012 00:00:00 GMT", "/");
 });
 
+$('.send').click(function(){
+    $('.send-form').trigger('submit');
+});
+
 $('.send-form').submit(function() {
 
     if(!getCookie('messages')) {
@@ -143,12 +125,35 @@ $('.send-form').submit(function() {
     }
 });
 
+// Высота боковых колонок
 
+var height = $(window).height() - 200;
 
-//$('.submit').click(function() {
-//    var id = $(this).attr('id').replace('submit-', '');
-//    setCookie('submit', 'submit-' + id, "Mon, 01-Dec-2012 00:00:00 GMT", "/");
-//});
-//
-//$('.fio').append(getCookie('submit'));
+$('.sidebar__inner').css('max-height', height + 'px');
+
+//Если явился
+
+$('.sent').click(function() {
+
+    id = $(this).parents('.alert').attr('id');
+
+    var name = 'sent';
+
+    setcookies(name);
+
+    window.location.href = 'index.php';
+});
+
+// Закрыть навсегда
+
+$('.close').click(function() {
+    id = $(this).attr('id').replace('close-', '');
+    var name = $(this).parents('.alert').find('.js-name').text();
+
+    setcookies('closed');
+    setCookie('fio', name, "Mon, 01-Dec-2012 00:00:00 GMT", "/");
+    $('.js-message').empty();
+    $('.js-message').append("<p class='alert alert-success'>" + getCookie('fio') + " отменен</p>");
+    flashMsg();
+});
 
