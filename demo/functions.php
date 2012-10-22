@@ -195,7 +195,7 @@ function get_age($date)
     if(in_array($age % 10, $str) && !in_array($age, $str_except)) {
         $val = 'года';
     }
-    else {
+    if(in_array($age, $str_except)) {
         $val = 'лет';
     }
 
@@ -205,7 +205,7 @@ function get_age($date)
     }
 
     $str = array(1);
-    if(in_array($age % 10, $str)) {
+    if(in_array($age % 10, $str) && $age != 11) {
         $val = 'год';
     }
 
