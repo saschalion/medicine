@@ -17,18 +17,19 @@
                     <?=$info['last_name'] .' '. $info['first_name'] .' '. $info['patronymic'] .
                         ' (' . get_date_birth($info['date_birth']) . ' - ' .  get_age($info['date_birth']) . ')'?>
                 </h2>
-
-                <?php foreach($types as $param) {  ?>
-                        <?php if($_REQUEST['type'] == $param['code']) {  ?>
-                            <b>
-                                <?=$param['name']?>
-                            </b>
-                        <? } else { ?>
-                            <a href="/demo/show.php?patient_id=<?=$info['id']?>&type=<?=$param['code']?>">
-                                <?=$param['name']?>
-                            </a>
-                        <? } ?>
-                <?php } ?>
+                <ul class="nav nav-tabs">
+                    <?php foreach($types as $param) {  ?>
+                            <?php if($_REQUEST['type'] == $param['code']) {  ?>
+                                <li class="active">
+                                    <a href="#"><?=$param['name']?></a>
+                                </li>
+                            <? } else { ?>
+                                <li><a href="/demo/show.php?patient_id=<?=$info['id']?>&type=<?=$param['code']?>">
+                                    <?=$param['name']?></a>
+                                </li>
+                            <? } ?>
+                    <?php } ?>
+                </ul>
 
                 <?php if(set_chart($patient_id, $type)) { ?>
                     <div id="container" style="min-width: 400px; height: 400px; margin: 0 auto"></div>

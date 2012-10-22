@@ -201,7 +201,7 @@ $(function () {
 
             subtitle.push('c ' + '<b>' + Highcharts.dateFormat('%d.%m.%Y', yData[0]['x']) + '</b>' + ' по ' + '<b>' + Highcharts.dateFormat('%d.%m.%Y', yData[dataLength]['x']) + '</b>');
 
-            title.push('Параметры по показателю ' + data[0]['title']);
+            title.push('Параметры ' + data[0]['title'] + 'а' + ' (' + data[0]['lname'] + ' ' + data[0]['fname'] + ' ' + data[0]['patronymic'] + ')');
 
             axisTitle.push('Уровень ' + data[0]['title'] + 'a');
 

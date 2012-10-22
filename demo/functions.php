@@ -214,8 +214,10 @@ function get_age($date)
 
 function set_chart($patient_id, $type)
 {
-
     $sql = query("select value as y, unix_timestamp(date) as x, parameter_types.name as title,
+        patients.last_name as lname,
+        patients.first_name as fname,
+        patients.patronymic as patronymic,
         preparations.name as tooltip,
         parameter_norms.start_norm as startNorm,
         parameter_norms.end_norm as endNorm,
@@ -223,9 +225,10 @@ function set_chart($patient_id, $type)
         parameter_norms.below_end_norm as belowEndNorm,
         parameter_norms.above_start_norm as aboveStartNorm,
         parameter_norms.above_end_norm as aboveEndNorm
-        from parameters, parameter_types, preparations, parameter_norms
+        from parameters, parameter_types, preparations, parameter_norms, patients
         where parameter_types.code in('$type') and parameters.parameter_type_id=parameter_types.id
         and parameters.preparation_id = preparations.id and parameters.patient_id = '".escape($patient_id)."'
+        and parameters.patient_id = patients.id
         order by x asc");
 
     if($sql) {
@@ -284,5 +287,4 @@ function get_parameter_type($patient_id)
 
         return $records;
     }
-
 }
