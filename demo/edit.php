@@ -1,7 +1,6 @@
 ﻿<?php include('includes/head.php'); ?>
-<?php session_start();
+<?php
 $patient = get_patient($patient_id); $arr = edit_patient();
-
 ?>
 <?php include('includes/header.php'); ?>
 <div role="main">

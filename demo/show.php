@@ -1,5 +1,5 @@
 <?php include('includes/head.php'); ?>
-<?php $patient = get_patient(); ?>
+<?php $patient = get_patient(); $types = get_parameter_type($patient_id);?>
 <?php include('includes/header.php')?>
 <?php include('includes/call.php'); ?>
 <div role="main">
@@ -17,7 +17,20 @@
                     <?=$info['last_name'] .' '. $info['first_name'] .' '. $info['patronymic'] .
                         ' (' . get_date_birth($info['date_birth']) . ' - ' .  get_age($info['date_birth']) . ')'?>
                 </h2>
-                <?php if(set_chart($patient_id)) { ?>
+
+                <?php foreach($types as $param) {  ?>
+                        <?php if($_REQUEST['type'] == $param['code']) {  ?>
+                            <b>
+                                <?=$param['name']?>
+                            </b>
+                        <? } else { ?>
+                            <a href="/demo/show.php?patient_id=<?=$info['id']?>&type=<?=$param['code']?>">
+                                <?=$param['name']?>
+                            </a>
+                        <? } ?>
+                <?php } ?>
+
+                <?php if(set_chart($patient_id, $type)) { ?>
                     <div id="container" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
                 <?php } else { echo 'Нет данных для графика'; }?>
                 <div class="clearfix">

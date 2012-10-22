@@ -23,7 +23,7 @@
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.8.0.min.js"><\/script>')</script>
 
     <script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
-    <?php if(set_chart($patient_id)) { ?>
+    <?php if(set_chart($patient_id, $type)) { ?>
         <script src="/charts/js/highstock.js"></script>
         <script src="http://code.highcharts.com/stock/modules/exporting.js"></script>
         <script src="/charts/js/stock.js"></script>

@@ -212,9 +212,8 @@ function get_age($date)
     return $age . ' ' . $val;
 }
 
-function set_chart($patient_id)
+function set_chart($patient_id, $type)
 {
-    $type = 'pulse';
 
     $sql = query("select value as y, unix_timestamp(date) as x, parameter_types.name as title,
         preparations.name as tooltip,
@@ -238,9 +237,9 @@ function set_chart($patient_id)
     }
 }
 
-function get_chart($patient_id)
+function get_chart($patient_id, $type)
 {
-    $stock = set_chart($patient_id);
+    $stock = set_chart($patient_id, $type);
 
     $data = json_encode($stock);
 
@@ -269,4 +268,21 @@ function notifs()
     $records[] = $record;
 
     return $records;
+}
+
+function get_parameter_type($patient_id)
+{
+    $sql = query("select distinct(parameters.parameter_type_id), parameter_types.name as name, parameter_types.code as code
+    from parameters, parameter_types
+    where parameters.patient_id in($patient_id) AND parameters.parameter_type_id = parameter_types.id");
+
+
+    if($sql) {
+        while($record = mysql_fetch_assoc($sql))
+
+            $records[] = $record;
+
+        return $records;
+    }
+
 }

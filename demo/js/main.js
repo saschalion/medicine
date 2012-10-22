@@ -81,12 +81,6 @@ $('.submit').click(function() {
     $('.js-set-name-post').val(getCookie('fio'));
 });
 
-$('.js-chart-link').click(function(){
-    var id = this.id;
-
-    setCookie('chart', id, "Mon, 01-Dec-2012 00:00:00 GMT", "/");
-})
-
 // Некая авторизация
 
 $(document).ready(function() {

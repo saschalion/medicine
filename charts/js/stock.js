@@ -6,6 +6,12 @@ $(function () {
 
         var chart;
 
+        Highcharts.setOptions({
+            global: {
+                useUTC: false
+            }
+        });
+
         var options = {
             chart: {
                 renderTo: 'container'
@@ -90,7 +96,7 @@ $(function () {
             tooltip: {
                 shared: true,
                 formatter: function() {
-                    return tooltipTitle + '<b>' + this.y + '</b><br>' + 'за ' + Highcharts.dateFormat('%d.%m.%Y', this.x)
+                    return tooltipTitle + '<b>' + this.y + '</b><br>' + 'за ' + Highcharts.dateFormat('%d.%m.%Y %H:%M', this.x)
                 }
             },
             plotOptions: {
@@ -147,7 +153,13 @@ $(function () {
             }
         };
 
-        $.getJSON('/charts/loadData.php', function(data) {
+        $.urlParam = function(name){
+            var results = new RegExp('[\\?&]' + name + '=([^&#]*)').exec(window.location.href);
+            return results[1] || 0;
+        }
+
+
+        $.getJSON('/charts/loadData.php', {'patient_id': $.urlParam('patient_id'), 'type': $.urlParam('type')}, function(data) {
 
             var startNorm = options.yAxis.plotBands[0].from;
             var endNorm = options.yAxis.plotBands[0].to;
@@ -182,7 +194,7 @@ $(function () {
             subtitle = options.subtitle.text;
 
             for (i = 0; i < data.length; i++) {
-                yData.push({'x': parseInt(data[i]['x'] * 1000), 'y': parseInt(data[i]['y']), 'tooltip': data[i]['tooltip']});
+                yData.push({'x': data[i]['x'] * 1000, 'y': parseInt(data[i]['y']), 'tooltip': data[i]['tooltip']});
             }
 
             var dataLength = parseInt(yData.length - 1);
