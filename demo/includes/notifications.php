@@ -19,7 +19,7 @@ for($i=0;$i<count($patients); $i++) {
     <div class="alert
     <?php if(in_array($id, $str)) { echo 'alert-success'; } else { echo 'alert-info'; } ?>" id="<?=$id?>">
 
-            <a href="/demo/show.php?patient_id=<?=$uid?>&type=<?=$patients[$i]['code']?>" id="<?=$id?>" class="js-chart-link js-name" rel="tooltip" data-original-title="Просмотреть график по <?=$patients[$i]['name']?>у">
+            <a href="/demo/show.php?patient_id=<?=$uid?>&type=<?=$patients[$i]['code']?>&main=true" id="<?=$id?>" class="js-chart-link js-name" rel="tooltip" data-original-title="Просмотреть график по <?=$patients[$i]['name']?>у">
                 <strong>
                     <?=$patients[$i]['last_name'] .' '. $patients[$i]['first_name'] .' '. $patients[$i]['patronymic']?>
                 </strong>
