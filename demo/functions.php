@@ -154,10 +154,15 @@ function edit_patient()
 
 function get_patients($result)
 {
+
+    $result = explode(' ', $_REQUEST['search']);
+
+    $result = $result[0];
+
     $sql = "select * from patients";
 
     if($_REQUEST['search']) {
-        $sql =  $sql . 'where last_name like %Ber%';
+        $sql =  $sql . " where last_name like '%$result%'";
     }
 
     $q = query($sql);

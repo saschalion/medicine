@@ -5,14 +5,6 @@
 
 <div class="js-table-content">
     <div class="js-table">
-        <?php if($_REQUEST['search'])
-
-        $result = explode(' ', $_REQUEST['search']);
-
-        $result = $result[0];
-
-        echo $result;
-        ?>
         <table class="table table-striped">
             <thead>
             <tr>
@@ -38,7 +30,7 @@
             </tr>
             </thead>
             <tbody>
-            <?php $patient = get_patients($result); foreach($patient as $patient) { ?>
+            <?php $patient = get_patients($result, $name); foreach($patient as $patient) { ?>
             <tr>
                 <td>
                     <?=$patient['id']?>
