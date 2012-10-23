@@ -25,6 +25,9 @@
 <script src="js/vendor/bootstrap-typehead.js"></script>
 <script src="js/vendor/bootstrap-tooltip.js"></script>
 
+<script src="js/vendor/form.js"></script>
+<script src="js/search.js"></script>
+
 <script src="js/main.js"></script>
 </body>
 </html>

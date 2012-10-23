@@ -19,7 +19,7 @@ $('[rel="tooltip"]').tooltip();
 $(function() {
     var availableTags = [];
 
-    $.getJSON('/charts/loadPatiens.php?patiens=true', function(data) {
+    $.getJSON('/charts/loadPatiens.php', function(data) {
 
         for (i = 0; i < data.length; i++) {
             availableTags.push(data[i]['last_name'] + ' ' + data[i]['first_name'] + ' ' + data[i]['patronymic']);

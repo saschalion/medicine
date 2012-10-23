@@ -152,11 +152,17 @@ function edit_patient()
     }
 }
 
-function get_patients()
+function get_patients($result)
 {
-    $sql = query("select * from patients");
+    $sql = "select * from patients";
 
-    while($records = mysql_fetch_assoc($sql))
+    if($_REQUEST['search']) {
+        $sql =  $sql . 'where last_name like %Ber%';
+    }
+
+    $q = query($sql);
+
+    while($records = mysql_fetch_assoc($q))
 
     $new_records[] = $records;
 
@@ -181,8 +187,6 @@ parameters.parameter_type_id = parameter_types.id and parameters.patient_id = $p
         return $new_records;
     }
 }
-
-
 
 function get_patient()
 {

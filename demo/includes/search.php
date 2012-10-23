@@ -1,5 +1,5 @@
-<form class="form-search">
-    <input type="text" class="input-medium search-query span3" id="tags" placeholder="Введите имя">
+<form class="form-search js-search" method="post" action="">
+    <input type="text" name="search" class="input-medium search-query span3" id="tags" placeholder="Введите имя">
     <span class="help-inline">Возраст</span>
     <select class="span1">
         <option value="0">от</option>
@@ -34,5 +34,5 @@
         <option value="13">80</option>
         <option value="14">...</option>
     </select>
-    <button type="submit" class="btn">Найти</button>
+    <input type="submit" class="btn" value="Найти" name="submit">
 </form>
