@@ -156,7 +156,7 @@ $('.sent').click(function() {
 // Закрыть навсегда
 
 $('.close').click(function() {
-    id = $(this).attr('id').replace('close-', '');
+    id = $(this).attr('id');
     var name = $(this).parents('.alert').find('.js-name').text();
 
     setcookies('closed');

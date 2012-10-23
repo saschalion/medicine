@@ -9,9 +9,9 @@
     <div class="main">
         <div class="main__inner">
             <?php include($_SERVER['DOCUMENT_ROOT'] . '/demo/includes/breadcrumbs.php')?>
-            <h2>Пациенты</h2>
+            <h2>План лечения</h2>
             <?php include('includes/search.php'); ?>
-            <?php include('includes/patients.php'); ?>
+            <?php include('includes/plan.php'); ?>
         </div>
     </div>
 

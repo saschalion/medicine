@@ -260,6 +260,17 @@ function notifs()
     WHERE (value < start_norm OR value > end_norm) AND YEAR(date) >= '2010' AND YEAR(date) <= '2012' AND (parameter_norm_id = parameter_norms.id
     AND patients.id = parameters.patient_id) ORDER BY date DESC");
 
+//    select distinct(names), uid, fname, patr, lname, val, pid, datetime from
+//(SELECT distinct(parameters.id) as pid, patients.last_name as lname, patients.id as uid,
+//    patients.first_name as fname, patients.patronymic as patr,
+//    parameters.date as datetime, parameters.value as val,
+//    (select LOWER(parameter_types.name) from parameter_types where parameters.parameter_type_id = parameter_types.id
+//    limit 1) as names,
+//    (select parameter_types.code from parameter_types where parameters.parameter_type_id = parameter_types.id limit 1) as code
+//    FROM parameters, parameter_norms, patients
+//    WHERE (value < start_norm OR value > end_norm) AND YEAR(date) >= '2010' AND YEAR(date) <= '2012' AND (parameter_norm_id = parameter_norms.id
+//        AND patients.id = parameters.patient_id) ORDER BY date DESC) as q, parameter_types
+
     while($record = mysql_fetch_assoc($sql))
 
     $records[] = $record;
@@ -303,4 +314,40 @@ function get_preparats()
     $data = json_encode($stock);
 
     return $data;
+}
+
+function get_dispensary()
+{
+    $sql = query("SELECT plans.id as plan_id, patients.id as uid, patients.last_name, patients.first_name, patients.patronymic,
+    plans.title, plans.date_from, plans.date_to  from patients, plans where unix_timestamp(date_from) >= (unix_timestamp(now()) + 60*60*24*30)
+    AND (unix_timestamp(now()) + 60*60*24*30) < unix_timestamp(date_to) AND plans.patient_id = patients.id");
+
+    if($sql) {
+        while($record = mysql_fetch_assoc($sql))
+
+            $records[] = $record;
+
+        return $records;
+    }
+}
+
+function get_plan($patient_id)
+{
+    $sql = "SELECT plans.id as pid, patients.id as uid, plans.date, patients.last_name, patients.first_name, patients.patronymic,
+    plans.title, plans.date_from, plans.date_to, plans.contraindications, preparations.name as preparation
+    from patients, plans, preparations where plans.patient_id = patients.id and plans.preparation_id = preparations.id";
+
+    if($patient_id) {
+        $sql = $sql . ' and plans.patient_id = "'.$patient_id.'"';
+    }
+
+    $q = query($sql);
+
+    if($sql) {
+        while($record = mysql_fetch_assoc($q))
+
+            $records[] = $record;
+
+        return $records;
+    }
 }

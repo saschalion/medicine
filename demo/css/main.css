@@ -20,7 +20,7 @@
 .sidebar {
     position: relative;
     float: left;
-    width: 270px;
+    width: 290px;
 }
 
 .sidebar__inner {
@@ -30,13 +30,13 @@
 
 .sidebar_type_left {
     padding: 0 0 0 10px;
-    margin-right: -300px;
+    margin-right: -310px;
     left: 0;
 }
 
 .sidebar_type_right {
     padding: 0 10px 0 0;
-    margin-left: -300px;
+    margin-left: -310px;
     right: 0;
 }
 
@@ -46,7 +46,7 @@
 }
 
 .main__inner {
-    padding: 0 300px;
+    padding: 0 310px;
 }
 
 body .alert {
@@ -58,4 +58,8 @@ body .alert .close {
     position: absolute;
     top: 0;
     right: 3px;
+}
+
+body .breadcrumb {
+    margin: 20px 0 0;
 }

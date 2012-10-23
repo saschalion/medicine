@@ -1,3 +1,7 @@
+<a class="btn btn-success" style="float: right;" href="new.php">
+    <i class="icon-plus-sign"></i>
+    Добавить пациента
+</a>
 <table class="table table-striped">
     <thead>
     <tr>
@@ -20,9 +24,6 @@
         <th>
             Заболевание
         </th>
-        <th>
-            Действия
-        </th>
     </tr>
     </thead>
     <tbody>
@@ -32,7 +33,9 @@
             <?=$patient['id']?>
         </td>
         <td>
-            <?=$patient['last_name']?>
+            <a id="<?=$patient['id']?>" title="Просмотр" href="show.php?patient_id=<?=$patient['id']?>&main=true&type=pulse">
+                <?=$patient['last_name']?>
+            </a>
         </td>
         <td>
             <?=$patient['first_name']?>
@@ -52,14 +55,6 @@
         </td>
         <td>
             <?=$patient['desease']?>
-        </td>
-        <td>
-            <a title="Редактировать" href="edit.php?patient_id=<?=$patient['id']?>&main=true" class="btn">
-                <i class="icon-pencil"></i>
-            </a>
-            <a id="<?=$patient['id']?>" title="Просмотр" href="show.php?patient_id=<?=$patient['id']?>&main=true&type=pulse" class="btn js-chart-link">
-                <i class="icon-eye-open"></i>
-            </a>
         </td>
     </tr>
         <?php } ?>

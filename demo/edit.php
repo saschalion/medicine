@@ -1,4 +1,5 @@
-﻿<?php session_start(); include('includes/head.php'); ?>
+﻿<?php //session_start();
+include('includes/head.php'); ?>
 <?php
 $patient = get_patient($patient_id); $arr = edit_patient();
 ?>
@@ -6,6 +7,7 @@ $patient = get_patient($patient_id); $arr = edit_patient();
 <div role="main">
     <?php include('includes/login.php'); ?>
     <div class="span12">
+        <?php include($_SERVER['DOCUMENT_ROOT'] . '/demo/includes/breadcrumbs.php')?>
         <?=$message?>
         <?php foreach($patient as $info) {
         $url = '/demo/edit.php?patient_id=' . $info['id']; ?>

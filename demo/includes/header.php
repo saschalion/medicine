@@ -15,7 +15,7 @@
                     <li><a href="#">Документы</a></li>
                     <li><a href="#">Услуги</a></li>
                     <li><a href="#">Записи</a></li>
-                    <li><a href="#">План лечения</a></li>
+                    <li><a href="/demo/plans.php">План лечения</a></li>
                 </ul>
                 <div class="btn-group pull-right gap-left-out_10">
                     <a class="btn" href="#">Профиль</a>

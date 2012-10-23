@@ -34,7 +34,7 @@ for($i=0;$i<count($patients); $i++) {
         <?php } else { ?>
             <button type="button" class="close" title="Никогда не показывать" id="close-<?=$patients[$i]['id']?>" data-dismiss="alert">×</button>
             <button type="button" class="btn btn-success">Отправлено</button>
-            <button type="button" class="btn btn-info sent" rel="tooltip" data-original-title="Пациент явился">Явился</button>
+            <button type="button" class="btn btn-danger sent" rel="tooltip" data-original-title="Пациент явился">Отметить явку</button>
         <?php } ?>
     </div>
 

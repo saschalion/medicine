@@ -27,6 +27,7 @@ if($submit) {
     <?php include('includes/login.php'); ?>
 
     <div class="span12">
+        <?php include($_SERVER['DOCUMENT_ROOT'] . '/demo/includes/breadcrumbs.php')?>
         <h2>Добавить пациента</h2>
         <form action="new.php" method="post">
             <p>
