@@ -19,7 +19,8 @@
             <section id="overview">
                 <h2>Личная карточка &mdash;
                     <?=$info['last_name'] .' '. $info['first_name'] .' '. $info['patronymic'] .
-                        ' (' . get_date_birth($info['date_birth']) . ' - ' .  get_age($info['date_birth']) . ')'?>
+                        ' (' . get_date_birth($info['date_birth']) . ' - ' .  get_age($info['date_birth']) . ')'
+                    ?>
                 </h2>
                 <div class="clearfix">
                     <a style="float: right;" title="Редактировать" href="edit.php?patient_id=<?=$info['id']?>&main=true" class="btn btn-info">

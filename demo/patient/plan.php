@@ -1,3 +1,5 @@
+<?php $plans = get_plan($patient_id); if ($plans) { ?>
+
 <table class="table table-striped">
     <thead>
         <tr>
@@ -23,7 +25,7 @@
         </tr>
     </thead>
     <tbody>
-        <?php $plans = get_plan($patient_id); foreach($plans as $plan) { ?>
+        <?php foreach($plans as $plan) { ?>
             <tr>
                 <td>
                     <?=$plan['pid']?>
@@ -50,3 +52,13 @@
         <?php } ?>
     </tbody>
 </table>
+
+<?php } else { ?>
+    <p>Нет плана лечения.</p>
+    <p>
+        <a href="edit.php?patient_id=<?=$patient_id?>&plan=true" class="btn btn-success">
+            <i class="icon-plus-sign"></i> Добавить
+        </a>
+    </p>
+<? } ?>
+

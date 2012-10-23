@@ -62,8 +62,8 @@
         </li>
     <?php } ?>
     <?php if($url[0] == $urls['edit']) { ?>
-    <li>
-        <a class="active">Редактирование карточки</a>
+    <li class="active">
+        Редактирование карточки
     </li>
     <?php } ?>
     <?php if($url[0] == $urls['new']) { ?>
