@@ -106,7 +106,7 @@ $(document).ready(function() {
             var authInfo = $('.auth-info').val();
 
             setCookie('auth', authInfo, "Mon, 01-Dec-2012 00:00:00 GMT", "/");
-            window.location.href = 'index.php';
+            window.location.href = '/demo/';
         });
     } else {
 
@@ -150,7 +150,7 @@ $('.sent').click(function() {
 
     setcookies(name);
 
-    window.location.href = 'index.php';
+    window.location.href = '/demo/';
 });
 
 // Закрыть навсегда
