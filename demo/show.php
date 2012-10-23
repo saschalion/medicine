@@ -31,11 +31,10 @@
                 <?php $this_url = "/demo/show.php?patient_id=$info[id]"; ?>
 
                 <?php
-                if(!$_REQUEST['type'] && $types) {
-                    $types = get_types($patient_id);
-
-                    $redirect = print "<META HTTP-EQUIV=Refresh content=0;URL=/demo/show.php?patient_id=".$patient_id."&type=".$types[0]['code']."&main=true>";
-                }
+                if(!$_REQUEST['type'] && $_REQUEST['main'] && $types) {
+                        $types = get_types($patient_id);
+                        echo "<META HTTP-EQUIV=Refresh content=0;URL=/demo/show.php?patient_id=".$patient_id."&type=".$types[0]['code']."&main=true>";
+                    }
                 ?>
 
                 <div class="navbar clearfix">
