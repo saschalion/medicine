@@ -10,7 +10,13 @@
 
     $current_url = $_SERVER["REQUEST_URI"];
 
-    $url = (explode('?', $current_url));   ?>
+    $url = (explode('?', $current_url));
+
+    $patient_url = "/demo/show.php?patient_id=$info[id]";
+
+    $show = ($url[0] == $urls['show']);
+
+    ?>
 
     <?php if($current_url == '/demo/') { ?>
         <li class="active">Главная</li>
@@ -22,9 +28,9 @@
             Личная карточка
         </li>
     <?php } ?>
-    <?php if($_REQUEST['info']) { ?>
+    <?php if($show && $_REQUEST['info']) { ?>
         <li>
-            <a href="/demo/show.php?patient_id=<?=$info['id']?>&type=sugar&main=true">
+            <a href="<?=$patient_url?>&type=sugar&main=true">
                 Личная карточка
             </a>
             <span class='divider'>/</span>
@@ -33,15 +39,26 @@
             Паспортные данные
         </li>
     <?php } ?>
-    <?php if($_REQUEST['plan']) { ?>
+    <?php if($show && $_REQUEST['plan']) { ?>
         <li>
-            <a href="/demo/show.php?patient_id=<?=$info['id']?>&type=sugar&main=true">
+            <a href="<?=$patient_url?>&type=sugar&main=true">
                 Личная карточка
             </a>
             <span class='divider'>/</span>
         </li>
         <li class="active">
             План лечения
+        </li>
+    <?php } ?>
+    <?php if($show && $_REQUEST['systems']) { ?>
+        <li>
+            <a href="<?=$patient_url?>&type=sugar&main=true">
+                Личная карточка
+            </a>
+            <span class='divider'>/</span>
+        </li>
+        <li class="active">
+            Системы
         </li>
     <?php } ?>
     <?php if($url[0] == $urls['edit']) { ?>

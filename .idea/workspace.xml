@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9b08ff6f-0f6d-4ad4-8168-fcf00851700f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/12.10.23.sql" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo/includes/breadcrumbs.php" afterPath="$PROJECT_DIR$/demo/includes/breadcrumbs.php" />
     </list>
     <ignored path="medicine.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -21,7 +21,39 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="breadcrumbs.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/demo/includes/breadcrumbs.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="37" column="31" selection-start="999" selection-end="999" vertical-scroll-proportion="-11.875">
+              <folding>
+                <marker date="1350980880035" expanded="true" signature="802:822" placeholder="..." />
+                <marker date="1350980880035" expanded="true" signature="1116:1136" placeholder="..." />
+                <marker date="1350980880035" expanded="true" signature="1726:1743" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="show.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/demo/show.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="124" column="0" selection-start="5866" selection-end="5866" vertical-scroll-proportion="1.422569">
+              <folding>
+                <marker date="1350980427699" expanded="true" signature="1404:1604" placeholder="..." />
+                <marker date="1350980427699" expanded="true" signature="1451:1604" placeholder="..." />
+                <marker date="1350980427699" expanded="true" signature="1545:1604" placeholder="..." />
+                <marker date="1350980427699" expanded="true" signature="3173:3298" placeholder="..." />
+                <marker date="1350980427699" expanded="true" signature="3386:3449" placeholder="..." />
+                <marker date="1350980427699" expanded="true" signature="4415:4514" placeholder="..." />
+                <marker date="1350980427699" expanded="true" signature="4630:4711" placeholder="..." />
+                <marker date="1350980427699" expanded="true" signature="4777:4845" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -43,13 +75,13 @@
         <option value="$PROJECT_DIR$/demo/js/main.js" />
         <option value="$PROJECT_DIR$/demo/includes/header.php" />
         <option value="$PROJECT_DIR$/demo/includes/plan.php" />
-        <option value="$PROJECT_DIR$/demo/includes/breadcrumbs.php" />
         <option value="$PROJECT_DIR$/demo/includes/dispensary.php" />
         <option value="$PROJECT_DIR$/demo/functions.php" />
         <option value="$PROJECT_DIR$/demo/patient/plan.php" />
         <option value="$PROJECT_DIR$/demo/show.php" />
         <option value="$PROJECT_DIR$/demo/patient/history.php" />
         <option value="$PROJECT_DIR$/demo/patient/systems.php" />
+        <option value="$PROJECT_DIR$/demo/includes/breadcrumbs.php" />
       </list>
     </option>
   </component>
@@ -244,8 +276,8 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="24" width="1922" height="1037" extended-state="6" />
-    <editor active="false" />
+    <frame x="-1" y="24" width="1922" height="1037" extended-state="7" />
+    <editor active="true" />
     <layout>
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -253,7 +285,7 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295583" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27908218" sideWeight="0.6704417" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27908218" sideWeight="0.6704417" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -399,38 +431,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/demo/includes/breadcrumbs.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="24" selection-start="1267" selection-end="1267" vertical-scroll-proportion="0.5678271">
-          <folding>
-            <marker date="1350979435867" expanded="true" signature="1348:1365" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/demo/patient/plan.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="26" column="16" selection-start="575" selection-end="575" vertical-scroll-proportion="-16.25">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/demo/show.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="124" column="0" selection-start="5866" selection-end="5866" vertical-scroll-proportion="-17.5">
-          <folding>
-            <element signature="n#style#0;n#a#0;n#div#0;n#section#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <marker date="1350980427699" expanded="true" signature="1404:1604" placeholder="..." />
-            <marker date="1350980427699" expanded="true" signature="1451:1604" placeholder="..." />
-            <marker date="1350980427699" expanded="true" signature="1545:1604" placeholder="..." />
-            <marker date="1350980427699" expanded="true" signature="3173:3298" placeholder="..." />
-            <marker date="1350980427699" expanded="true" signature="3386:3449" placeholder="..." />
-            <element signature="n#style#0;n#div#2;n#section#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <marker date="1350980427699" expanded="true" signature="4415:4514" placeholder="..." />
-            <marker date="1350980427699" expanded="true" signature="4630:4711" placeholder="..." />
-            <marker date="1350980427699" expanded="true" signature="4777:4845" placeholder="..." />
-            <marker date="1350980427699" expanded="true" signature="4911:5050" placeholder="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -445,6 +449,33 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="15" column="24" selection-start="385" selection-end="385" vertical-scroll-proportion="0.27010804">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/demo/includes/breadcrumbs.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="37" column="31" selection-start="999" selection-end="999" vertical-scroll-proportion="-11.875">
+          <folding>
+            <marker date="1350980880035" expanded="true" signature="802:822" placeholder="..." />
+            <marker date="1350980880035" expanded="true" signature="1116:1136" placeholder="..." />
+            <marker date="1350980880035" expanded="true" signature="1726:1743" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/demo/show.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="124" column="0" selection-start="5866" selection-end="5866" vertical-scroll-proportion="1.422569">
+          <folding>
+            <marker date="1350980427699" expanded="true" signature="1404:1604" placeholder="..." />
+            <marker date="1350980427699" expanded="true" signature="1451:1604" placeholder="..." />
+            <marker date="1350980427699" expanded="true" signature="1545:1604" placeholder="..." />
+            <marker date="1350980427699" expanded="true" signature="3173:3298" placeholder="..." />
+            <marker date="1350980427699" expanded="true" signature="3386:3449" placeholder="..." />
+            <marker date="1350980427699" expanded="true" signature="4415:4514" placeholder="..." />
+            <marker date="1350980427699" expanded="true" signature="4630:4711" placeholder="..." />
+            <marker date="1350980427699" expanded="true" signature="4777:4845" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
