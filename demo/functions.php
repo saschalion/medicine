@@ -1,6 +1,4 @@
-<?php
-
-function logout()
+<?php function logout()
 {
     if($_GET['logout']) {
         setcookie('auth', '', 0, "/");
@@ -83,7 +81,26 @@ function escape($value) {
     return $record;
 }
 
-function query($value) {
+function set_fields()
+{
+    $array = array(
+        'first_name' => post('first_name'),
+        'last_name' => post('last_name'),
+        'patronymic' => post('patronymic'),
+        'sex' => post('sex'),
+        'document' => post('document'),
+        'address' => trim(post('address')),
+        'phone' => post('phone'),
+        'mobile_phone' => post('mobile_phone'),
+        'mobile_phone_second' => post('mobile_phone_second'),
+        'desease' => post('desease'),
+        'date_birth' => date("Y-m-d H:m:s",strtotime(post('date_birth'))
+    ));
+    return $array;
+}
+
+function query($value)
+{
     $sql = mysql_query($value);
 
     return $sql;
@@ -91,19 +108,7 @@ function query($value) {
 
 function create_patient()
 {
-    $array = array(
-        'first_name' => $_POST['first_name'],
-        'last_name' => $_POST['last_name'],
-        'patronymic' => $_POST['patronymic'],
-        'sex' => $_POST['sex'],
-        'document' => $_POST['document'],
-        'address' => $_POST['address'],
-        'phone' => $_POST['phone'],
-        'mobile_phone' => $_POST['mobile_phone'],
-        'mobile_phone_second' => $_POST['mobile_phone_second'],
-        'desease' => $_POST['desease'],
-        'date_birth' => date("Y-m-d H:m:s",strtotime($_POST['date_birth'])),
-    );
+    $array = set_fields();
 
     if(count($array) > 0) {
         foreach($array as $key => $value) {
@@ -126,19 +131,8 @@ function create_patient()
 function edit_patient()
 {
     if($_REQUEST['save']) {
-        $array = array(
-            'first_name' => post('first_name'),
-            'last_name' => post('last_name'),
-            'patronymic' => post('patronymic'),
-            'sex' => post('sex'),
-            'document' => post('document'),
-            'address' => post('address'),
-            'phone' => post('phone'),
-            'mobile_phone' => post('mobile_phone'),
-            'mobile_phone_second' => post('mobile_phone_second'),
-            'desease' => post('desease'),
-            'date_birth' => date("Y-m-d H:m:s",strtotime(post('date_birth'))
-        ));
+
+        $array = set_fields();
 
         if (count($array) > 0) {
             foreach ($array as $key => $value) {
@@ -152,7 +146,7 @@ function edit_patient()
 
         $sql = query("UPDATE patients SET $implode_array where id='".escape($_SESSION['id'])."'");
 
-        $redirect =  print "<META HTTP-EQUIV=Refresh content=0;URL=/demo/edit.php?patient_id=".$_SESSION['id'].">";
+        $redirect =  print "<META HTTP-EQUIV=Refresh content=0;URL=/demo/edit.php?patient_id=".$_SESSION['id']."&main=true>";
 
         return array($sql, $redirect);
     }
@@ -287,4 +281,26 @@ function get_parameter_type($patient_id)
 
         return $records;
     }
+}
+
+function set_preparats()
+{
+    $sql = query("select name, code from preparations");
+
+    if($sql) {
+        while($record = mysql_fetch_assoc($sql))
+
+            $records[] = $record;
+
+        return $records;
+    }
+}
+
+function get_preparats()
+{
+    $stock = set_preparats();
+
+    $data = json_encode($stock);
+
+    return $data;
 }

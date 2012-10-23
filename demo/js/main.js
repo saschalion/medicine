@@ -31,6 +31,21 @@ $(function() {
     });
 });
 
+$(function() {
+    var availableTags = [];
+
+    $.getJSON('/charts/loadPreparations.php', function(data) {
+
+        for (i = 0; i < data.length; i++) {
+            availableTags.push(data[i]['name'] + ' (' + data[i]['code'] + ')');
+        }
+    });
+
+    $( "#preparation" ).typeahead({
+        source: availableTags
+    });
+});
+
 function setCookie (name, value, expires, path, domain, secure) {
     document.cookie = name + "=" + escape(value) +
         ((expires) ? "; expires=" + expires : "") +

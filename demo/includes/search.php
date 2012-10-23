@@ -37,5 +37,6 @@
     <button type="submit" class="btn">Найти</button>
 </form>
 <a class="btn btn-success" style="float: right;" href="new.php">
+    <i class="icon-plus-sign"></i>
     Добавить пациента
 </a>

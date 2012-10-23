@@ -9,7 +9,7 @@ $(function() {
         firstDay: 1
     });
 
-    $( "#date_birth" ).datepicker({
+    $( "#date_birth, .js-datepicker").datepicker({
         changeYear: true,
         changeMonth: true,
         yearRange: ("c-100:c+0"),

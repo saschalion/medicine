@@ -12,7 +12,7 @@ if($submit) {
 
         $result = mysql_insert_id();
 
-        echo "<META HTTP-EQUIV=Refresh content=0;URL=/demo/show.php?patient_id=$result>";
+        echo "<META HTTP-EQUIV=Refresh content=0;URL=/demo/edit.php?patient_id=$result&main=true>";
     }
 }
 ?>
@@ -85,7 +85,7 @@ if($submit) {
                     Адрес
                 </label>
                 <div class="controls">
-                    <input type="text" id="address" name="address">
+                    <textarea id="address" name="address"></textarea>
                 </div>
             </div>
             <div class="control-group">

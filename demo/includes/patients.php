@@ -54,7 +54,7 @@
             <?=$patient['desease']?>
         </td>
         <td>
-            <a title="Редактировать" href="edit.php?patient_id=<?=$patient['id']?>" class="btn">
+            <a title="Редактировать" href="edit.php?patient_id=<?=$patient['id']?>&main=true" class="btn">
                 <i class="icon-pencil"></i>
             </a>
             <a id="<?=$patient['id']?>" title="Просмотр" href="show.php?patient_id=<?=$patient['id']?>&main=true&type=pulse" class="btn js-chart-link">
