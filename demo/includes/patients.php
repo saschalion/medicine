@@ -33,7 +33,7 @@
             <?=$patient['id']?>
         </td>
         <td>
-            <a id="<?=$patient['id']?>" title="Просмотр" href="show.php?patient_id=<?=$patient['id']?>&main=true&type=pulse">
+            <a id="<?=$patient['id']?>" title="Просмотр" href="show.php?patient_id=<?=$patient['id']?>&main=true">
                 <?=$patient['last_name']?>
             </a>
         </td>

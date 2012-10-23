@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost
--- Время создания: Окт 23 2012 г., 15:22
+-- Время создания: Окт 23 2012 г., 17:03
 -- Версия сервера: 5.1.63
 -- Версия PHP: 5.2.10-2ubuntu6.7
 
@@ -57,13 +57,13 @@ INSERT INTO `parameters` (`id`, `value`, `closed`, `sent`, `date`, `parameter_ty
 (13, '30', NULL, NULL, '2009-09-11 00:00:00', 3, 80, 20, 1),
 (14, '35', NULL, NULL, '2008-12-11 00:00:00', 3, 80, 21, 1),
 (15, '40', NULL, NULL, '2008-11-11 00:00:00', 3, 80, 22, 1),
-(16, '45', NULL, NULL, '2012-10-22 19:25:39', 1, 80, 23, 1),
+(16, '45', NULL, NULL, '2012-10-23 15:37:42', 2, 80, 23, 1),
 (17, '50', NULL, NULL, '2002-07-11 00:00:00', 3, 80, 24, 1),
 (18, '60', NULL, NULL, '2001-01-11 00:00:00', 3, 80, 25, 1),
 (19, '76', NULL, NULL, '2000-02-11 00:00:00', 3, 80, 26, 1),
 (20, '90', NULL, NULL, '1999-03-11 00:00:00', 3, 80, 27, 1),
-(21, '100', NULL, NULL, '2012-10-22 19:25:32', 1, 80, 28, 1),
-(22, '110', NULL, NULL, '2012-10-22 19:25:48', 1, 80, 29, 1),
+(21, '100', NULL, NULL, '2012-10-23 15:38:01', 2, 80, 28, 1),
+(22, '110', NULL, NULL, '2012-10-23 15:38:11', 2, 80, 29, 1),
 (23, '79', NULL, NULL, '2010-02-11 00:00:00', 3, 80, 30, 1),
 (24, '89', NULL, NULL, '2010-01-11 00:00:00', 3, 80, 31, 1),
 (25, '69', NULL, NULL, '2006-02-11 00:00:00', 3, 80, 32, 1),
@@ -1981,6 +1981,22 @@ INSERT INTO `preparations` (`id`, `name`, `code`) VALUES
 --
 -- Ограничения внешнего ключа сохраненных таблиц
 --
+
+--
+-- Ограничения внешнего ключа таблицы `parameters`
+--
+ALTER TABLE `parameters`
+  ADD CONSTRAINT `parameter_types_id_FK_1` FOREIGN KEY (`parameter_type_id`) REFERENCES `parameter_types` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `parameter_types_id_FK_2` FOREIGN KEY (`patient_id`) REFERENCES `patients` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `parameter_types_id_FK_6` FOREIGN KEY (`parameter_norm_id`) REFERENCES `parameter_norms` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `preparation_id_FK_3` FOREIGN KEY (`preparation_id`) REFERENCES `preparations` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Ограничения внешнего ключа таблицы `parameter_norms`
+--
+ALTER TABLE `parameter_norms`
+  ADD CONSTRAINT `parameter_types_id_FK_5` FOREIGN KEY (`parameter_types_id`) REFERENCES `parameter_types` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `patient_id_FK_4` FOREIGN KEY (`patient_id`) REFERENCES `patients` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ограничения внешнего ключа таблицы `plans`

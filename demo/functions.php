@@ -163,6 +163,27 @@ function get_patients()
     return $new_records;
 }
 
+function get_types($patient_id)
+{
+    $sql = query("select distinct(patients.id), patients.last_name, patients.first_name, patients.patronymic, patients.sex,
+patients.date_birth, patients.desease,
+parameter_types.code from patients, parameters, parameter_types where patients.id = parameters.patient_id and
+parameters.parameter_type_id = parameter_types.id and parameters.patient_id = $patient_id limit 1");
+
+    $result = mysql_num_rows($sql);
+
+    if($result > 0) {
+
+        $records = mysql_fetch_assoc($sql);
+
+        $new_records[] = $records;
+
+        return $new_records;
+    }
+}
+
+
+
 function get_patient()
 {
     $sql = query("select * from patients where id = '".$_GET['patient_id']."' limit 1");
