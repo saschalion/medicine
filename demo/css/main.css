@@ -1,4 +1,5 @@
 @import url('docs.css');
+@import url('./b-datepicker/b-datepicker.css');
 
 .sidebar-nav {
     top: 70px;

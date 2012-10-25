@@ -1,12 +1,15 @@
 $(function() {
+
     $( "#datepicker" ).datepicker({
         showWeek: true,
-        firstDay: 1
+        firstDay: 1,
+        minDate: 0
     });
 
     $( "#datepicker-2" ).datepicker({
         showWeek: true,
-        firstDay: 1
+        firstDay: 1,
+        minDate: 0
     });
 
     $( "#date_birth, .js-datepicker").datepicker({
@@ -16,4 +19,5 @@ $(function() {
         showWeek: true,
         firstDay: 1
     });
+
 });

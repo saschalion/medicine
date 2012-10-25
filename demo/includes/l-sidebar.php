@@ -1,4 +1,4 @@
-<?php include('call.php'); ?>
+<?php include($_SERVER['DOCUMENT_ROOT']  . '/demo/patient/call.php'); ?>
 <?php include('login.php'); ?>
 
 <aside class="sidebar sidebar_type_left affix">

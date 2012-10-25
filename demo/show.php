@@ -1,8 +1,8 @@
 <?php include('includes/head.php'); ?>
 <?php $patient = get_patient(); $types = get_parameter_type($patient_id);?>
 <?php include('includes/header.php')?>
-<?php include('includes/call.php'); ?>
 <div role="main" xmlns="http://www.w3.org/1999/html">
+    <?php include($_SERVER['DOCUMENT_ROOT']  . '/demo/patient/call.php'); ?>
     <aside class="sidebar sidebar_type_left affix">
         <h2>Явки</h2>
         <div class="sidebar__inner">
@@ -306,10 +306,7 @@
     </div>
     <?php include('includes/r-sidebar.php'); ?>
 </div>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.8.0.min.js"><\/script>')</script>
 <script src="js/plugins.js"></script>
-
 
 <script src="js/vendor/bootstrap.min.js"></script>
 <script src="js/vendor/modernizr-2.6.1.min.js"></script>
@@ -317,6 +314,6 @@
 <script src="js/vendor/bootstrap-collapse.js"></script>
 
 <script src="js/main.js"></script>
-
+<script src="js/datepicker.js"></script>
 </body>
 </html>

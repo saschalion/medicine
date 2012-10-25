@@ -2,9 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9b08ff6f-0f6d-4ad4-8168-fcf00851700f" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/demo/css/b-datepicker/datepicker-head.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/demo/css/b-datepicker/datepicker-nav.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/demo/css/b-datepicker/b-datepicker.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/demo/includes/call.php" afterPath="$PROJECT_DIR$/demo/patient/call.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/charts/loadPatiens.php" afterPath="$PROJECT_DIR$/charts/loadPatiens.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo/css/main.css" afterPath="$PROJECT_DIR$/demo/css/main.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo/edit.php" afterPath="$PROJECT_DIR$/demo/edit.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo/functions.php" afterPath="$PROJECT_DIR$/demo/functions.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo/includes/patients.php" afterPath="$PROJECT_DIR$/demo/includes/patients.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo/includes/head.php" afterPath="$PROJECT_DIR$/demo/includes/head.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo/includes/l-sidebar.php" afterPath="$PROJECT_DIR$/demo/includes/l-sidebar.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo/includes/notifications.php" afterPath="$PROJECT_DIR$/demo/includes/notifications.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo/index.php" afterPath="$PROJECT_DIR$/demo/index.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo/js/datepicker.js" afterPath="$PROJECT_DIR$/demo/js/datepicker.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo/js/main.js" afterPath="$PROJECT_DIR$/demo/js/main.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demo/show.php" afterPath="$PROJECT_DIR$/demo/show.php" />
     </list>
     <ignored path="medicine.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -24,44 +37,40 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="patients.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/demo/includes/patients.php">
+      <file leaf-file-name="show.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/demo/show.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="40" selection-start="625" selection-end="625" vertical-scroll-proportion="-15.0">
+            <state line="308" column="0" selection-start="15616" selection-end="15616" vertical-scroll-proportion="-24.083334">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="head.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/demo/includes/head.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="20" column="29" selection-start="917" selection-end="917" vertical-scroll-proportion="-12.5">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="plan.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/demo/patient/plan.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="edit.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/demo/edit.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="245" column="100" selection-start="10747" selection-end="10747" vertical-scroll-proportion="-12.916667">
               <folding>
-                <element signature="n#style#0;n#a#0;n#!!top" expanded="true" />
-                <marker date="1350994130491" expanded="true" signature="228:945" placeholder="..." />
-                <marker date="1350994130491" expanded="true" signature="248:760" placeholder="..." />
-                <marker date="1350994130491" expanded="true" signature="780:945" placeholder="..." />
-                <marker date="1350994130491" expanded="true" signature="891:945" placeholder="..." />
-                <marker date="1350994130491" expanded="true" signature="912:945" placeholder="..." />
-                <marker date="1350994130491" expanded="true" signature="995:1035" placeholder="..." />
-                <marker date="1350994130491" expanded="true" signature="1237:1270" placeholder="..." />
-                <marker date="1350994130491" expanded="true" signature="1328:1361" placeholder="..." />
-                <marker date="1350994130491" expanded="true" signature="1419:1452" placeholder="..." />
-                <marker date="1350994130491" expanded="true" signature="1503:1562" placeholder="..." />
-                <marker date="1350994130491" expanded="true" signature="1740:1773" placeholder="..." />
-                <marker date="1350994130491" expanded="true" signature="1954:2256" placeholder="..." />
-                <marker date="1350994130491" expanded="true" signature="1963:2250" placeholder="..." />
+                <element signature="e#673#693#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/demo/index.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="25" selection-start="517" selection-end="517" vertical-scroll-proportion="-11.875">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="search.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/demo/includes/search.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="37" column="11" selection-start="1487" selection-end="1487" vertical-scroll-proportion="-23.125">
-              <folding />
             </state>
           </provider>
         </entry>
@@ -69,7 +78,16 @@
       <file leaf-file-name="loadPatiens.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/charts/loadPatiens.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="10" selection-start="235" selection-end="235" vertical-scroll-proportion="-4.375">
+            <state line="7" column="44" selection-start="269" selection-end="269" vertical-scroll-proportion="-4.375">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="stock.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/charts/js/stock.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="155" column="8" selection-start="4538" selection-end="4708" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -78,39 +96,8 @@
       <file leaf-file-name="main.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/demo/js/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="38" selection-start="835" selection-end="835" vertical-scroll-proportion="0.0">
+            <state line="180" column="30" selection-start="4943" selection-end="4943" vertical-scroll-proportion="0.0">
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="loadData.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/charts/loadData.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="0" selection-start="7" selection-end="119" vertical-scroll-proportion="-1.25">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="search.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/demo/js/search.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="26" selection-start="352" selection-end="352" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="breadcrumbs.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/demo/includes/breadcrumbs.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="50" column="34" selection-start="1352" selection-end="1352" vertical-scroll-proportion="-17.208334">
-              <folding>
-                <marker date="1350990342691" expanded="true" signature="802:822" placeholder="..." />
-                <marker date="1350990342691" expanded="true" signature="1116:1136" placeholder="..." />
-                <marker date="1350990342691" expanded="true" signature="1741:1751" placeholder="..." />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -118,16 +105,25 @@
       <file leaf-file-name="functions.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/demo/functions.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="156" column="0" selection-start="3841" selection-end="3841" vertical-scroll-proportion="0.36045057">
+            <state line="7" column="24" selection-start="238" selection-end="238" vertical-scroll-proportion="0.12804878">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="loadPreparations.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/charts/loadPreparations.php">
+      <file leaf-file-name="datepicker.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/demo/js/datepicker.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
+            <state line="0" column="14" selection-start="14" selection-end="14" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/demo/index.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="31" column="0" selection-start="944" selection-end="984" vertical-scroll-proportion="-19.375">
               <folding />
             </state>
           </provider>
@@ -146,21 +142,21 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/demo/includes/header.php" />
-        <option value="$PROJECT_DIR$/demo/includes/plan.php" />
-        <option value="$PROJECT_DIR$/demo/includes/dispensary.php" />
-        <option value="$PROJECT_DIR$/demo/patient/history.php" />
-        <option value="$PROJECT_DIR$/demo/patient/systems.php" />
-        <option value="$PROJECT_DIR$/demo/show.php" />
-        <option value="$PROJECT_DIR$/demo/patient/plan.php" />
-        <option value="$PROJECT_DIR$/demo/includes/breadcrumbs.php" />
-        <option value="$PROJECT_DIR$/demo/js/vendor/form.js" />
+        <option value="$PROJECT_DIR$/demo/includes/call.php" />
+        <option value="$PROJECT_DIR$/demo/includes/l-sidebar.php" />
+        <option value="$PROJECT_DIR$/demo/includes/notifications.php" />
+        <option value="$PROJECT_DIR$/demo/js/dialog.js" />
+        <option value="$PROJECT_DIR$/demo/patient/call.php" />
+        <option value="$PROJECT_DIR$/demo/css/main.css" />
+        <option value="$PROJECT_DIR$/demo/js/vendor/jquery.ui.js" />
+        <option value="$PROJECT_DIR$/demo/css/b-datepicker/b-datepicker.css" />
         <option value="$PROJECT_DIR$/demo/index.php" />
-        <option value="$PROJECT_DIR$/demo/js/search.js" />
-        <option value="$PROJECT_DIR$/demo/includes/search.php" />
-        <option value="$PROJECT_DIR$/demo/js/main.js" />
+        <option value="$PROJECT_DIR$/demo/show.php" />
+        <option value="$PROJECT_DIR$/demo/js/datepicker.js" />
+        <option value="$PROJECT_DIR$/demo/includes/head.php" />
         <option value="$PROJECT_DIR$/charts/loadPatiens.php" />
-        <option value="$PROJECT_DIR$/demo/includes/patients.php" />
+        <option value="$PROJECT_DIR$/demo/edit.php" />
+        <option value="$PROJECT_DIR$/demo/js/main.js" />
         <option value="$PROJECT_DIR$/demo/functions.php" />
       </list>
     </option>
@@ -316,7 +312,33 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="data" />
+              <option name="myItemId" value="demo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="medicine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="medicine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="demo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="b-datepicker" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -334,6 +356,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="medicine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="medicine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="charts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -341,16 +381,20 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../admin" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/demo/css" />
       <recent name="$PROJECT_DIR$/demo/patient" />
       <recent name="$PROJECT_DIR$/demo/includes" />
       <recent name="$PROJECT_DIR$/charts" />
       <recent name="$PROJECT_DIR$/demo" />
-      <recent name="$PROJECT_DIR$" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/demo/patient" />
+      <recent name="$PROJECT_DIR$/demo/includes" />
+      <recent name="$PROJECT_DIR$/demo/js" />
       <recent name="$PROJECT_DIR$/data" />
       <recent name="$PROJECT_DIR$/demo/js/vendor" />
     </key>
@@ -385,13 +429,11 @@
     <frame x="-1" y="24" width="1922" height="1037" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295583" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.27908218" sideWeight="0.6704417" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2854856" sideWeight="0.6704417" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -400,6 +442,8 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295583" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -458,147 +502,118 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/demo/patient/history.php">
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavascriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/ECMAScript.js2">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="413" vertical-scroll-proportion="0.0">
+        <state line="126" column="25" selection-start="5599" selection-end="5599" vertical-scroll-proportion="0.3325554">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/demo/patient/systems.php">
+    <entry file="file://$PROJECT_DIR$/demo/includes/notifications.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="24" selection-start="385" selection-end="385" vertical-scroll-proportion="0.27010804">
+        <state line="29" column="71" selection-start="1072" selection-end="1072" vertical-scroll-proportion="-18.125">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/12.10.22.sql">
+    <entry file="file://$PROJECT_DIR$/demo/patient/call.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="184" column="42" selection-start="6624" selection-end="6624" vertical-scroll-proportion="0.5950992">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/demo/show.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="93" column="24" selection-start="4508" selection-end="4684" vertical-scroll-proportion="-22.5">
+        <state line="6" column="87" selection-start="439" selection-end="439" vertical-scroll-proportion="-3.75">
           <folding>
-            <element signature="n#style#0;n#a#0;n#div#0;n#section#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <marker date="1350990321123" expanded="true" signature="1771:1971" placeholder="..." />
-            <marker date="1350990321123" expanded="true" signature="1818:1971" placeholder="..." />
-            <marker date="1350990321123" expanded="true" signature="1912:1971" placeholder="..." />
-            <marker date="1350990321123" expanded="true" signature="3540:3665" placeholder="..." />
-            <marker date="1350990321123" expanded="true" signature="3753:3816" placeholder="..." />
-            <element signature="n#style#0;n#div#2;n#section#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <marker date="1350990321123" expanded="true" signature="4782:4881" placeholder="..." />
-            <marker date="1350990321123" expanded="true" signature="4997:5078" placeholder="..." />
-            <marker date="1350990321123" expanded="true" signature="5144:5212" placeholder="..." />
-            <marker date="1350990321123" expanded="true" signature="5278:5417" placeholder="..." />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/demo/patient/plan.php">
+    <entry file="file://$PROJECT_DIR$/demo/includes/l-sidebar.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="17" selection-start="448" selection-end="448" vertical-scroll-proportion="-13.125">
-          <folding>
-            <element signature="n#style#0;n#td#6;n#tr#0;n#tbody#0;n#table#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/demo/includes/breadcrumbs.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="50" column="34" selection-start="1352" selection-end="1352" vertical-scroll-proportion="-17.208334">
-          <folding>
-            <marker date="1350990342691" expanded="true" signature="802:822" placeholder="..." />
-            <marker date="1350990342691" expanded="true" signature="1116:1136" placeholder="..." />
-            <marker date="1350990342691" expanded="true" signature="1741:1751" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/demo/js/vendor/form.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="898" column="11" selection-start="34754" selection-end="34754" vertical-scroll-proportion="0.9649942">
+        <state line="0" column="0" selection-start="0" selection-end="72" vertical-scroll-proportion="-0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/demo/js/main.js">
+    <entry file="file://$PROJECT_DIR$/demo/css/main.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="38" selection-start="835" selection-end="835" vertical-scroll-proportion="0.0">
+        <state line="1" column="44" selection-start="69" selection-end="69" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/charts/loadData.php">
+    <entry file="file://$PROJECT_DIR$/demo/css/b-datepicker/b-datepicker.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="0" selection-start="7" selection-end="119" vertical-scroll-proportion="-1.25">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/charts/loadPreparations.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/charts/loadPatiens.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="10" selection-start="235" selection-end="235" vertical-scroll-proportion="-4.375">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/demo/js/search.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="26" selection-start="352" selection-end="352" vertical-scroll-proportion="0.0">
+        <state line="177" column="13" selection-start="8658" selection-end="8658" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/demo/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="25" selection-start="517" selection-end="517" vertical-scroll-proportion="-11.875">
+        <state line="31" column="0" selection-start="944" selection-end="984" vertical-scroll-proportion="-19.375">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/demo/includes/search.php">
+    <entry file="file://$PROJECT_DIR$/demo/js/datepicker.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="11" selection-start="1487" selection-end="1487" vertical-scroll-proportion="-23.125">
+        <state line="0" column="14" selection-start="14" selection-end="14" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/demo/includes/patients.php">
+    <entry file="file://$PROJECT_DIR$/demo/includes/head.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="40" selection-start="625" selection-end="625" vertical-scroll-proportion="-15.0">
+        <state line="20" column="29" selection-start="917" selection-end="917" vertical-scroll-proportion="-12.5">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/demo/patient/plan.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/charts/js/stock.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="155" column="8" selection-start="4538" selection-end="4708" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/charts/loadPatiens.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="44" selection-start="269" selection-end="269" vertical-scroll-proportion="-4.375">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/demo/show.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="308" column="0" selection-start="15616" selection-end="15616" vertical-scroll-proportion="-24.083334">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/demo/edit.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="245" column="100" selection-start="10747" selection-end="10747" vertical-scroll-proportion="-12.916667">
           <folding>
-            <element signature="n#style#0;n#a#0;n#!!top" expanded="true" />
-            <marker date="1350994130491" expanded="true" signature="228:945" placeholder="..." />
-            <marker date="1350994130491" expanded="true" signature="248:760" placeholder="..." />
-            <marker date="1350994130491" expanded="true" signature="780:945" placeholder="..." />
-            <marker date="1350994130491" expanded="true" signature="891:945" placeholder="..." />
-            <marker date="1350994130491" expanded="true" signature="912:945" placeholder="..." />
-            <marker date="1350994130491" expanded="true" signature="995:1035" placeholder="..." />
-            <marker date="1350994130491" expanded="true" signature="1237:1270" placeholder="..." />
-            <marker date="1350994130491" expanded="true" signature="1328:1361" placeholder="..." />
-            <marker date="1350994130491" expanded="true" signature="1419:1452" placeholder="..." />
-            <marker date="1350994130491" expanded="true" signature="1503:1562" placeholder="..." />
-            <marker date="1350994130491" expanded="true" signature="1740:1773" placeholder="..." />
-            <marker date="1350994130491" expanded="true" signature="1954:2256" placeholder="..." />
-            <marker date="1350994130491" expanded="true" signature="1963:2250" placeholder="..." />
+            <element signature="e#673#693#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/demo/js/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="180" column="30" selection-start="4943" selection-end="4943" vertical-scroll-proportion="0.0">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/demo/functions.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="156" column="0" selection-start="3841" selection-end="3841" vertical-scroll-proportion="0.36045057">
+        <state line="7" column="24" selection-start="238" selection-end="238" vertical-scroll-proportion="0.12804878">
           <folding />
         </state>
       </provider>

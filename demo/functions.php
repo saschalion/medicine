@@ -5,6 +5,7 @@
         setcookie('sent', '', 0, "/");
         setcookie('messages', '', 0, "/");
         setcookie('closed', '', 0, "/");
+        setcookie('types', '', 0, "/");
         $redirect = print header('Location: /demo/index.php');
     }
     return $redirect;

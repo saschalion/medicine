@@ -88,13 +88,13 @@ setcookies = function(name) {
     }
 };
 
-$('.submit').click(function() {
-    var name = $(this).parents('.alert').find('.js-name').text();
-
-    setCookie('fio', name, "Mon, 01-Dec-2012 00:00:00 GMT", "/");
-    $('.js-set-name').text(getCookie('fio'));
-    $('.js-set-name-post').val(getCookie('fio'));
-});
+//$('.submit').click(function() {
+//    var name = $(this).parents('.alert').find('.js-name').text();
+//
+//    setCookie('fio', name, "Mon, 01-Dec-2012 00:00:00 GMT", "/");
+//    $('.js-set-name').text(getCookie('fio'));
+//    $('.js-set-name-post').val(getCookie('fio'));
+//});
 
 // Некая авторизация
 
@@ -165,4 +165,21 @@ $('.close').click(function() {
     $('.js-message').append("<p class='alert alert-success'>" + getCookie('fio') + " отменен</p>");
     flashMsg();
 });
+
+$('.js-types').click(function() {
+
+    var types = $(this).attr('data-type');
+    var month = $(this).attr('data-month');
+
+    if(!getCookie('types')) {
+        setCookie('types', month + ';' + types + ';', "Mon, 01-Dec-2012 00:00:00 GMT", "/");
+    }
+    else {
+        setCookie('types', getCookie('types') + month + ';' + types + ';', "Mon, 01-Dec-2012 00:00:00 GMT", "/");
+    }
+
+    window.location.href = '';
+});
+
+
 

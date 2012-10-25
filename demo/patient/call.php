@@ -5,7 +5,6 @@
     </div>
     <div class="modal-body">
         <p>Здесь можно вызвать пациента <span class="js-set-name"></span> на приём.</p>
-        <p class="fio"></p>
         <form method="post" class="send-form">
             <input type="text" name="date" class="input-medium span2" id="datepicker" placeholder="Выбрать дату от">
             <input type="text" name="date" class="input-medium span2" id="datepicker-2" placeholder="до">
