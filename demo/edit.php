@@ -1,4 +1,4 @@
-﻿<?php //session_start();
+<?php //session_start();
 include('includes/head.php'); ?>
 <?php
 $patient = get_patient($patient_id); $arr = edit_patient();
@@ -182,7 +182,6 @@ $patient = get_patient($patient_id); $arr = edit_patient();
                     </div>
                     <input type="submit" name="save" class="btn" value="Сохранить">
             </form>
-            <?php $_SESSION['id'] = $info['id']; ?>
         <? } ?>
 
         <?php if($_REQUEST['main-complaints']) { ?>
@@ -207,55 +206,57 @@ $patient = get_patient($patient_id); $arr = edit_patient();
             <div>
                 <table class="table">
                     <thead>
-                        <tr>
-                            <th>Процедуры</th>
-                            <th>Январь</th>
-                            <th>Февраль</th>
-                            <th>Март</th>
-                            <th>Апрель</th>
-                            <th>Май</th>
-                            <th>Июнь</th>
-                            <th>Июль</th>
-                            <th>Август</th>
-                            <th>Сентябрь</th>
-                            <th>Октябрь</th>
-                            <th>Ноябрь</th>
-                            <th>Декабрь</th>
-                        </tr>
+                    <tr>
+                        <th>Процедуры</th>
+                        <th>Январь</th>
+                        <th>Февраль</th>
+                        <th>Март</th>
+                        <th>Апрель</th>
+                        <th>Май</th>
+                        <th>Июнь</th>
+                        <th>Июль</th>
+                        <th>Август</th>
+                        <th>Сентябрь</th>
+                        <th>Октябрь</th>
+                        <th>Ноябрь</th>
+                        <th>Декабрь</th>
+                    </tr>
                     </thead>
                     <tbody>
                         <?php
 
-                            $type = $_COOKIE['types'];
+                        $month = array('jan', 'feb', 'mar', 'apr', 'may', 'june', 'july', 'august', 'sep', 'oct', 'nov', 'dec');
 
-                            $str = explode(';', $type);
+                        $types = array(
+                            array('type' => 'lipids', 'name' =>'Липиды'),
+                            array('type' => 'ekg', 'name' =>'ЭКГ'),
+                            array('type' => 'bh', 'name' =>'Б/х'),
+                            array('type' => 'end', 'name' =>'Эндокринолог')
+                        );
 
-                            $month = array('jan', 'feb', 'mar', 'apr', 'may', 'june', 'july', 'august', 'sep', 'oct', 'nov', 'dec');
+                        $plans = array(
+                            array('id' => '2', 'type' =>'end', 'month' =>'august', 'status' => 'active')
+                        );
 
-                            $types = array(
-                                array('type' => 'lipids', 'name' =>'Липиды'),
-                                array('type' => 'ekg', 'name' =>'ЭКГ'),
-                                array('type' => 'bh', 'name' =>'Б/х'),
-                                array('type' => 'end', 'name' =>'Эндокринолог')
-                            );
-
-                            for($j=0; $j< count($types); $j++) { ?>
+                        for($j=0; $j< count($types); $j++) { for($k=0; $k< count($plans); $k++) { ?>
 
                             <tr>
-                            <td>
-                                <?=$types[$j]['name']?>
-                            </td>
-                            <? for($i=0;$i < count($month); $i++) {
-                                ?>
                                 <td>
-                                    <?php if(in_array($types[$j]['type'], $str) && in_array($month[$i], $str)) { ?>
-                                        <a class="btn btn-small btn-success js-types" data-month="<?=$month[$i]?>" data-type="<?=$types[$j]['type']?>"><i class="icon-ok"></i></a>
+                                    <?=$types[$j]['name']?>
+                                </td>
+                            <? for($i=0;$i < count($month); $i++) {
+
+                                $plan_url = $url . '&plan=true&month=' . $month[$i] . '&type=' . $types[$j]['type']?>
+
+                                <td>
+                                    <?php if($plans[$k]['type'] == $types[$j]['type'] && $plans[$k]['month'] == $month[$i]) { ?>
+                                        <a class="btn btn-small btn-success js-types" href="<?=$plan_url?>"><i class="icon-ok"></i></a>
                                     <? } else { ?>
-                                        <a class="btn btn-small js-types" data-month="<?=$month[$i]?>" data-type="<?=$types[$j]['type']?>"><i class="icon-ok"></i></a>
+                                        <a class="btn btn-small js-types" href="<?=$plan_url?>"><i class="icon-ok"></i></a>
                                     <? } ?>
                                 </td>
 
-                        <?  } echo '</tr>'; } ?>
+                            <?  } } echo '</tr>'; } ?>
                     </tbody>
                 </table>
             </div>
