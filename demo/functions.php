@@ -5,7 +5,6 @@
         setcookie('sent', '', 0, "/");
         setcookie('messages', '', 0, "/");
         setcookie('closed', '', 0, "/");
-        setcookie('types', '', 0, "/");
         $redirect = print header('Location: /demo/index.php');
     }
     return $redirect;
@@ -153,17 +152,15 @@ function edit_patient()
     }
 }
 
-function get_patients($result)
+function get_patients()
 {
 
     $result = explode(' ', $_REQUEST['search']);
 
-    $result = $result[0];
-
     $sql = "select * from patients";
 
     if($_REQUEST['search']) {
-        $sql =  $sql . " where last_name like '%$result%'";
+        $sql =  $sql . " where last_name like '%$result[0]%' AND first_name like '%$result[1]%' AND patronymic like '%$result[2]%'";
     }
 
     $q = query($sql);
@@ -374,7 +371,7 @@ function get_plan($patient_id)
 
     $q = query($sql);
 
-    if($sql) {
+    if($q) {
         while($record = mysql_fetch_assoc($q))
 
             $records[] = $record;

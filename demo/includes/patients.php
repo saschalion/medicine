@@ -30,7 +30,7 @@
             </tr>
             </thead>
             <tbody>
-            <?php $patient = get_patients($result, $name); foreach($patient as $patient) { ?>
+            <?php $patient = get_patients(); if($patient) { foreach($patient as $patient) { ?>
             <tr>
                 <td>
                     <?=$patient['id']?>
@@ -60,7 +60,7 @@
                     <?=$patient['desease']?>
                 </td>
             </tr>
-                <?php } ?>
+                <?php } } else echo '<tr><td colspan="7"><p>Ничего не найдено.</p></td></tr>' ?>
             </tbody>
         </table>
     </div>

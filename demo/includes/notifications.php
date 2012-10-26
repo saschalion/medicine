@@ -19,7 +19,7 @@ for($i=0;$i<count($patients); $i++) {
     <div class="alert
     <?php if(in_array($id, $str)) { echo 'alert-success'; } else { echo 'alert-info'; } ?>" id="<?=$id?>">
 
-            <a href="/demo/show.php?patient_id=<?=$uid?>&type=<?=$patients[$i]['code']?>&main=true" id="<?=$id?>" rel="tooltip" data-original-title="Просмотреть график по <?=$patients[$i]['name']?>у">
+            <a href="/demo/show.php?patient_id=<?=$uid?>&type=<?=$patients[$i]['code']?>&main=true" id="<?=$id?>" class="js-chart-link js-name" rel="tooltip" data-original-title="Просмотреть график по <?=$patients[$i]['name']?>у">
                 <strong>
                     <?=$patients[$i]['last_name'] .' '. $patients[$i]['first_name'] .' '. $patients[$i]['patronymic']?>
                 </strong>
@@ -30,9 +30,9 @@ for($i=0;$i<count($patients); $i++) {
 
         <br><br>
         <?php if(!in_array($id, $str)) { ?>
-            <button type="button" class="btn btn-success js-dialog-link" data-toggle="modal" href="#myModal" data-uid="<?=$uid?>">Вызвать</button>
+            <button type="button" class="btn btn-success submit" data-toggle="modal" href="#myModal">Вызвать</button>
         <?php } else { ?>
-            <button type="button" class="close" title="Никогда не показывать" id="close-<?=$patients[$i]['id']?>" data-dismiss="alert">×</button>
+            <button type="button" class="close" title="Никогда не показывать" id="<?=$patients[$i]['id']?>" data-dismiss="alert">×</button>
             <button type="button" class="btn btn-success">Отправлено</button>
             <button type="button" class="btn btn-danger sent" rel="tooltip" data-original-title="Пациент явился">Отметить явку</button>
         <?php } ?>

@@ -6,8 +6,6 @@ $str_d = explode(';', $_COOKIE['messages-dispensary']);
 $sent_d = explode(';', $_COOKIE['sent-dispensary']);
 $closed_d = explode(';', $_COOKIE['closed-dispensary']);
 
-echo '<div class="js-message"></div>';
-
 for($i=0;$i<count($dispensaries); $i++) {
 
     $id = $dispensaries[$i]['plan_id'];

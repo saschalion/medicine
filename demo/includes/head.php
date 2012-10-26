@@ -22,7 +22,6 @@
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.8.0.min.js"><\/script>')</script>
 
     <script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
-    <script src="http://jquery-ui.googlecode.com/svn/trunk/ui/i18n/jquery.ui.datepicker-ru.js" type="text/javascript"></script>
 
     <?php if(set_chart($patient_id, $type)) { ?>
         <script src="/charts/js/highstock.js"></script>

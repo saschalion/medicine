@@ -88,13 +88,13 @@ setcookies = function(name) {
     }
 };
 
-//$('.submit').click(function() {
-//    var name = $(this).parents('.alert').find('.js-name').text();
-//
-//    setCookie('fio', name, "Mon, 01-Dec-2012 00:00:00 GMT", "/");
-//    $('.js-set-name').text(getCookie('fio'));
-//    $('.js-set-name-post').val(getCookie('fio'));
-//});
+$('.submit').click(function() {
+    var name = $(this).parents('.alert').find('.js-name').text();
+
+    setCookie('fio', name, "Mon, 01-Dec-2012 00:00:00 GMT", "/");
+    $('.js-set-name').text(getCookie('fio'));
+    $('.js-set-name-post').val(getCookie('fio'));
+});
 
 // Некая авторизация
 
@@ -180,6 +180,4 @@ $('.js-types').click(function() {
 
     window.location.href = '';
 });
-
-
 

@@ -29,6 +29,5 @@
 <script src="js/search.js"></script>
 
 <script src="js/main.js"></script>
-<script src="js/datepicker.js"></script>
 </body>
 </html>

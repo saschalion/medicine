@@ -1,8 +1,8 @@
 <?php include('includes/head.php'); ?>
 <?php $patient = get_patient(); $types = get_parameter_type($patient_id);?>
 <?php include('includes/header.php')?>
+<?php include('includes/call.php'); ?>
 <div role="main" xmlns="http://www.w3.org/1999/html">
-    <?php include($_SERVER['DOCUMENT_ROOT']  . '/demo/patient/call.php'); ?>
     <aside class="sidebar sidebar_type_left affix">
         <h2>Явки</h2>
         <div class="sidebar__inner">
@@ -43,7 +43,7 @@
                         <a class="brand">Пациент</a>
                         <ul class="nav">
                             <li class="<?php if($_REQUEST['main']) echo 'active'?>">
-                                <a href="<?=$this_url?>&type=sugar&main=true">Показатели</a>
+                                <a href="<?=$this_url?>&main=true">Показатели</a>
                             </li>
                             <li class="<?php if($_REQUEST['info']) echo 'active'?>">
                                 <a href="<?=$this_url?>&info=true">
@@ -71,16 +71,43 @@
                     </div>
                 </div>
 
-                <?php if($_REQUEST['main']) { ?>
+                <?php if($_REQUEST['main']) { $records = notifs(); ?>
                     <ul class="nav nav-tabs">
-                        <?php if($types) foreach($types as $param) {  ?>
+
+                        <?php
+
+                        $ids = array();
+                        foreach($records as $rec) {
+                            $ids[] = $rec['code'];
+                        }
+
+                        ?>
+
+
+                        <?php if($types) foreach($types as $param) { ?>
                                 <?php if($_REQUEST['type'] == $param['code']) {  ?>
                                     <li class="active">
-                                        <a href="#"><?=$param['name']?></a>
+                                        <a href="#">
+                                            <?php if(in_array($param['code'], $ids)) { ?>
+                                                <b style="color: red">
+                                                    <?=$param['name']?>
+                                                </b>
+                                            <?php } else { ?>
+                                                <?=$param['name']?>
+                                            <?php } ?>
+                                        </a>
                                     </li>
                                 <? } else { ?>
-                                    <li><a href="<?=$this_url?>&type=<?=$param['code']?>&main=true">
-                                        <?=$param['name']?></a>
+                                    <li>
+                                        <a href="<?=$this_url?>&type=<?=$param['code']?>&main=true">
+                                            <?php if(in_array($param['code'], $ids)) { ?>
+                                            <b style="color: red">
+                                                <?=$param['name']?>
+                                            </b>
+                                            <?php } else { ?>
+                                            <?=$param['name']?>
+                                            <?php } ?>
+                                        </a>
                                     </li>
                                 <? } ?>
                         <?php } ?>
@@ -307,7 +334,6 @@
     <?php include('includes/r-sidebar.php'); ?>
 </div>
 <script src="js/plugins.js"></script>
-
 <script src="js/vendor/bootstrap.min.js"></script>
 <script src="js/vendor/modernizr-2.6.1.min.js"></script>
 <script src="js/vendor/bootstrap-scrollspy.js"></script>
