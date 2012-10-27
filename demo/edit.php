@@ -225,7 +225,7 @@ $patient = get_patient($patient_id); $arr = edit_patient();
                     <tbody>
                         <?php
 
-                        $month = array('jan', 'feb', 'mar', 'apr', 'may', 'june', 'july', 'august', 'sep', 'oct', 'nov', 'dec');
+             $month = array('jan', 'feb', 'mar', 'apr', 'may', 'june', 'july', 'august', 'sep', 'oct', 'nov', 'dec');
 
                         $types = array(
                             array('type' => 'lipids', 'name' => 'Липиды'),
@@ -235,42 +235,41 @@ $patient = get_patient($patient_id); $arr = edit_patient();
                         );
 
                         $plans = array(
-                            array('id' => '1', 'type' =>'end', 'month' =>'august', 'status' => 'active'),
-                            array('id' => '2', 'type' =>'lipids', 'month' =>'mar', 'status' => 'active')
+                            array('id' => '1', 'type' =>'bh', 'month' =>'august', 'status' => 'active')
                         );
 
-                        $type = array();
-                        $mon = array();
-                        foreach($plans as $plan) {
-                            $type[] = $plan['type'];
-                            $mon[] = $plan['month'];
-                        }
+//                        $type = array();
+//                        $mon = array();
+//                        foreach($plans as $plan) {
+//                            $type[] = $plan['type'];
+//                            $mon[] = $plan['month'];
+//                        }
+//
+//                        function cmp($a, $b) {
+//                            return $a['id'] - $b['id'];
+//                        }
+//
+//                        $arr = array_uintersect($type, $mon, 'cmp');
 
-                        function cmp($a, $b) {
-                            return $a['id'] - $b['id'];
-                        }
-
-                        $arr = array_uintersect($type, $mon, 'cmp');
-
-                        for($j=0; $j < count($types); $j++) { ?>
+                            foreach($types as $key) { ?>
 
                             <tr>
                                 <td>
-                                    <?=$types[$j]['name']?>
+                                    <?=$key['name']?>
                                 </td>
-                            <? for($i=0;$i < count($month); $i++) {
+                            <? for($i=0;$i < count($month); $i++) { for($j=0;$j < count($plans); $j++) {
 
-                                $plan_url = $url . '&plan=true&month=' . $month[$i] . '&type=' . $types[$j]['type']?>
+                                $plan_url = $url . '&plan=true&month=' . $month[$i] . '&type=' . $key['type']?>
 
                                 <td>
-                                    <?php if(in_array($types[$j]['type'], $type) && in_array($month[$i], $mon)): ?>
+                                    <?php if($key['type'] == $plans[$j]['type'] && $month[$i] == $plans[$j]['month']): ?>
                                         <a class="btn btn-small btn-success js-types" href="<?=$plan_url?>"><i class="icon-ok"></i></a>
                                     <? else: ?>
                                         <a class="btn btn-small js-types" href="<?=$plan_url?>"><i class="icon-ok"></i></a>
                                     <? endif ?>
                                 </td>
 
-                            <?  } echo '</tr>'; } ?>
+                            <?  }  } echo '</tr>'; } ?>
                     </tbody>
                 </table>
             </div>
