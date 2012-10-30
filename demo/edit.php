@@ -225,7 +225,11 @@ $patient = get_patient($patient_id); $arr = edit_patient();
                     <tbody>
                         <?php
 
-             $month = array('jan', 'feb', 'mar', 'apr', 'may', 'june', 'july', 'august', 'sep', 'oct', 'nov', 'dec');
+                        if($_REQUEST['type'] && $_REQUEST['month']) {
+                            print "<META HTTP-EQUIV=Refresh content=0;URL=/demo/edit.php?patient_id=".$info['id']."&plan=true>";
+                        }
+
+                        $month = array('jan', 'feb', 'mar', 'apr', 'may', 'june', 'july', 'august', 'sep', 'oct', 'nov', 'dec');
 
                         $types = array(
                             array('type' => 'lipids', 'name' => 'Липиды'),
@@ -235,41 +239,36 @@ $patient = get_patient($patient_id); $arr = edit_patient();
                         );
 
                         $plans = array(
-                            array('id' => '1', 'type' =>'bh', 'month' =>'august', 'status' => 'active')
+                            array('id' => '1', 'type' =>'bh', 'month' =>'august', 'status' => 'active'),
+                            array('id' => '2', 'type' =>'ekg', 'month' =>'august', 'status' => 'active'),
+                            array('id' => '3', 'type' =>'lipids', 'month' =>'mar', 'status' => 'active')
                         );
 
-//                        $type = array();
-//                        $mon = array();
-//                        foreach($plans as $plan) {
-//                            $type[] = $plan['type'];
-//                            $mon[] = $plan['month'];
-//                        }
-//
-//                        function cmp($a, $b) {
-//                            return $a['id'] - $b['id'];
-//                        }
-//
-//                        $arr = array_uintersect($type, $mon, 'cmp');
+                        $arr = array();
 
-                            foreach($types as $key) { ?>
+                        foreach($plans as $n) {
+                            $arr[$n['type'] . '_' . $n['month']] = $n;
+                        }
 
-                            <tr>
-                                <td>
-                                    <?=$key['name']?>
-                                </td>
-                            <? for($i=0;$i < count($month); $i++) { for($j=0;$j < count($plans); $j++) {
+                        foreach($types as $key) { ?>
 
-                                $plan_url = $url . '&plan=true&month=' . $month[$i] . '&type=' . $key['type']?>
+                        <tr>
+                            <td>
+                                <?=$key['name']?>
+                            </td>
+                            <? for($i=0;$i < count($month); $i++) {
 
-                                <td>
-                                    <?php if($key['type'] == $plans[$j]['type'] && $month[$i] == $plans[$j]['month']): ?>
-                                        <a class="btn btn-small btn-success js-types" href="<?=$plan_url?>"><i class="icon-ok"></i></a>
-                                    <? else: ?>
-                                        <a class="btn btn-small js-types" href="<?=$plan_url?>"><i class="icon-ok"></i></a>
-                                    <? endif ?>
-                                </td>
+                            $plan_url = $url . '&plan=true&month=' . $month[$i] . '&type=' . $key['type']?>
 
-                            <?  }  } echo '</tr>'; } ?>
+                            <td>
+                                <?php if(array_key_exists($key['type'] . '_' . $month[$i], $arr)): ?>
+                                    <a class="btn btn-small btn-success js-types" href="<?=$plan_url?>"><i class="icon-ok"></i></a>
+                                <? else: ?>
+                                    <a class="btn btn-small js-types" href="<?=$plan_url?>"><i class="icon-ok"></i></a>
+                                <? endif ?>
+                            </td>
+
+                        <?  } echo '</tr>'; } ?>
                     </tbody>
                 </table>
             </div>
