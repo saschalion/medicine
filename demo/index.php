@@ -12,6 +12,9 @@
             <h2>Пациенты</h2>
             <?php include('includes/search.php'); ?>
             <?php include('includes/patients.php'); ?>
+            <?php if($_REQUEST['xls']) {
+                print "<META HTTP-EQUIV=Refresh content=0;URL=/xls.php>";
+            } ?>
         </div>
     </div>
 
@@ -29,5 +32,6 @@
 <script src="js/search.js"></script>
 
 <script src="js/main.js"></script>
+<script src="js/datepicker.js"></script>
 </body>
 </html>

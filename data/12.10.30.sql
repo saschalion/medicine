@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 3.2.2.1deb1
+-- version 3.3.7
 -- http://www.phpmyadmin.net
 --
 -- Хост: localhost
--- Время создания: Окт 23 2012 г., 17:03
--- Версия сервера: 5.1.63
--- Версия PHP: 5.2.10-2ubuntu6.7
+-- Время создания: Окт 30 2012 г., 22:33
+-- Версия сервера: 5.1.53
+-- Версия PHP: 5.2.14
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
@@ -173,17 +173,17 @@ CREATE TABLE IF NOT EXISTS `plans` (
   `patient_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `parameter_types_id_FK_7` (`patient_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=21 ;
 
 --
 -- Дамп данных таблицы `plans`
 --
 
 INSERT INTO `plans` (`id`, `type`, `month`, `patient_id`) VALUES
-(1, 'bh', 'yan', 80),
-(2, 'bh', 'august', 80),
-(3, 'ekg', 'oct', 80),
-(4, 'lipids', 'yan', 80);
+(17, 'lipids', 'jan', 80),
+(18, 'lipids', 'feb', 80),
+(19, 'ekg', 'mar', 80),
+(20, 'ekg', 'apr', 80);
 
 -- --------------------------------------------------------
 
@@ -2000,3 +2000,7 @@ ALTER TABLE `parameter_norms`
 --
 ALTER TABLE `plans`
   ADD CONSTRAINT `patient_id_FK_8` FOREIGN KEY (`patient_id`) REFERENCES `patients` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

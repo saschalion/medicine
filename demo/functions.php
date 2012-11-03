@@ -359,23 +359,59 @@ function get_dispensary()
     }
 }
 
+//function get_plan($patient_id)
+//{
+//    $sql = "SELECT plans.id as pid, patients.id as uid, plans.date, patients.last_name, patients.first_name, patients.patronymic,
+//    plans.title, plans.date_from, plans.date_to, plans.contraindications, preparations.name as preparation
+//    from patients, plans, preparations where plans.patient_id = patients.id and plans.preparation_id = preparations.id";
+//
+//    if($patient_id) {
+//        $sql = $sql . ' and plans.patient_id = "'.$patient_id.'"';
+//    }
+//
+//    $q = query($sql);
+//
+//    if($q) {
+//        while($record = mysql_fetch_assoc($q))
+//
+//            $records[] = $record;
+//
+//        return $records;
+//    }
+//}
+
 function get_plan($patient_id)
 {
-    $sql = "SELECT plans.id as pid, patients.id as uid, plans.date, patients.last_name, patients.first_name, patients.patronymic,
-    plans.title, plans.date_from, plans.date_to, plans.contraindications, preparations.name as preparation
-    from patients, plans, preparations where plans.patient_id = patients.id and plans.preparation_id = preparations.id";
+    $q = "select * from plans where patient_id = '".$patient_id."'";
 
-    if($patient_id) {
-        $sql = $sql . ' and plans.patient_id = "'.$patient_id.'"';
-    }
+    $sql = query($q);
 
-    $q = query($sql);
+    if($sql) {
+        while($record = mysql_fetch_assoc($sql))
 
-    if($q) {
-        while($record = mysql_fetch_assoc($q))
+        $plans[] = $record;
 
-            $records[] = $record;
-
-        return $records;
+        return $plans;
     }
 }
+
+function set_plan($patient_id)
+{
+    if($_REQUEST['type'] && $_REQUEST['month']) {
+
+        $q = 'select * from plans where type = "'.$_REQUEST['type'].'"
+                            and month = "'.$_REQUEST['month'].'" and patient_id = "'.$patient_id.'"';
+
+        $sql = query($q);
+
+        if(mysql_num_rows($sql) > 0) {
+            query("DELETE from plans where type='".$_REQUEST['type']."' AND month='".$_REQUEST['month']."' and patient_id='".$patient_id."'");
+        } else {
+            query("INSERT INTO plans (`type`, `month`, `patient_id`)
+                                values('".$_REQUEST['type']."', '".$_REQUEST['month']."', '".$patient_id."')");
+        }
+
+        print "<META HTTP-EQUIV=Refresh content=0;URL=/demo/edit.php?patient_id=".$_SESSION['id']."&plan=true>";
+    }
+}
+

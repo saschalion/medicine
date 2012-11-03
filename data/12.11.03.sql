@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 3.2.2.1deb1
+-- version 
 -- http://www.phpmyadmin.net
 --
--- Хост: localhost
--- Время создания: Окт 23 2012 г., 17:03
--- Версия сервера: 5.1.63
--- Версия PHP: 5.2.10-2ubuntu6.7
+-- Хост: web-fortun.mysql
+-- Время создания: Ноя 03 2012 г., 20:23
+-- Версия сервера: 5.1.36
+-- Версия PHP: 5.2.10
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -16,7 +17,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 /*!40101 SET NAMES utf8 */;
 
 --
--- База данных: `medicine`
+-- База данных: `web-fortun_bags`
 --
 
 -- --------------------------------------------------------
@@ -24,7 +25,10 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 --
 -- Структура таблицы `parameters`
 --
+-- Создание: Окт 30 2012 г., 15:37
+--
 
+DROP TABLE IF EXISTS `parameters`;
 CREATE TABLE IF NOT EXISTS `parameters` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `value` varchar(10) DEFAULT NULL,
@@ -47,42 +51,45 @@ CREATE TABLE IF NOT EXISTS `parameters` (
 --
 
 INSERT INTO `parameters` (`id`, `value`, `closed`, `sent`, `date`, `parameter_type_id`, `patient_id`, `preparation_id`, `parameter_norm_id`) VALUES
-(3, '50', 1, NULL, '2012-10-01 00:00:00', 3, 80, 6, 1),
-(6, '30', NULL, NULL, '2011-10-10 00:00:00', 2, 80, 8, 1),
-(7, '60', NULL, NULL, '2006-06-11 00:00:00', 3, 80, 9, 1),
-(8, '65', NULL, NULL, '2007-03-11 00:00:00', 3, 80, 15, 1),
-(9, '70', NULL, NULL, '2012-02-11 00:00:00', 3, 80, 16, 1),
-(11, '80', NULL, NULL, '2012-10-22 00:00:00', 2, 80, 17, 1),
-(12, '22', NULL, NULL, '2009-07-11 00:00:00', 3, 80, 19, 1),
-(13, '30', NULL, NULL, '2009-09-11 00:00:00', 3, 80, 20, 1),
-(14, '35', NULL, NULL, '2008-12-11 00:00:00', 3, 80, 21, 1),
-(15, '40', NULL, NULL, '2008-11-11 00:00:00', 3, 80, 22, 1),
-(16, '45', NULL, NULL, '2012-10-23 15:37:42', 2, 80, 23, 1),
-(17, '50', NULL, NULL, '2002-07-11 00:00:00', 3, 80, 24, 1),
-(18, '60', NULL, NULL, '2001-01-11 00:00:00', 3, 80, 25, 1),
-(19, '76', NULL, NULL, '2000-02-11 00:00:00', 3, 80, 26, 1),
-(20, '90', NULL, NULL, '1999-03-11 00:00:00', 3, 80, 27, 1),
-(21, '100', NULL, NULL, '2012-10-23 15:38:01', 2, 80, 28, 1),
-(22, '110', NULL, NULL, '2012-10-23 15:38:11', 2, 80, 29, 1),
-(23, '79', NULL, NULL, '2010-02-11 00:00:00', 3, 80, 30, 1),
-(24, '89', NULL, NULL, '2010-01-11 00:00:00', 3, 80, 31, 1),
-(25, '69', NULL, NULL, '2006-02-11 00:00:00', 3, 80, 32, 1),
-(26, '29', NULL, NULL, '2006-03-11 00:00:00', 3, 80, 33, 1),
-(27, '36', NULL, NULL, '2005-04-11 00:00:00', 3, 80, 34, 1),
-(28, '48', NULL, NULL, '2005-05-11 00:00:00', 3, 80, 34, 1),
-(29, '56', NULL, NULL, '2004-08-11 00:00:00', 3, 80, 35, 1),
-(30, '54', NULL, NULL, '2003-09-11 00:00:00', 3, 80, 36, 1),
-(31, '26', NULL, NULL, '2003-10-11 00:00:00', 3, 80, 37, 1),
-(32, '90', NULL, NULL, '2003-11-11 00:00:00', 3, 80, 38, 1),
-(33, '28', NULL, NULL, '2002-12-11 00:00:00', 3, 80, 39, 1),
-(34, '50', NULL, NULL, '2002-01-11 00:00:00', 3, 80, 40, 1);
+(3, '50', 1, NULL, '2012-09-30 20:00:00', 3, 80, 6, 1),
+(6, '30', NULL, NULL, '2011-10-09 20:00:00', 2, 80, 8, 1),
+(7, '60', NULL, NULL, '2006-06-10 20:00:00', 3, 80, 9, 1),
+(8, '65', NULL, NULL, '2007-03-10 21:00:00', 3, 80, 15, 1),
+(9, '70', NULL, NULL, '2012-02-10 20:00:00', 3, 80, 16, 1),
+(11, '80', NULL, NULL, '2012-10-21 20:00:00', 2, 80, 17, 1),
+(12, '22', NULL, NULL, '2009-07-10 20:00:00', 3, 80, 19, 1),
+(13, '30', NULL, NULL, '2009-09-10 20:00:00', 3, 80, 20, 1),
+(14, '35', NULL, NULL, '2008-12-10 21:00:00', 3, 80, 21, 1),
+(15, '40', NULL, NULL, '2008-11-10 21:00:00', 3, 80, 22, 1),
+(16, '45', NULL, NULL, '2012-10-23 11:37:42', 2, 80, 23, 1),
+(17, '50', NULL, NULL, '2002-07-10 20:00:00', 3, 80, 24, 1),
+(18, '60', NULL, NULL, '2001-01-10 21:00:00', 3, 80, 25, 1),
+(19, '76', NULL, NULL, '2000-02-10 21:00:00', 3, 80, 26, 1),
+(20, '90', NULL, NULL, '1999-03-10 21:00:00', 3, 80, 27, 1),
+(21, '100', NULL, NULL, '2012-10-23 11:38:01', 2, 80, 28, 1),
+(22, '110', NULL, NULL, '2012-10-23 11:38:11', 2, 80, 29, 1),
+(23, '79', NULL, NULL, '2010-02-10 21:00:00', 3, 80, 30, 1),
+(24, '89', NULL, NULL, '2010-01-10 21:00:00', 3, 80, 31, 1),
+(25, '69', NULL, NULL, '2006-02-10 21:00:00', 3, 80, 32, 1),
+(26, '29', NULL, NULL, '2006-03-10 21:00:00', 3, 80, 33, 1),
+(27, '36', NULL, NULL, '2005-04-10 20:00:00', 3, 80, 34, 1),
+(28, '48', NULL, NULL, '2005-05-10 20:00:00', 3, 80, 34, 1),
+(29, '56', NULL, NULL, '2004-08-10 20:00:00', 3, 80, 35, 1),
+(30, '54', NULL, NULL, '2003-09-10 20:00:00', 3, 80, 36, 1),
+(31, '26', NULL, NULL, '2003-10-10 20:00:00', 3, 80, 37, 1),
+(32, '90', NULL, NULL, '2003-11-10 21:00:00', 3, 80, 38, 1),
+(33, '28', NULL, NULL, '2002-12-10 21:00:00', 3, 80, 39, 1),
+(34, '50', NULL, NULL, '2002-01-10 21:00:00', 3, 80, 40, 1);
 
 -- --------------------------------------------------------
 
 --
 -- Структура таблицы `parameter_norms`
 --
+-- Создание: Окт 30 2012 г., 15:37
+--
 
+DROP TABLE IF EXISTS `parameter_norms`;
 CREATE TABLE IF NOT EXISTS `parameter_norms` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `start_norm` int(11) NOT NULL,
@@ -110,7 +117,10 @@ INSERT INTO `parameter_norms` (`id`, `start_norm`, `end_norm`, `below_start_norm
 --
 -- Структура таблицы `parameter_types`
 --
+-- Создание: Окт 30 2012 г., 15:37
+--
 
+DROP TABLE IF EXISTS `parameter_types`;
 CREATE TABLE IF NOT EXISTS `parameter_types` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(120) NOT NULL,
@@ -132,7 +142,10 @@ INSERT INTO `parameter_types` (`id`, `name`, `code`) VALUES
 --
 -- Структура таблицы `patients`
 --
+-- Создание: Окт 30 2012 г., 15:37
+--
 
+DROP TABLE IF EXISTS `patients`;
 CREATE TABLE IF NOT EXISTS `patients` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `first_name` varchar(300) NOT NULL,
@@ -147,7 +160,7 @@ CREATE TABLE IF NOT EXISTS `patients` (
   `desease` text,
   `date_birth` date NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=111 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=82 ;
 
 --
 -- Дамп данных таблицы `patients`
@@ -155,8 +168,8 @@ CREATE TABLE IF NOT EXISTS `patients` (
 
 INSERT INTO `patients` (`id`, `first_name`, `last_name`, `patronymic`, `sex`, `document`, `address`, `phone`, `mobile_phone`, `mobile_phone_second`, `desease`, `date_birth`) VALUES
 (30, 'Александр', 'Берсеньев', 'Георгиевич', 'М', '450900552', 'г. Москва', '1129248000000', '', '', 'грипп', '2001-10-17'),
-(45, 'Алексей', 'Кондратьев', 'Андреевич', 'М', '45089625', 'г. Омск', '1243814400000', '', '', '', '0000-00-00'),
-(50, 'Артем', 'Троицкий', 'Анатольевич', 'М', '4850852', 'г. Омск', '1259625600000', '', '', '', '0000-00-00'),
+(45, 'Алексей', 'Кондратьев', 'Андреевич', 'М', '45089625', 'г. Омск', '+74958579685', '', '', '', '1971-11-12'),
+(50, 'Артем', 'Троицкий', 'Анатольевич', 'М', '4850852', 'г. Омск', '+74958547858', '', '', 'инфаркт', '1962-02-07'),
 (80, 'Иван', 'Проскурин', 'Исинбаевич', '', '', '', '1277942400000', '', '', '', '1970-10-16'),
 (81, 'Андройд', 'Ластоногих', 'Борисович', 'М', '45', 'Омск', '', '', '', 'заболелый', '1987-01-01');
 
@@ -165,7 +178,10 @@ INSERT INTO `patients` (`id`, `first_name`, `last_name`, `patronymic`, `sex`, `d
 --
 -- Структура таблицы `plans`
 --
+-- Создание: Окт 30 2012 г., 15:37
+--
 
+DROP TABLE IF EXISTS `plans`;
 CREATE TABLE IF NOT EXISTS `plans` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `type` varchar(120) DEFAULT NULL,
@@ -173,24 +189,31 @@ CREATE TABLE IF NOT EXISTS `plans` (
   `patient_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `parameter_types_id_FK_7` (`patient_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=53 ;
 
 --
 -- Дамп данных таблицы `plans`
 --
 
 INSERT INTO `plans` (`id`, `type`, `month`, `patient_id`) VALUES
-(1, 'bh', 'yan', 80),
-(2, 'bh', 'august', 80),
-(3, 'ekg', 'oct', 80),
-(4, 'lipids', 'yan', 80);
+(17, 'lipids', 'jan', 80),
+(18, 'lipids', 'feb', 80),
+(19, 'ekg', 'mar', 80),
+(20, 'ekg', 'apr', 80),
+(37, 'end', 'july', 45),
+(38, 'end', 'oct', 45),
+(39, 'bh', 'nov', 45),
+(50, 'lipids', 'sep', 45);
 
 -- --------------------------------------------------------
 
 --
 -- Структура таблицы `preparations`
 --
+-- Создание: Окт 30 2012 г., 15:37
+--
 
+DROP TABLE IF EXISTS `preparations`;
 CREATE TABLE IF NOT EXISTS `preparations` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(200) NOT NULL,

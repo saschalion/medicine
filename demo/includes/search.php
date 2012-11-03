@@ -1,5 +1,8 @@
+<form method="post">
+	<input type="submit" class="btn" value="Экспорт в эксель" name="xls">
+</form>
 <form class="form-search js-search" method="post" action="">
-    <input type="text" name="search" class="input-medium search-query span3" id="tags" placeholder="Введите имя" autocomplete="off">
+    <input type="search" name="search" class="input-medium search-query span3" id="tags" placeholder="Введите имя" autocomplete="off">
     <span class="help-inline">Возраст</span>
     <select class="span1">
         <option value="0">от</option>
