@@ -1,5 +1,5 @@
-<form method="post">
-	<input type="submit" class="btn" value="Экспорт в эксель" name="xls">
+<form method="post" action="/xls.php">
+	<input type="submit" class="btn" value="Экспорт в эксель">
 </form>
 <form class="form-search js-search" method="post" action="">
     <input type="search" name="search" class="input-medium search-query span3" id="tags" placeholder="Введите имя" autocomplete="off">
