@@ -26,11 +26,8 @@
     <li class="<?php if($_REQUEST['parameters']) echo 'active';?>">
         <a href="<?=$url?>&parameters=true">Показатели</a>
     </li>
-    <li class="<?php if($_REQUEST['main-complaints']) echo 'active';?>">
+    <li class="<?php if($_REQUEST['main-complaints'] || $_REQUEST['complaints']) echo 'active';?>">
         <a href="<?=$url?>&main-complaints=true">Жалобы основные</a>
-    </li>
-    <li class="<?php if($_REQUEST['system-complaints']) echo 'active';?>">
-        <a href="<?=$url?>&system-complaints=true">Жалобы по системам</a>
     </li>
     <li class="<?php if($_REQUEST['systems']) echo 'active';?>">
         <a href="<?=$url?>&systems=true">Системы</a>
@@ -138,60 +135,49 @@
             </form>
         <? } ?>
 <?php if($_REQUEST['parameters']) { ?>
-<h2>Добавить показатели</h2>
-<form action="" method="post">
-    <div class="control-group">
-        <label class="control-label" for="parameter">
-            Фамилия
-        </label>
-        <div class="controls">
-            <select id="parameter" name="parameter">
-                <option value="0">Выбрать показатель</option>
-                <option value="1">Пульс</option>
-                <option value="2">Сахар</option>
-                <option value="3">Холестерин</option>
-            </select>
-        </div>
-    </div>
-    <div class="control-group">
-        <label class="control-label" for="value">
-            Значение
-        </label>
-        <div class="controls">
-            <input type="text" id="value" name="value">
-        </div>
-    </div>
-    <div class="control-group">
-        <label class="control-label" for="preparation">
-            Препарат
-        </label>
-        <div class="controls">
-            <input type="text" id="preparation" name="preparation">
-        </div>
-    </div>
-    <div class="control-group">
-        <label class="control-label" for="date">
-            Дата
-        </label>
-        <div class="controls">
-            <input type="text" id="date" name="date" class="js-datepicker">
-        </div>
-    </div>
-    <input type="submit" name="save" class="btn" value="Сохранить">
-</form>
-    <? } ?>
+    <h2>Добавить показатели</h2>
+    <?php include($_SERVER['DOCUMENT_ROOT'] . '/demo/patient/parameters.php')?>
+<? } ?>
 
 <?php if($_REQUEST['main-complaints']) { ?>
-<h2>Добавить жалобы основные</h2>
-    <? } ?>
+    <?php include($_SERVER['DOCUMENT_ROOT'] . '/demo/patient/complaints.php')?>
+<? } ?>
 
-<?php if($_REQUEST['system-complaints']) { ?>
-<h2>Добавить жалобы по системам</h2>
-    <? } ?>
+<?php if($_REQUEST['complaint-titles']) { ?>
+    <?php include($_SERVER['DOCUMENT_ROOT'] . '/demo/patient/complaint-titles.php')?>
+<? } ?>
+
+<?php if($_REQUEST['complaint-titles-edit']) { ?>
+    <?php include($_SERVER['DOCUMENT_ROOT'] . '/demo/patient/complaint-titles-edit.php')?>
+<? } ?>
+
+<?php if($_REQUEST['complaint-subtitles']) { ?>
+    <?php include($_SERVER['DOCUMENT_ROOT'] . '/demo/patient/complaint-subtitles.php')?>
+<? } ?>
+
+<?php if($_REQUEST['complaint-subtitles-edit']) { ?>
+    <?php include($_SERVER['DOCUMENT_ROOT'] . '/demo/patient/complaint-subtitles-edit.php')?>
+<? } ?>
+
+<?php if($_REQUEST['complaint-subtitles-add']) { ?>
+    <?php include($_SERVER['DOCUMENT_ROOT'] . '/demo/patient/complaint-subtitles-add.php')?>
+<? } ?>
+
+<?php if($_REQUEST['complaint-texts']) { ?>
+    <?php include($_SERVER['DOCUMENT_ROOT'] . '/demo/patient/complaint-texts.php')?>
+<? } ?>
+
+<?php if($_REQUEST['complaint-texts-edit']) { ?>
+    <?php include($_SERVER['DOCUMENT_ROOT'] . '/demo/patient/complaint-texts-edit.php')?>
+<? } ?>
+
+<?php if($_REQUEST['complaint-texts-add']) { ?>
+    <?php include($_SERVER['DOCUMENT_ROOT'] . '/demo/patient/complaint-texts-add.php')?>
+<? } ?>
 
 <?php if($_REQUEST['systems']) { ?>
-<h2>Системы</h2>
-    <? } ?>
+    <h2>Системы</h2>
+<? } ?>
 
 <?php if($_REQUEST['plan']) { ?>
 <h2>План лечения</h2>
@@ -222,7 +208,7 @@
         <tbody>
             <?php
 
-            $month = array('jan', 'feb', 'mar', 'apr', 'may', 'june', 'july', 'august', 'sep', 'oct', 'nov', 'dec');
+            $month = array('01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12');
 
             $types = array(
                 array('type' => 'lipids', 'name' => 'Липиды'),

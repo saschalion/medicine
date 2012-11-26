@@ -1,0 +1,77 @@
+10
+
+dir
+0
+svn://svn.centerft.com/FrontOffice/2gen/trunk/data
+svn://svn.centerft.com
+add
+
+
+
+
+
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+0084d2f5-f061-bb48-9550-d86c7d14b254
+
+12.10.19.sql
+file
+
+
+
+add
+
+12.10.22.sql
+file
+
+
+
+add
+
+12.10.22_2.sql
+file
+
+
+
+add
+
+12.10.23.sql
+file
+
+
+
+add
+
+12.10.30.sql
+file
+
+
+
+add
+
+medicine.sql
+file
+
+
+
+add
+
+migrate-12.11.25.sql
+file
+
+
+
+add
+

@@ -95,7 +95,7 @@ function set_fields()
         'mobile_phone_second' => post('mobile_phone_second'),
         'desease' => post('desease'),
         'date_birth' => date("Y-m-d H:m:s",strtotime(post('date_birth'))
-    ));
+        ));
     return $array;
 }
 
@@ -167,7 +167,7 @@ function get_patients()
 
     while($records = mysql_fetch_assoc($q))
 
-    $new_records[] = $records;
+        $new_records[] = $records;
 
     return $new_records;
 }
@@ -197,7 +197,7 @@ function get_patient()
 
     while($records = mysql_fetch_assoc($sql))
 
-    $new_records[] = $records;
+        $new_records[] = $records;
 
     return $new_records;
 }
@@ -256,7 +256,7 @@ function set_chart($patient_id, $type)
     if($sql) {
         while($patients = mysql_fetch_assoc($sql))
 
-        $records[] = $patients;
+            $records[] = $patients;
 
         return $records;
     }
@@ -301,7 +301,21 @@ function notifs()
 
     while($record = mysql_fetch_assoc($sql))
 
-    $records[] = $record;
+        $records[] = $record;
+
+    return $records;
+}
+
+function notifs_patients()
+{
+    $sql = query("SELECT distinct(patients.id) as id, patients.last_name, patients.first_name, patients.patronymic
+    FROM parameters, parameter_norms, patients
+    WHERE (value < start_norm OR value > end_norm) AND YEAR(date) >= '2010' AND YEAR(date) <= '2012' AND (parameter_norm_id = parameter_norms.id
+    AND patients.id = parameters.patient_id) ORDER BY date DESC");
+
+    while($record = mysql_fetch_assoc($sql))
+
+        $records[] = $record;
 
     return $records;
 }
@@ -346,9 +360,9 @@ function get_preparats()
 
 function get_dispensary()
 {
-    $sql = query("SELECT plans.id as plan_id, patients.id as uid, patients.last_name, patients.first_name, patients.patronymic,
-    plans.title, plans.date_from, plans.date_to  from patients, plans where unix_timestamp(date_from) >= (unix_timestamp(now()) + 60*60*24*30)
-    AND (unix_timestamp(now()) + 60*60*24*30) < unix_timestamp(date_to) AND plans.patient_id = patients.id");
+    $sql = query("SELECT plans.id, plans.type, patients.id as pid, plans.month, patients.first_name, patients.last_name,
+    patients.patronymic FROM plans, patients where (unix_timestamp(now()) + 60*60*24*31)
+    >= (unix_timestamp(concat('2012-', plans.month, '-01'))) and plans.patient_id = patients.id");
 
     if($sql) {
         while($record = mysql_fetch_assoc($sql))
@@ -357,6 +371,16 @@ function get_dispensary()
 
         return $records;
     }
+}
+
+function types($type)
+{
+    if($type == 'lipids') $name = 'липиды';
+    if($type == 'ekg') $name = 'ЭКГ';
+    if($type == 'bh') $name = 'Б/х';
+    if($type == 'end') $name = 'эндокринолог';
+
+    return $name;
 }
 
 //function get_plan($patient_id)
@@ -389,7 +413,7 @@ function get_plan($patient_id)
     if($sql) {
         while($record = mysql_fetch_assoc($sql))
 
-        $plans[] = $record;
+            $plans[] = $record;
 
         return $plans;
     }
@@ -414,4 +438,338 @@ function set_plan($patient_id)
         print "<META HTTP-EQUIV=Refresh content=0;URL=/demo/edit.php?patient_id=".$_SESSION['id']."&plan=true>";
     }
 }
+
+function getComplaintTitles()
+{
+    $q = "select * from complaint_titles";
+
+    $sql = query($q);
+
+    if($sql) {
+        while($record = mysql_fetch_assoc($sql))
+
+            $complaints[] = $record;
+
+        return $complaints;
+    }
+}
+
+function getComplaintTitle($val = null)
+{
+    $q = "select * from complaint_titles where id = '".escape($val)."'";
+
+    $sql = query($q);
+
+    if($sql) {
+        while($record = mysql_fetch_assoc($sql))
+
+            $complaints[] = $record;
+
+        return $complaints;
+    }
+}
+
+function complaintTitleEdit($complaint_title = null)
+{
+    if($_POST['save_title']) {
+
+        $sql = query("UPDATE complaint_titles SET title = '".$complaint_title."' where id='".$_REQUEST['complaint-titles-edit']."'");
+
+        $redirect =  print "<META HTTP-EQUIV=Refresh content=0;URL=/demo/edit.php?patient_id=".$_SESSION['id']."&complaints=true&complaint-titles=true>";
+
+        return array($sql, $redirect);
+    }
+}
+
+function getComplaintSubTitle($val = null)
+{
+    $q = "select * from complaint_subtitles where id = '".escape($val)."'";
+
+    $sql = query($q);
+
+    if($sql) {
+        while($record = mysql_fetch_assoc($sql))
+
+            $complaints[] = $record;
+
+        return $complaints;
+    }
+}
+
+function getComplaintSubTitles()
+{
+    $q = "select * from complaint_subtitles";
+
+    $sql = query($q);
+
+    if($sql) {
+        while($record = mysql_fetch_assoc($sql))
+
+            $complaints[] = $record;
+
+        return $complaints;
+    }
+}
+
+// Активная родительская категория
+
+function showCurrentCategory($category_id = null) {
+
+    $sql_current = query("SELECT complaint_titles.id FROM complaint_titles, complaint_subtitles
+    where complaint_subtitles.parent_id=complaint_titles.id AND complaint_subtitles.id='".escape($category_id)."';");
+
+    $sql = query("SELECT * from complaint_titles");
+
+    $result = mysql_result($sql_current, 0);
+
+    $record = null;
+
+ 	do {
+        if ($record['id'] == $result) {
+            print $selected = '<option value="'.$record['id'].'" selected>' . $record['title'] . '</option>';
+    }
+		else {
+            print $selected = '<option value="'.$record['id'].'">' . $record['title'] . '</option>';
+		}
+    }
+
+    while($record = mysql_fetch_array($sql));
+
+    return $selected;
+}
+
+// создание подкатегории
+
+function createComplaintSubTitle()
+{
+    if($_POST['add_subtitle']) {
+        $array = array(
+            'title' => post('subtitle'),
+            'parent_id' => post('titles')
+        );
+
+        if(count($array) > 0) {
+            foreach($array as $key => $value) {
+                $value = escape(trim($value));
+                $value =  "'$value'";
+                $array_keys[] = $key;
+                $array_values[] = $value;
+            }
+        }
+
+        $implode_key = implode(', ', $array_keys);
+
+        $implode_value = implode(', ', $array_values);
+
+        $sql = query("INSERT INTO complaint_subtitles($implode_key) values($implode_value)");
+
+        $redirect = print "<META HTTP-EQUIV=Refresh content=0;URL=/demo/edit.php?patient_id=".$_SESSION['id']."&complaints=true&complaint-subtitles=true>";
+
+        return array($sql, $redirect);
+    }
+}
+
+// Редактирование подкатегорий
+
+function complaintSubTitleEdit()
+{
+    if($_POST['save_subtitle']) {
+
+        $array = array(
+            'title' => post(trim('complaint_subtitle')),
+            'parent_id' => post('titles')
+        );
+
+        if (count($array) > 0) {
+            foreach ($array as $key => $value) {
+                $value = trim($value);
+                $value = "'$value'";
+                $updates[] = "$key = $value";
+            }
+        }
+
+        $implode_array = implode(', ', $updates);
+
+        $sql = query("UPDATE complaint_subtitles SET $implode_array where id='".$_REQUEST['complaint-subtitles-edit']."'");
+
+        $redirect =  print "<META HTTP-EQUIV=Refresh content=0;URL=/demo/edit.php?patient_id=".$_SESSION['id']."&complaints=true&complaint-subtitles=true>";
+
+        return array($sql, $redirect);
+    }
+}
+
+// Удаление подкатегории
+
+function deleteSubtitle($node = null) {
+
+    if($_REQUEST['delete']) {
+        $sql = query("DELETE FROM complaint_subtitles WHERE id='".escape($node)."';");
+        $redirect =  print "<META HTTP-EQUIV=Refresh content=0;URL=/demo/edit.php?patient_id=".$_SESSION['id']."&complaints=true&complaint-subtitles=true>";
+    }
+
+    return array($sql, $redirect);
+}
+
+// Жалобы
+
+function getComplaintTexts()
+{
+    $q = "select * from complaint_texts";
+
+    $sql = query($q);
+
+    if($sql) {
+        while($record = mysql_fetch_assoc($sql))
+
+            $complaints[] = $record;
+
+        return $complaints;
+    }
+}
+
+// Жалоба
+
+function getComplaintText($id)
+{
+    $q = "select * from complaint_texts where id = $id";
+
+    $sql = query($q);
+
+    if($sql) {
+        while($record = mysql_fetch_assoc($sql))
+
+            $complaints[] = $record;
+
+        return $complaints;
+    }
+}
+
+// Активная категория жалобы
+
+function showCurrentTextCategory($category_id = null) {
+
+    $sql_current = query("SELECT complaint_subtitles.id FROM complaint_subtitles, complaint_texts
+    where complaint_texts.parent_id=complaint_subtitles.id AND complaint_texts.id='".escape($category_id)."';");
+
+    $sql = query("SELECT * from complaint_subtitles");
+
+    $result = mysql_result($sql_current, 0);
+
+    $record = null;
+
+    do {
+        if ($record['id'] == $result) {
+            print $selected = '<option value="'.$record['id'].'" selected>' . $record['title'] . '</option>';
+        }
+        else {
+            print $selected = '<option value="'.$record['id'].'">' . $record['title'] . '</option>';
+        }
+    }
+
+    while($record = mysql_fetch_array($sql));
+
+    return $selected;
+}
+
+// Редактирование жалобы
+
+function complaintTextEdit()
+{
+    if($_POST['save_text']) {
+
+        $array = array(
+            'text' => post('complaint_text'),
+            'parent_id' => post('titles')
+        );
+
+        if (count($array) > 0) {
+            foreach ($array as $key => $value) {
+                $value = trim($value);
+                $value = "'$value'";
+                $updates[] = "$key = $value";
+            }
+        }
+
+        $implode_array = implode(', ', $updates);
+
+        $sql = query("UPDATE complaint_texts SET $implode_array where id='".escape($_REQUEST['complaint-texts-edit'])."'");
+
+        $redirect =  print "<META HTTP-EQUIV=Refresh content=0;URL=/demo/edit.php?patient_id=".$_SESSION['id']."&complaints=true&complaint-texts=true>";
+
+        return array($sql, $redirect);
+    }
+}
+
+// Удаление жалобы
+
+function deleteComplaint($node = null) {
+
+    if($_REQUEST['delete']) {
+        $sql = query("DELETE FROM complaint_texts WHERE id='".escape($node)."';");
+        $redirect =  print "<META HTTP-EQUIV=Refresh content=0;URL=/demo/edit.php?patient_id=".$_SESSION['id']."&complaints=true&complaint-texts=true>";
+    }
+
+    return array($sql, $redirect);
+}
+
+// создание жалобы
+
+function createComplaintText()
+{
+    if($_POST['add_text']) {
+        $array = array(
+            'text' => post('complaint_text'),
+            'parent_id' => post('titles')
+        );
+
+        if(count($array) > 0) {
+            foreach($array as $key => $value) {
+                $value = escape(trim($value));
+                $value =  "'$value'";
+                $array_keys[] = $key;
+                $array_values[] = $value;
+            }
+        }
+
+        $implode_key = implode(', ', $array_keys);
+
+        $implode_value = implode(', ', $array_values);
+
+        $sql = query("INSERT INTO complaint_texts($implode_key) values($implode_value)");
+
+        $redirect = print "<META HTTP-EQUIV=Refresh content=0;URL=/demo/edit.php?patient_id=".$_SESSION['id']."&complaints=true&complaint-texts=true>";
+
+        return array($sql, $redirect);
+    }
+}
+
+// Обрезание текста
+
+function wrap($str, $s) {
+    $result = implode(array_slice(explode('<br>',wordwrap($str, $s, '<br>', false)), 0, 1));
+
+    if($result != $str) {
+        $result .= '...';
+    }
+
+    return $result;
+}
+
+//function complaints()
+//{
+//    $q = "select ctxt.text as text, ctxt.id as tid, , ct.title, cs.title as subtitle from complaints c, complaint_texts ctxt,
+//    complaint_titles ct, complaint_subtitles cs
+//    where ctxt.id = c.text_id AND
+//    ct.id = c.title_id AND cs.id = c.subtitle_id";
+//
+//    $sql = query($q);
+//
+//    if($sql) {
+//        while($record = mysql_fetch_assoc($sql))
+//
+//            $complaints[] = $record;
+//
+//        return $complaints;
+//    }
+//}
 

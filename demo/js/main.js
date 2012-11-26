@@ -181,3 +181,15 @@ $('.js-types').click(function() {
     window.location.href = '';
 });
 
+// Complains
+
+$('.js-checkbox').click(function() {
+    if(!$(this).hasClass('chosen')) {
+        $(this).addClass('chosen').parents('.complaints-list').find('.fields').slideDown(300);
+    } else {
+        $(this).removeClass('chosen').parents('.complaints-list').find('.fields input[type="checkbox"]').removeAttr('checked');
+        $(this).removeClass('chosen').parents('.complaints-list').find('.fields').hide();
+    }
+});
+
+
