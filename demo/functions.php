@@ -511,6 +511,21 @@ function getComplaintSubTitles()
     }
 }
 
+function setComplaintSubTitles($id = null)
+{
+    $q = "select * from complaint_subtitles where parent_id = $id";
+
+    $sql = query($q);
+
+    if($sql) {
+        while($record = mysql_fetch_assoc($sql))
+
+            $complaints[] = $record;
+
+        return $complaints;
+    }
+}
+
 // Активная родительская категория
 
 function showCurrentCategory($category_id = null) {
@@ -536,6 +551,31 @@ function showCurrentCategory($category_id = null) {
     while($record = mysql_fetch_array($sql));
 
     return $selected;
+}
+
+function select()
+{
+    $country_id = @intval($_GET['country_id']);
+
+    $sql_current = query("SELECT complaint_subtitles.id, complaint_subtitles.title  FROM complaint_titles, complaint_subtitles
+    where complaint_subtitles.parent_id=complaint_titles.id AND complaint_subtitles.parent_id='".$country_id."';");
+
+    while($record = mysql_fetch_assoc($sql_current))
+    $records[] = $record;
+    $regs = $records;
+    $i=1;
+    foreach ($regs as $r) {
+        $regions[] = array('id'=>$r['id'], 'title'=>trim($r['title']));
+        $i++;
+    }
+
+    $result = array('type'=>'success', 'regions'=>$regions);
+
+
+    /*
+     * Упаковываем данные с помощью JSON
+     */
+    print json_encode($result);
 }
 
 // создание подкатегории
@@ -719,7 +759,7 @@ function createComplaintText()
     if($_POST['add_text']) {
         $array = array(
             'text' => post('complaint_text'),
-            'parent_id' => post('titles')
+            'parent_id' => post('subtitles')
         );
 
         if(count($array) > 0) {
@@ -753,6 +793,31 @@ function wrap($str, $s) {
     }
 
     return $result;
+}
+
+function getComplaintCurrTitles($id = null) {
+
+    $sql_current = query("SELECT complaint_titles.id FROM complaint_subtitles, complaint_titles
+    where complaint_subtitles.parent_id=complaint_titles.id AND complaint_titles.id='".escape($id)."';");
+
+    $sql = query("SELECT * from complaint_titles");
+
+    $result = mysql_result($sql_current, 0);
+
+    $record = null;
+
+    do {
+        if ($record['id'] == $result) {
+            print $selected = '<option value="'.$record['id'].'" selected>' . $record['title'] . '</option>';
+        }
+        else {
+            print $selected = '<option value="'.$record['id'].'">' . $record['title'] . '</option>';
+        }
+    }
+
+    while($record = mysql_fetch_array($sql));
+
+    return $selected;
 }
 
 //function complaints()

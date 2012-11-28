@@ -192,4 +192,18 @@ $('.js-checkbox').click(function() {
     }
 });
 
+//$(function() {
+//    $('.js-add').live('change', function() {
+//        $(this).ajaxSubmit({
+//            success: function(data) {
+//                $('.js-table-content').html($(data).find('.js-table'));
+//            },
+//            error: function(data) {
+//                $('.js-table-content').html($(data).find('.js-table'));
+//            },
+//            dataType: 'html'
+//        });
+//    });
+//});
+
 

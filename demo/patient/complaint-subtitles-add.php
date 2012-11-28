@@ -27,5 +27,5 @@ createComplaintSubTitle();
             <input type="text" id="subtitle" name="subtitle" value="">
         </div>
     </div>
-    <input type="submit" name="add_text" class="btn" value="Сохранить">
+    <input type="submit" name="add_subtitle" class="btn" value="Сохранить">
 </form>

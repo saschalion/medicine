@@ -268,6 +268,7 @@
 <script src="js/vendor/bootstrap-tooltip.js"></script>
 
 <script src="js/main.js"></script>
+<script src="js/load.js"></script>
 <script src="js/datepicker.js"></script>
 </body>
 </html>
