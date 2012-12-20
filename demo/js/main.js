@@ -3,6 +3,8 @@ if ($('.accordion-body').hasClass('in')) {
     $('.in.collapse').parents('.accordion-group').find('.accordion-icon').removeClass('icon-plus-sign').addClass('icon-minus-sign');
 }
 
+expiredDate = '64400';
+
 $('.accordion-toggle').live('click', function() {
 
     $('.accordion-group').removeClass('active');
@@ -81,17 +83,17 @@ flashMsg = function() {
 setcookies = function(name) {
 
     if(!getCookie(name)) {
-        setCookie(name, id + ';', "Mon, 01-Dec-2012 00:00:00 GMT", "/");
+        setCookie(name, id + ';', expiredDate, "/");
     }
     else {
-        setCookie(name, getCookie(name) + id + ';', "Mon, 01-Dec-2012 00:00:00 GMT", "/");
+        setCookie(name, getCookie(name) + id + ';', expiredDate, "/");
     }
 };
 
 $('.submit').click(function() {
     var name = $(this).parents('.alert').find('.js-name').text();
 
-    setCookie('fio', name, "Mon, 01-Dec-2012 00:00:00 GMT", "/");
+    setCookie('fio', name, expiredDate, "/");
     $('.js-set-name').text(getCookie('fio'));
     $('.js-set-name-post').val(getCookie('fio'));
 });
@@ -105,7 +107,7 @@ $(document).ready(function() {
 
             var authInfo = $('.auth-info').val();
 
-            setCookie('auth', authInfo, "Mon, 01-Dec-2012 00:00:00 GMT", "/");
+            setCookie('auth', authInfo, expiredDate, "/");
             window.location.href = '/demo/';
         });
     } else {
@@ -117,7 +119,7 @@ $(document).ready(function() {
 $('.submit').click(function() {
     var id = $(this).parents('.alert').attr('id');
 
-    setCookie('uid', id, "Mon, 01-Dec-2012 00:00:00 GMT", "/");
+    setCookie('uid', id, expiredDate, "/");
 });
 
 $('.send').click(function(){
@@ -127,10 +129,10 @@ $('.send').click(function(){
 $('.send-form').submit(function() {
 
     if(!getCookie('messages')) {
-        setCookie('messages', getCookie('uid') + ';', "Mon, 01-Dec-2012 00:00:00 GMT", "/");
+        setCookie('messages', getCookie('uid') + ';', expiredDate, "/");
     }
     else {
-        setCookie('messages', getCookie('messages') + getCookie('uid') + ';', "Mon, 01-Dec-2012 00:00:00 GMT", "/");
+        setCookie('messages', getCookie('messages') + getCookie('uid') + ';', expiredDate, "/");
     }
 });
 
@@ -160,7 +162,7 @@ $('.close').click(function() {
     var name = $(this).parents('.alert').find('.js-name').text();
 
     setcookies('closed');
-    setCookie('fio', name, "Mon, 01-Dec-2012 00:00:00 GMT", "/");
+    setCookie('fio', name, expiredDate, "/");
     $('.js-message').empty();
     $('.js-message').append("<p class='alert alert-success'>" + getCookie('fio') + " отменен</p>");
     flashMsg();
@@ -172,14 +174,15 @@ $('.js-types').click(function() {
     var month = $(this).attr('data-month');
 
     if(!getCookie('types')) {
-        setCookie('types', month + ';' + types + ';', "Mon, 01-Dec-2012 00:00:00 GMT", "/");
+        setCookie('types', month + ';' + types + ';', expiredDate, "/");
     }
     else {
-        setCookie('types', getCookie('types') + month + ';' + types + ';', "Mon, 01-Dec-2012 00:00:00 GMT", "/");
+        setCookie('types', getCookie('types') + month + ';' + types + ';', expiredDate, "/");
     }
 
     window.location.href = '';
 });
+
 
 // Complains
 
@@ -191,19 +194,3 @@ $('.js-checkbox').click(function() {
         $(this).removeClass('chosen').parents('.complaints-list').find('.fields').hide();
     }
 });
-
-//$(function() {
-//    $('.js-add').live('change', function() {
-//        $(this).ajaxSubmit({
-//            success: function(data) {
-//                $('.js-table-content').html($(data).find('.js-table'));
-//            },
-//            error: function(data) {
-//                $('.js-table-content').html($(data).find('.js-table'));
-//            },
-//            dataType: 'html'
-//        });
-//    });
-//});
-
-

@@ -431,8 +431,8 @@ function set_plan($patient_id)
         if(mysql_num_rows($sql) > 0) {
             query("DELETE from plans where type='".$_REQUEST['type']."' AND month='".$_REQUEST['month']."' and patient_id='".$patient_id."'");
         } else {
-            query("INSERT INTO plans (`type`, `month`, `patient_id`)
-                                values('".$_REQUEST['type']."', '".$_REQUEST['month']."', '".$patient_id."')");
+            query("INSERT INTO plans (`type`, `month`, `patient_id`, `status`)
+                                values('".$_REQUEST['type']."', '".$_REQUEST['month']."', '".$patient_id."', '".$_REQUEST['status']."')");
         }
 
         print "<META HTTP-EQUIV=Refresh content=0;URL=/demo/edit.php?patient_id=".$_SESSION['id']."&plan=true>";
