@@ -194,3 +194,39 @@ $('.js-checkbox').click(function() {
         $(this).removeClass('chosen').parents('.complaints-list').find('.fields').hide();
     }
 });
+
+// Add complain
+
+function formLink() {
+    var $link = $('.js-form-link');
+    var $box = $('.js-box');
+    var currClass = 'b-link_type_dashed_state_current';
+
+    $link.click(function() {
+        var t = $(this);
+
+        if(!t.hasClass(currClass)) {
+            $link.removeClass(currClass);
+            t.addClass(currClass);
+            $box.toggleClass('hidden');
+        }
+
+        return false;
+    });
+
+    $('.js-parameter').click(function() {
+        $(this).parent().append('<div class="controls form-inline"><input type="text" name="parameter[]" placeholder="Еще параметр">' +
+            ' <input type="button" class="btn btn-danger js-remove" value="X" title="Удалить"><br><br></div>');
+
+        return false;
+    });
+
+    $('.js-remove').live('click', function() {
+        $(this).parent().remove();
+
+        return false;
+    });
+}
+
+formLink();
+

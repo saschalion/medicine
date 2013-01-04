@@ -571,10 +571,6 @@ function select()
 
     $result = array('type'=>'success', 'regions'=>$regions);
 
-
-    /*
-     * Упаковываем данные с помощью JSON
-     */
     print json_encode($result);
 }
 
@@ -684,6 +680,20 @@ function getComplaintText($id)
     }
 }
 
+// Параметры жалобы
+
+function getParams() {
+    $q = "select * from complaint_parameters";
+    $sql = query($q);
+
+    if($sql) {
+        while($record = mysql_fetch_assoc($sql))
+            $complaintParams[] = $record;
+
+        return $complaintParams;
+    }
+}
+
 // Активная категория жалобы
 
 function showCurrentTextCategory($category_id = null) {
@@ -740,6 +750,20 @@ function complaintTextEdit()
     }
 }
 
+// Текущие параметры жалобы
+
+function getCurrentParams() {
+    $q = "select * from complaint_parameters where text_id = '".$_GET['complaint-texts-edit']."' ";
+    $sql = query($q);
+
+    if($sql) {
+        while($record = mysql_fetch_assoc($sql))
+            $complaintParams[] = $record;
+
+        return $complaintParams;
+    }
+}
+
 // Удаление жалобы
 
 function deleteComplaint($node = null) {
@@ -780,6 +804,37 @@ function createComplaintText()
         $redirect = print "<META HTTP-EQUIV=Refresh content=0;URL=/demo/edit.php?patient_id=".$_SESSION['id']."&complaints=true&complaint-texts=true>";
 
         return array($sql, $redirect);
+    }
+    if($_POST['add_text_parameters']) {
+        $array = array(
+            'title' => post('parameter_title'),
+            'parent_id' => post('subtitles')
+        );
+
+        if(count($array) > 0) {
+            foreach($array as $key => $value) {
+                $value = escape(trim($value));
+                $value =  "'$value'";
+                $array_keys[] = $key;
+                $array_values[] = $value;
+            }
+        }
+
+        $implode_key = implode(', ', $array_keys);
+
+        $implode_value = implode(', ', $array_values);
+
+        $sql = query("INSERT INTO complaint_texts($implode_key) values($implode_value)");
+
+        $rid = mysql_insert_id();
+
+        foreach($_POST['parameter'] as $text) {
+            $sqlTwo = query("INSERT INTO complaint_parameters(`text_id`, `parameter`) values($rid, '".$text."')");
+        }
+
+        $redirect = print "<META HTTP-EQUIV=Refresh content=0;URL=/demo/edit.php?patient_id=".$_SESSION['id']."&complaints=true&complaint-texts=true>";
+
+        return array($sql, $sqlTwo, $redirect);
     }
 }
 

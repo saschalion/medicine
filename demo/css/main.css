@@ -74,3 +74,19 @@ body .breadcrumb {
     list-style: none;
     display: none;
 }
+
+.b-link_type_dashed {
+    border-bottom: 1px dashed;
+}
+
+.b-link_type_dashed:hover {
+    color: #c00;
+    text-decoration: none;
+}
+
+.b-link_type_dashed_state_current,
+.b-link_type_dashed_state_current:hover {
+    color: #000;
+    border: none;
+    cursor: text;
+}
