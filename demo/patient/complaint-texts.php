@@ -1,4 +1,5 @@
 <h2>Список жалоб</h2>
+<?php include($_SERVER['DOCUMENT_ROOT'] . '/demo/includes/complaint-menu.php')?>
 <?php $url = $url . '&complaints=true';?>
 <table class="table table-striped">
     <thead>

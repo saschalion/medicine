@@ -6,6 +6,7 @@ complaintSubTitleEdit();
 ?>
 
 <h2>Редактировать заголовок &laquo;<?=$complaint_subtitle[0]['title'];?>&raquo;</h2>
+<?php include($_SERVER['DOCUMENT_ROOT'] . '/demo/includes/complaint-menu.php')?>
 <?php $url = $url . '&complaints=true';?>
 <form action="" method="post">
     <div class="control-group">

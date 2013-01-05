@@ -6,6 +6,7 @@ createComplaintText();
 ?>
 
 <h2>Добавить жалобу</h2>
+<?php include($_SERVER['DOCUMENT_ROOT'] . '/demo/includes/complaint-menu.php')?>
 <?php $url = $url . '&complaints=true';?>
 <form action="" method="post" class="js-add">
     <div class="js-table-content">
@@ -44,13 +45,13 @@ createComplaintText();
                     <div class="controls">
                         <input type="text" value="" name="parameter_title"/>
                     </div>
-                    <div class="controls">
+                    <div class="controls js-field-inner">
                         <label class="control-label">
                             Параметры
                         </label>
                         <div class="form-inline">
                             <input type="text" name="parameter[]" placeholder="Введите параметр">
-                            <input type="button" class="btn btn-success js-parameter" value="+" title="Добавить еще значение">
+                            <input type="button" class="btn btn-success js-parameter-add" value="+" title="Добавить еще значение">
                             <br><br>
                         </div>
                     </div>

@@ -2,10 +2,14 @@
 $text = getComplaintText($_REQUEST['complaint-texts-edit']);
 complaintTextEdit();
 $params = getCurrentParams();
+$_SESSION['complaint'] = $text[0]['id'];
+deleteParam($deleteparam);
+complaintParams($_REQUEST['complaint-texts-edit']);
 ?>
 
 <h2>Редактировать жалобу</h2>
-<?php $url = $url . '&complaints=true';?>
+<?php include($_SERVER['DOCUMENT_ROOT'] . '/demo/includes/complaint-menu.php')?>
+<?php $url = $url . '&complaints=true'; ?>
 <form action="" method="post">
     <div class="control-group">
         <label class="control-label" for="titles">
@@ -42,14 +46,33 @@ $params = getCurrentParams();
             </label>
             <?php foreach($params as $param) { ?>
                 <div class="form-inline">
+                    <input type="hidden" value="<?=$param['id']?>" name="param_id[]">
                     <input type="text" name="parameter[]" value="<?=$param['parameter']?>">
                     <a class="btn btn-danger" title="Удалить"
                        href="<?=$url . '&complaints=true&complaint-texts-edit=' .
-                           $text[0]['id'] . '&delete=' . $param['id'] ?>">x</a>
+                           $text[0]['id'] . '&deleteparam=' . $param['id'] ?>">x</a>
                     <br><br>
                 </div>
             <?php } ?>
+            <div>
+                <input type="button" class="btn btn-success js-parameter" value="Добавить" title="Добавить еще значение">
+            </div>
         </div>
+    <?php } else { ?>
+    <div class="control-group">
+        <div class="controls">
+            <label class="control-label">
+                Параметры
+            </label>
+            <div class="form-inline">
+                <input type="text" name="parameter[]" placeholder="Введите параметр">
+                <input type="button" class="btn btn-success js-parameter" value="+" title="Добавить еще значение">
+                <br><br>
+            </div>
+        </div>
+    </div>
     <?php } ?>
-    <input type="submit" name="save_text" class="btn" value="Сохранить">
+    <?php if(!empty($text[0]['title'])) { ?>
+        <input type="submit" name="save_params" class="btn" value="Сохранить">
+    <?php } else { echo '<input type="submit" name="save_text" class="btn" value="Сохранить">'; } ?>
 </form>

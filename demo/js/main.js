@@ -215,8 +215,15 @@ function formLink() {
     });
 
     $('.js-parameter').click(function() {
+        $(this).before('<div class="controls form-inline"><input type="text" name="parameter[]" placeholder="Еще параметр">' +
+            ' <input type="button" class="btn btn-danger js-remove" value="x" title="Удалить"><br><br></div>');
+
+        return false;
+    });
+
+    $('.js-parameter-add').click(function() {
         $(this).parent().append('<div class="controls form-inline"><input type="text" name="parameter[]" placeholder="Еще параметр">' +
-            ' <input type="button" class="btn btn-danger js-remove" value="X" title="Удалить"><br><br></div>');
+            ' <input type="button" class="btn btn-danger js-remove" value="x" title="Удалить"><br><br></div>');
 
         return false;
     });

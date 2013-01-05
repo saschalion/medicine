@@ -776,6 +776,54 @@ function deleteComplaint($node = null) {
     return array($sql, $redirect);
 }
 
+// Удаление параметра
+
+function deleteParam($node = null) {
+
+    if($_REQUEST['deleteparam']) {
+        $sql = query("DELETE FROM complaint_parameters WHERE id='".escape($node)."';");
+        $redirect =  print "<META HTTP-EQUIV=Refresh content=0;URL=/demo/edit.php?patient_id=".$_SESSION['id']."&complaints=true&complaint-texts-edit=".$_SESSION['complaint'].">";
+    }
+
+    return array($sql, $redirect);
+}
+
+// Сохранение тайтла и параметров при редактировании жалобы
+
+function complaintParams($node = null) {
+    if($_POST['save_params']) {
+
+        $array = array(
+            'title' => post('title'),
+            'parent_id' => post('titles')
+        );
+
+        if (count($array) > 0) {
+            foreach ($array as $key => $value) {
+                $value = trim($value);
+                $value = "'$value'";
+                $updates[] = "$key = $value";
+            }
+        }
+
+        $implode_array = implode(', ', $updates);
+
+        foreach($_POST['param_id'] as $id) {
+            $sqlThree = query("DELETE from complaint_parameters where id = '".$id."'");
+        }
+
+        foreach($_POST['parameter'] as $text) {
+            $sqlTwo = query("INSERT INTO complaint_parameters(`text_id`, `parameter`) values(".$node.", '".$text."')");
+        }
+
+        $sql = query("UPDATE complaint_texts SET $implode_array where id='".escape($node)."'");
+
+        $redirect = print "<META HTTP-EQUIV=Refresh content=0;URL=/demo/edit.php?patient_id=".$_SESSION['id']."&complaints=true&complaint-texts-edit=".$_SESSION['complaint'].">";
+
+        return array($sql, $sqlThree, $sqlTwo, $redirect);
+    }
+}
+
 // создание жалобы
 
 function createComplaintText()

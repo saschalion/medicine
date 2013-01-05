@@ -4,6 +4,7 @@ complaintTitleEdit($complaint_title);
 $complaint_title = getComplaintTitle($_REQUEST['complaint-titles-edit']);?>
 
 <h2>Добавть заголовок &laquo;<?=$complaint_title[0]['title'];?>&raquo;</h2>
+<?php include($_SERVER['DOCUMENT_ROOT'] . '/demo/includes/complaint-menu.php')?>
 <?php $url = $url . '&complaints=true';?>
 <form action="" method="post">
     <div class="control-group">
