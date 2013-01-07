@@ -579,25 +579,11 @@ function select()
 function createComplaintSubTitle()
 {
     if($_POST['add_subtitle']) {
-        $array = array(
-            'title' => post('subtitle'),
-            'parent_id' => post('titles')
-        );
 
-        if(count($array) > 0) {
-            foreach($array as $key => $value) {
-                $value = escape(trim($value));
-                $value =  "'$value'";
-                $array_keys[] = $key;
-                $array_values[] = $value;
-            }
+        foreach($_POST['subtitle'] as $text) {
+            $sql = query("INSERT INTO complaint_subtitles(`title`, `parent_id`)
+            values('".$text."', '".post('titles')."')");
         }
-
-        $implode_key = implode(', ', $array_keys);
-
-        $implode_value = implode(', ', $array_values);
-
-        $sql = query("INSERT INTO complaint_subtitles($implode_key) values($implode_value)");
 
         $redirect = print "<META HTTP-EQUIV=Refresh content=0;URL=/demo/edit.php?patient_id=".$_SESSION['id']."&complaints=true&complaint-subtitles=true>";
 

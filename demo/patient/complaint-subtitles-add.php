@@ -24,8 +24,10 @@ createComplaintSubTitle();
         <label class="control-label" for="subtitle">
             Заголовок
         </label>
-        <div class="controls">
-            <input type="text" id="subtitle" name="subtitle" value="">
+        <div class="controls form-inline">
+            <input type="text" id="subtitle" name="subtitle[]" value="">
+            <input type="button" class="btn btn-success js-title-add" value="+" title="Добавить">
+            <br><br>
         </div>
     </div>
     <input type="submit" name="add_subtitle" class="btn" value="Сохранить">

@@ -228,6 +228,13 @@ function formLink() {
         return false;
     });
 
+    $('.js-title-add').click(function() {
+        $(this).parent().append('<div class="controls form-inline"><input type="text" name="subtitle[]" placeholder="Еще заголовок">' +
+            ' <input type="button" class="btn btn-danger js-remove" value="x" title="Удалить"><br><br></div>');
+
+        return false;
+    });
+
     $('.js-remove').live('click', function() {
         $(this).parent().remove();
 

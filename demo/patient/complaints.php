@@ -19,15 +19,18 @@ foreach($complaintTitles as $title) {
             }
             if(!empty($complaint['title'])) {
                 echo '<li><label class="checkbox">
-                <input type="checkbox" name=""/><b> ' . $complaint['title'] . '</b></label>
-                    <ul class="fields">';
+                <input type="checkbox" name=""/><b> ' . $complaint['title'] . '</b></label>';
+                    if(!empty($complaintParams)) { echo '<ul class="fields">';
                     foreach($complaintParams as $param) if($complaint['id'] == $param['text_id']) {
                         echo '<li><label class="radio"><input type="radio" name="'.$complaint['id'].'">'
                             . $param['parameter'] .
                             '</label></li>';
                     }
-                echo '</ul><div><input type="text" placeholder="Введите значение"/></div></li>';
-            }
+                echo '</ul><div><input type="text" placeholder="Введите значение"/></div>'; } }
+
+                else { '<p>Нет жалоб</p>'; }
+
+                echo '</li>';
         }
     } echo '</ul></li></ul>'; }
 }
