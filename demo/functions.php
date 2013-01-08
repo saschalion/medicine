@@ -360,9 +360,9 @@ function get_preparats()
 
 function get_dispensary()
 {
-    $sql = query("SELECT plans.id, plans.type, patients.id as pid, plans.month, patients.first_name, patients.last_name,
+    $sql = query("SELECT plans.id, plans.type, plans.status, patients.id as pid, plans.month, patients.first_name, patients.last_name,
     patients.patronymic FROM plans, patients where (unix_timestamp(now()) + 60*60*24*31)
-    >= (unix_timestamp(concat('2012-', plans.month, '-01'))) and plans.patient_id = patients.id");
+    >= (unix_timestamp(concat('2012-', plans.month, '-01'))) and plans.patient_id = patients.id and status in('active')");
 
     if($sql) {
         while($record = mysql_fetch_assoc($sql))
