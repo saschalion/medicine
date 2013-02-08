@@ -1,6 +1,6 @@
 <?php $dblocation = "web-fortun.mysql";
 $dbuser = "web-fortun_mysql";
-$dbpasswd = "dhx1ve3q";
+$dbpasswd = "";
 $dbname="web-fortun_bags";
 
 //$dblocation = "localhost";
